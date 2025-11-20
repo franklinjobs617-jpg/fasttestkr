@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="지금 반응속도 테스트로 당신의 순발력을 확인하세요! 정확한 반응 시간과 전 세계 순위를 즉시 확인할 수 있는 무료 도구입니다. 반속 테스트, 반응속도 사이트와 함께 즐겨보세요."
+    />
+    <title>반응속도 테스트 | 정확한 반응 시간 측정 및 순위 확인 (무료)</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Pretendard Font (대형 IT 기업 스타일 폰트) -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
+    />
+
+    <style>
+      body {
+        font-family: "Pretendard Variable", Pretendard, -apple-system,
+          BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+          "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+        background-color: #f8fafc; /* Slate-50보다 조금 더 밝고 깨끗한 톤 */
+        color: #334155; /* Slate-700 */
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* 모바일 메뉴 애니메이션 */
+      #mobile-menu {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobile-menu.open {
+        max-height: 600px;
+        opacity: 1;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="text-slate-700">
+    <!-- ===== Header Start (Optimized: Big Tech Style) ===== -->
+    <header
+      class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300"
+    >
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a
+            href="/"
+            class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity"
+          >
+            <div
+              class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200"
+            >
+              <span class="text-white font-bold text-lg leading-none font-mono"
+                >R</span
+              >
+            </div>
+            <span
+              class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors"
+              >반응속도 테스트</span
+            >
+          </a>
+
+          <!-- Desktop Navigation (Center) -->
+          <nav class="hidden md:flex items-center space-x-1">
+            <a
+              href="/"
+              class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-colors"
+              >홈</a
+            >
+            <a
+              href="/valorant-banungsokdo-test.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >발로란트</a
+            >
+            <a
+              href="/sori-banungsokdo-test.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >소리</a
+            >
+            <a
+              href="/mobile-banungsokdo-test.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >모바일</a
+            >
+            <a
+              href="/banungsokdo-hyanghang-guide.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >향상 가이드</a
+            >
+          </nav>
+
+          <!-- Desktop Utilities (Right: Privacy/Terms) -->
+          <div class="hidden md:flex items-center gap-4">
+            <div class="flex gap-3 text-xs font-medium text-slate-400">
+              <a
+                href="/terms.html"
+                class="hover:text-slate-600 transition-colors"
+                >이용약관</a
+              >
+              <span class="text-slate-300">|</span>
+              <a
+                href="/pric.html"
+                class="hover:text-slate-600 transition-colors"
+                >개인정보처리방침</a
+              >
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-button"
+            class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
+          >
+            <span class="sr-only">메뉴 열기</span>
+            <svg
+              id="icon-menu"
+              class="w-6 h-6 block"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              id="icon-close"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-white border-b border-slate-100"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a
+            href="/"
+            class="block px-3 py-2.5 rounded-xl text-base font-semibold text-blue-600 bg-blue-50"
+            >홈</a
+          >
+          <a
+            href="/valorant-banungsokdo-test.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >발로란트 테스트</a
+          >
+          <a
+            href="/sori-banungsokdo-test.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >소리 반응 테스트</a
+          >
+          <a
+            href="/mobile-banungsokdo-test.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >모바일 테스트</a
+          >
+          <a
+            href="/banungsokdo-hyanghang-guide.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >향상 가이드</a
+          >
+
+          <!-- Mobile Legal Links -->
+          <div
+            class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400"
+          >
+            <a href="/terms.html" class="hover:text-slate-600 p-2">이용약관</a>
+            <a href="/pric.html" class="hover:text-slate-600 p-2"
+              >개인정보처리방침</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ===== Header End ===== -->
+
+    <!-- Padding for Fixed Header -->
+    <div class="pt-16"></div>
+
+    <main
+      class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24"
+    >
+      <!-- Hero Section (Content Preserved) -->
+      <header class="text-center mb-16 md:mb-24">
+        <h1
+          class="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
+        >
+          당신의 <span class="gradient-text">순간 반응</span>,
+          <br class="hidden md:block" />
+          10초 안에 확인하세요
+        </h1>
+        <p
+          class="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
+        >
+          1ms 단위의 정밀 측정으로 당신의 반응속도를 분석하고, 전 세계 사용자와
+          순위를 비교하여 객관적인 실력을 확인하세요.
+        </p>
+      </header>
+
+      <!-- Test Tool UI (Styled Enhanced, Content Preserved) -->
+      <section
+        id="test-tool"
+        class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-12 text-center my-16 md:my-24 border border-slate-100 relative overflow-hidden"
+      >
+        <div class="relative z-10">
+          <h3 class="text-2xl md:text-3xl font-bold text-slate-800">
+            테스트 준비 완료!
+          </h3>
+          <p class="mt-3 text-slate-500 max-w-md mx-auto">
+            아래 상자가 <span class="text-red-500 font-bold">빨간색</span>에서
+            <span class="text-green-500 font-bold">초록색</span>으로 바뀌는
+            순간, 즉시 클릭하세요.
+          </p>
+
+          <div
+            id="reactionBox"
+            class="w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 ease-in-out flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-500 hover:scale-[1.02] active:scale-95 select-none"
+          >
+            기다리세요...
+          </div>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <button
+              id="changeMode"
+              class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold py-3 px-6 md:py-4 md:px-8 text-lg rounded-2xl transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-1 focus:ring-4 focus:ring-slate-200"
+            >
+              모드 (5회)
+            </button>
+          </div>
+
+          <div
+            class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto"
+          >
+            <div
+              class="text-center bg-slate-50 p-6 rounded-2xl border border-slate-100"
+            >
+              <p
+                class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1"
+              >
+                평균 반응 시간
+              </p>
+              <p id="avgTime" class="text-4xl font-black gradient-text">0ms</p>
+            </div>
+            <div
+              class="text-center bg-slate-50 p-6 rounded-2xl border border-slate-100"
+            >
+              <p
+                class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1"
+              >
+                글로벌 순위
+              </p>
+              <p id="globalRank" class="text-xl font-bold text-slate-800">
+                계산 중...
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <article class="space-y-24 md:space-y-32">
+        <!-- How-to Section (Content Preserved) -->
+        <section id="how-to-section">
+          <div class="text-center mb-12 md:mb-16">
+            <h2
+              class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
+            >
+              정확한 결과를 위한 3가지 팁
+            </h2>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              불필요한 오차를 줄여 당신의 실제 수준을 반영하는 결과를 얻으세요.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Tip 1 -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
+            >
+              <div
+                class="flex items-center justify-center h-14 w-14 rounded-xl bg-blue-50 text-blue-600 mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-3">
+                1. 환경 준비
+              </h3>
+              <p class="text-slate-500 leading-relaxed">
+                주변 소음과 방해 요소를 최소화하고, 안정적인 자세에서 마우스를
+                편안하게 쥘 수 있는 환경을 만드세요.
+              </p>
+            </div>
+            <!-- Tip 2 -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
+            >
+              <div
+                class="flex items-center justify-center h-14 w-14 rounded-xl bg-green-50 text-green-600 mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-3">
+                2. 예측 금지
+              </h3>
+              <p class="text-slate-500 leading-relaxed">
+                미리 클릭하거나 타이밍을 예측하지 마세요. 화면이 변하는 것을 본
+                후의 **순수한 반응**만을 측정하는 것이 중요합니다.
+              </p>
+            </div>
+            <!-- Tip 3 -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
+            >
+              <div
+                class="flex items-center justify-center h-14 w-14 rounded-xl bg-purple-50 text-purple-600 mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h5M7 7l1.586-1.586a6 6 0 118.414 0L17 7M4 20v-5h5M7 17l1.586 1.586a6 6 0 108.414 0L17 17"
+                  />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-3">
+                3. 반복 테스트
+              </h3>
+              <p class="text-slate-500 leading-relaxed">
+                긴장감 등으로 첫 결과는 부정확할 수 있습니다. 2~3회 이상
+                반복하여 가장 일관된 평균값을 확인하세요.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Rank Section (Content Preserved) -->
+        <section
+          id="rank-section"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+        >
+          <div class="order-2 lg:order-1">
+            <h2 class="text-3xl font-black text-slate-900 mb-6 tracking-tight">
+              당신의 반응속도는 어디에 위치할까?
+            </h2>
+            <p class="text-lg text-slate-500 mb-8 leading-relaxed">
+              테스트 결과를 통해 당신의 반응 시간이 전 세계 사용자 중 어느
+              위치에 속하는지 알아보세요. 아래 데이터는 5만 명 이상의 사용자
+              데이터를 기반으로 합니다.
+            </p>
+
+            <div
+              class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
+            >
+              <h3
+                class="bg-slate-50 px-6 py-4 font-bold text-slate-700 border-b border-slate-100"
+              >
+                반응속도 등급 기준
+              </h3>
+              <ul class="divide-y divide-slate-100">
+                <li
+                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                >
+                  <strong class="text-indigo-600">Elite (엘리트)</strong>
+                  <span class="text-slate-500 font-mono text-sm"
+                    >200ms 이하 (Top 5%)</span
+                  >
+                </li>
+                <li
+                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                >
+                  <strong class="text-blue-600">Advanced (고급)</strong>
+                  <span class="text-slate-500 font-mono text-sm"
+                    >201 ~ 250ms (Top 20%)</span
+                  >
+                </li>
+                <li
+                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                >
+                  <strong class="text-sky-600">Intermediate (중급)</strong>
+                  <span class="text-slate-500 font-mono text-sm"
+                    >251 ~ 300ms (Top 50%)</span
+                  >
+                </li>
+                <li
+                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                >
+                  <strong class="text-slate-600">Beginner (초급)</strong>
+                  <span class="text-slate-500 font-mono text-sm"
+                    >301 ~ 350ms (평균)</span
+                  >
+                </li>
+                <li
+                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
+                >
+                  <strong class="text-red-600">Improvement Needed</strong>
+                  <span class="text-slate-500 font-mono text-sm"
+                    >351ms 이상</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <figure class="order-1 lg:order-2">
+            <!-- Image Placeholder: Using a neat gradient placeholder if image is missing, or your image -->
+            <div
+              class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200"
+            >
+              <img
+                src="./image/이 이미지는 여러분의 테스트 결과 화면 예시입니다! 평균 반응 시간과 함께全球 순위 퍼센티지, 등급(EliteAdvanced 등)이 표시되고, 글로벌 평균과 한국인 평균을 비교하는 바 그래프도 함께 제공됩니다. 직관적인 시각화로 자신의 순발력 수준을 한눈에 파악할 수 있어요.webp"
+                alt="반응속도 테스트 결과 화면과 순위 그래프"
+                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </figure>
+        </section>
+
+        <!-- Accuracy Section (Content Preserved) -->
+        <section id="accuracy-section">
+          <div class="text-center mb-12">
+            <h2
+              class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
+            >
+              테스트 정확성의 비밀
+            </h2>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              저희 테스트가 단순한 게임이 아닌, 신뢰할 수 있는 측정 도구인
+              이유를 알아보세요.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-slate-200/40 border border-slate-100"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+              <div class="flex flex-col gap-4">
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-2"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800">
+                  테스트 정확성 보증
+                </h3>
+                <p class="text-slate-500 leading-relaxed">
+                  저희의 반응속도 테스트는 JavaScript의 `Date.now()` 함수를
+                  기반으로 한 고정밀 타이머를 사용하여
+                  <strong>1ms(밀리초) 단위의 정확도</strong>를 보장합니다. 전문
+                  연구 기관에서 사용하는 광학 센서 장비와 교차 검증한 결과, 평균
+                  오차율이 0.3% 미만으로 나타나 일상적인 순발력 측정 목적으로는
+                  충분히 신뢰할 수 있습니다.
+                </p>
+              </div>
+              <div class="flex flex-col gap-4">
+                <div
+                  class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-2"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800">
+                  반속 테스트의 오해와 사실
+                </h3>
+                <p class="text-slate-500 leading-relaxed">
+                  진정한 반응속도 측정의 핵심은
+                  <strong>예측 불가능한 자극</strong>에 대한 순수한 반응 시간을
+                  재는 것입니다. 저희 테스트는 1~3.5초 사이의 무작위 지연 후
+                  시각적 자극을 제공함으로써, 예측이 아닌 순수한 반응 시간을
+                  정밀하게 측정합니다. 이는 신경과학에서 사용하는 측정 원리와
+                  동일합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tips Section (Content Preserved) -->
+        <section id="tips-section">
+          <div class="text-center mb-12 md:mb-16">
+            <h2
+              class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
+            >
+              반응속도를 높이는 5가지 과학적 방법
+            </h2>
+            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              결과가 기대에 못 미쳤나요? 걱정하지 마세요! 반응속도는 과학적인
+              훈련으로 충분히 향상될 수 있습니다.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tip 1 -->
+            <div
+              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">
+                  1. 시각적 집중 훈련
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                  빠르게 움직이는 대상을 눈으로 좇는 훈련(예: 온라인 시각 추적
+                  게임)은 뇌의 시각 정보 처리 속도를 높여 반응 시간을 직접적으로
+                  단축시킵니다.
+                </p>
+              </div>
+            </div>
+            <!-- Tip 2 -->
+            <div
+              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-50 text-green-600 rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">
+                  2. 반응 게임 플레이
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                  리듬 게임, FPS 게임 등 순간적인 반응이 필요한 게임을 즐기는
+                  것은 신경계를 활성화시켜 반응속도 향상에 큰 도움이 됩니다.
+                </p>
+              </div>
+            </div>
+            <!-- Tip 3 -->
+            <div
+              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-purple-50 text-purple-600 rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">
+                  3. 운동과 신체 활동
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                  줄넘기, 테니스, 배드민턴처럼 민첩성을 요구하는 운동은 신경과
+                  근육의 협응력을 극대화하여 반응 시간을 단축시킵니다.
+                </p>
+              </div>
+            </div>
+            <!-- Tip 4 -->
+            <div
+              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-50 text-yellow-600 rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">
+                  4. 수면과 영양 관리
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                  매일 7-8시간의 질 좋은 수면은 필수이며, 오메가-3와 비타민
+                  B군이 풍부한 식단은 뇌 기능 유지에 큰 도움이 됩니다.
+                </p>
+              </div>
+            </div>
+            <!-- Tip 5 (Spanning 2 cols on desktop if wanted, or just flow) -->
+            <div
+              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6 md:col-span-2"
+            >
+              <div
+                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-pink-50 text-pink-600 rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h5M7 7l1.586-1.586a6 6 0 118.414 0L17 7M4 20v-5h5M7 17l1.586 1.586a6 6 0 108.414 0L17 17"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">
+                  5. 반복적 테스트 연습
+                </h3>
+                <p class="text-sm text-slate-500 leading-relaxed">
+                  이 페이지의 테스트를 매일 꾸준히 연습하는 것 자체가 훌륭한
+                  훈련입니다. 반복을 통해 뇌의 반응 경로를 자동화할 수 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- ===== Footer Start (Clean & Modern) ===== -->
+    <footer class="bg-white border-t border-slate-200">
+      <div
+        class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
+      >
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          <!-- Brand -->
+          <div class="space-y-4 col-span-2 md:col-span-1">
+            <a
+              href="/"
+              class="flex items-center gap-2 text-lg font-bold text-slate-900"
+            >
+              <div
+                class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-lg font-mono"
+              >
+                <span>R</span>
+              </div>
+              반응속도 테스트
+            </a>
+            <p class="text-sm text-slate-500 leading-relaxed pr-4">
+              1ms 단위의 정확한 측정으로 당신의 순발력을 확인하고, 과학적 훈련
+              가이드를 통해 잠재력을 깨워보세요.
+            </p>
+          </div>
+          <!-- Link Column 1 -->
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              테스트 종류
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >기본 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/valorant-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >발로란트 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/sori-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >소리 반응 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mobile-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >모바일 테스트</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Link Column 2 -->
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              리소스
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/banungsokdo-hyanghang-guide.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >향상 가이드</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/test-jeonghwakseong-data.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >테스트 정확성</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >개발자 블로그</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Link Column 3 (Legal) -->
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              정책
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/pric.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors font-medium"
+                  >개인정보 처리방침</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >서비스 이용약관</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >회사 소개</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400"
+        >
+          <div
+            class="flex flex-col md:flex-row gap-2 md:gap-6 text-center md:text-left"
+          >
+            <p>&copy; 2024 반응속도 테스트. All rights reserved.</p>
+            <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
+          </div>
+          <div class="flex gap-4">
+            <!-- Optional Social Icons -->
+            <a href="#" class="hover:text-slate-600 transition-colors"
+              ><span class="sr-only">Twitter</span
+              ><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                ></path></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <script>
+      // ===== Mobile Menu Toggle Logic =====
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const iconMenu = document.getElementById("icon-menu");
+      const iconClose = document.getElementById("icon-close");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isOpen = mobileMenu.classList.contains("open");
+          if (isOpen) {
+            mobileMenu.classList.remove("open");
+            iconMenu.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          } else {
+            mobileMenu.classList.add("open");
+            iconMenu.classList.add("hidden");
+            iconClose.classList.remove("hidden");
+          }
+        });
+
+        // Close menu when clicking links
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+            iconMenu.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          });
+        });
+      }
+
+      // ===== Reaction Test Logic (Preserved & Connected to New UI) =====
+      const reactionBox = document.getElementById("reactionBox");
+      const startTestBtn = document.getElementById("startTest");
+      const changeModeBtn = document.getElementById("changeMode");
+      const avgTimeSpan = document.getElementById("avgTime");
+      const globalRankSpan = document.getElementById("globalRank");
+
+      let testCount = 0;
+      let totalTime = 0;
+      let startTime = 0;
+      let isWaitingForClick = false;
+      let testModes = [5, 10, 20];
+      let currentModeIndex = 0;
+      let testTimeout;
+      let testInProgress = false;
+
+      function getTestMode() {
+        return testModes[currentModeIndex];
+      }
+
+      changeModeBtn.addEventListener("click", () => {
+        if (testInProgress) return;
+        currentModeIndex = (currentModeIndex + 1) % testModes.length;
+        const newMode = getTestMode();
+        changeModeBtn.textContent = `모드 (${newMode}회)`;
+        // Simple toast or visual feedback could go here
+        resetTest();
+      });
+
+      startTestBtn.addEventListener("click", () => {
+        if (testInProgress) return;
+        resetTest();
+        testInProgress = true;
+        startTestBtn.disabled = true;
+        changeModeBtn.disabled = true;
+        startTestBtn.classList.add("opacity-50", "cursor-not-allowed");
+        changeModeBtn.classList.add("opacity-50", "cursor-not-allowed");
+        startTestBtn.textContent = "테스트 중...";
+        startNextRound();
+      });
+
+      function startNextRound() {
+        if (testCount >= getTestMode()) {
+          finishTest();
+          return;
+        }
+        isWaitingForClick = false;
+        // Reset visual state to Red (Waiting)
+        reactionBox.className =
+          "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-colors duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-500";
+        reactionBox.textContent = "기다리세요...";
+
+        const delay = Math.floor(Math.random() * 2500) + 1000;
+
+        clearTimeout(testTimeout);
+        testTimeout = setTimeout(() => {
+          isWaitingForClick = true;
+          startTime = Date.now();
+          // Go Green (Click!)
+          reactionBox.className =
+            "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-transform duration-100 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-green-500 scale-105";
+          reactionBox.textContent = "클릭하세요!";
+        }, delay);
+      }
+
+      reactionBox.addEventListener("click", () => {
+        if (isWaitingForClick) {
+          const endTime = Date.now();
+          const reactionTime = endTime - startTime;
+          testCount++;
+          totalTime += reactionTime;
+          isWaitingForClick = false;
+          reactionBox.textContent = `${reactionTime}ms`;
+
+          // Visual feedback for success click
+          reactionBox.className =
+            "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-slate-800";
+
+          clearTimeout(testTimeout);
+          testTimeout = setTimeout(startNextRound, 1200);
+        } else {
+          if (testInProgress) {
+            clearTimeout(testTimeout);
+            reactionBox.textContent = "너무 빨라요!";
+            reactionBox.className =
+              "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-600 animate-pulse";
+            testInProgress = false;
+            finishTest(true);
+          }
+        }
+      });
+
+      function finishTest(failed = false) {
+        let average = 0;
+        if (failed) {
+          avgTimeSpan.textContent = `실패`;
+          globalRankSpan.textContent = `다시 시도하세요`;
+        } else {
+          average = Math.round(totalTime / getTestMode());
+          avgTimeSpan.textContent = `${average}ms`;
+
+          let rankText;
+          let rankColor = "text-slate-800";
+
+          if (average <= 200) {
+            rankText = "Elite (상위 5%)";
+            rankColor = "text-indigo-600";
+          } else if (average <= 250) {
+            rankText = "Advanced (상위 20%)";
+            rankColor = "text-blue-600";
+          } else if (average <= 300) {
+            rankText = "Intermediate (상위 50%)";
+            rankColor = "text-sky-600";
+          } else if (average <= 350) {
+            rankText = "Beginner (평균)";
+            rankColor = "text-slate-600";
+          } else {
+            rankText = "개선 필요";
+            rankColor = "text-red-600";
+          }
+
+          globalRankSpan.textContent = rankText;
+          globalRankSpan.className = `text-xl font-bold ${rankColor}`;
+        }
+
+        // Finish State Visuals
+        reactionBox.className =
+          "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-blue-600";
+        reactionBox.textContent = "테스트 완료!";
+
+        testInProgress = false;
+        startTestBtn.disabled = false;
+        changeModeBtn.disabled = false;
+        startTestBtn.classList.remove("opacity-50", "cursor-not-allowed");
+        changeModeBtn.classList.remove("opacity-50", "cursor-not-allowed");
+        startTestBtn.textContent = "다시 시작";
+      }
+
+      function resetTest() {
+        clearTimeout(testTimeout);
+        testCount = 0;
+        totalTime = 0;
+        isWaitingForClick = false;
+        testInProgress = false;
+        avgTimeSpan.textContent = "0ms";
+        globalRankSpan.textContent = "계산 중...";
+        globalRankSpan.className = "text-xl font-bold text-slate-800";
+
+        // Reset Box Visuals
+        reactionBox.className =
+          "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-500 hover:scale-[1.02]";
+        reactionBox.textContent = "기다리세요...";
+
+        startTestBtn.disabled = false;
+        changeModeBtn.disabled = false;
+        startTestBtn.textContent = "테스트 시작";
+      }
+    </script>
+  </body>
+</html>

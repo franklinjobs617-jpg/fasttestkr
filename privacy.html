@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보 처리방침 | 반응속도 테스트</title>
+    <meta name="description" content="반응속도 테스트의 개인정보 처리방침입니다. 사용자 데이터 수집·이용·보호에 대한 내용과 Google AdSense 광고 정책을 준수하는 세부 사항을 안내합니다.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Pretendard Font (대형 IT 기업 스타일 폰트) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    
+    <style>
+      body {
+        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+        background-color: #f8fafc; /* Slate-50보다 조금 더 밝은 톤 */
+        color: #334155; /* Slate-700 */
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* 모바일 메뉴 애니메이션 */
+      #mobile-menu {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobile-menu.open {
+        max-height: 600px;
+        opacity: 1;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Prose custom styles for policy pages */
+      .prose-policy h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #1e293b; /* slate-800 */
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e2e8f0; /* slate-200 */
+        letter-spacing: -0.025em;
+      }
+      .prose-policy h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #334155; /* slate-700 */
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+      }
+      .prose-policy p {
+        line-height: 1.75;
+        margin-bottom: 1.25rem;
+        color: #475569; /* slate-600 */
+      }
+      .prose-policy ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #475569;
+      }
+      .prose-policy li {
+        margin-bottom: 0.5rem;
+      }
+      .prose-policy a {
+        color: #2563eb; /* blue-600 */
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .prose-policy a:hover {
+        color: #1d4ed8; /* blue-700 */
+        text-decoration: underline;
+      }
+    </style>
+</head>
+<body class="text-slate-700">
+    
+    <!-- ===== Header Start (Optimized: Big Tech Style) ===== -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          
+          <!-- Logo -->
+          <a href="/" class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+            <div class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
+              <span class="text-white font-bold text-lg leading-none font-mono">R</span>
+            </div>
+            <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
+          </a>
+
+          <!-- Desktop Navigation (Center) -->
+          <nav class="hidden md:flex items-center space-x-1">
+            <a href="/" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">홈</a>
+            <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
+            <a href="/sori-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">소리</a>
+            <a href="/mobile-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">모바일</a>
+            <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
+          </nav>
+
+          <!-- Desktop Utilities (Right: Privacy/Terms) -->
+          <div class="hidden md:flex items-center gap-4">
+            <div class="flex gap-3 text-xs font-medium text-slate-400">
+                <a href="/terms.html" class="hover:text-slate-600 transition-colors">이용약관</a>
+                <span class="text-slate-300">|</span>
+                <a href="/pric.html" class="text-blue-600 font-bold cursor-default">개인정보처리방침</a>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors">
+            <span class="sr-only">메뉴 열기</span>
+            <svg id="icon-menu" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100">
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a href="/" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">홈</a>
+          <a href="/valorant-banungsokdo-test.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">발로란트 테스트</a>
+          <a href="/sori-banungsokdo-test.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">소리 반응 테스트</a>
+          <a href="/mobile-banungsokdo-test.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">모바일 테스트</a>
+          <a href="/banungsokdo-hyanghang-guide.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">향상 가이드</a>
+          
+          <!-- Mobile Legal Links -->
+          <div class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400">
+            <a href="/terms.html" class="hover:text-slate-600 p-2">이용약관</a>
+            <a href="/pric.html" class="text-blue-600 font-bold p-2">개인정보처리방침</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ===== Header End ===== -->
+
+    <div class="pt-16"></div>
+
+    <main class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 md:p-12 lg:p-16 border border-slate-100">
+            <header class="mb-12 border-b border-slate-100 pb-8">
+                <div class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wide mb-4">Policy</div>
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">개인정보 처리방침</h1>
+                <p class="text-sm text-slate-400 font-medium">최종 업데이트: 2025년 11월 14일</p>
+            </header>
+
+            <div class="prose prose-lg max-w-none prose-policy text-slate-600">
+                <p class="lead text-lg text-slate-700">
+                    반응속도 테스트(이하 "본 서비스")는 사용자의 개인정보 보호를 최우선으로 생각하며, 관련 법규를 준수하고 Google AdSense 광고 서비스 이용 기준을 엄격히 따라 개인정보를 처리합니다. 본 개인정보 처리방침은 사용자가 제공하는 정보가 어떻게 수집·이용·보호되는지에 대한 내용을 명확히 안내하며, 사용자의 권리와 책임을 설명합니다.
+                </p>
+
+                <!-- Section 1 -->
+                <section>
+                    <h2>1. 수집하는 개인정보 및 수집 방법</h2>
+                    <p>
+                        본 서비스는 사용자의 편의성 향상과 서비스 운영을 위해 최소한의 비식별정보(Non-PII)만을 수집하며, 직접적인 개인식별정보(이름, 이메일, 전화번호 등)를 강제로 요구하지 않습니다.
+                    </p>
+
+                    <h3>1.1 수집하는 정보</h3>
+                    <ul class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <li><strong>서비스 이용 데이터:</strong> 테스트 횟수, 측정된 반응속도 결과, 사용 기기(모바일/데스크톱), 브라우저 종류, 운영체제, 접속 시간대</li>
+                        <li><strong>기술적 정보:</strong> IP 주소(지리적 위치 추정 및 부정 사용 방지를 위해), 디바이스 고유 식별자(데이터 통계 및 기기별 테스트 정확성 보정을 위해)</li>
+                        <li><strong>선택적 정보:</strong> 카카오톡 공유 시 제공되는 간접적 데이터(공유 여부만 기록, 콘텐츠나 수신자 정보는 수집하지 않음)</li>
+                    </ul>
+
+                    <h3>1.2 수집 방법</h3>
+                    <ul>
+                        <li>사용자가 본 서비스를 이용하며 자동으로 생성되는 데이터(서버 로그, 분석 도구를 통한 수집)</li>
+                        <li>Google Analytics, Google AdSense 등 제3자 서비스를 통해 수집되는 데이터(아래 2항에서 자세히 설명)</li>
+                    </ul>
+                </section>
+
+                <!-- Section 2 -->
+                <section>
+                    <h2>2. 제3자 광고 및 분석 서비스 이용</h2>
+                    <p>
+                        본 서비스는 운영 비용을 충당하고 무료 서비스를 제공하기 위해 Google AdSense 광고 서비스를 이용하며, 서비스 개선을 위해 Google Analytics를 활용합니다. 이 제3자 서비스는 사용자의 브라우저에 쿠키(Cookie)를 설치하여 데이터를 수집할 수 있으며, 관련 정책은 다음과 같습니다.
+                    </p>
+
+                    <div class="bg-blue-50/50 border border-blue-100 p-8 rounded-2xl my-10 not-prose">
+                        <h4 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            Google AdSense 관련 안내
+                        </h4>
+                        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+                            Google AdSense는 개인화 광고 제공을 위해 DART 쿠키를 사용할 수 있습니다. DART 쿠키는 사용자가 본 서비스 및 기타 인터넷 사이트를 방문한 기록을 바탕으로 맞춤형 광고를 제공하는 목적으로 사용됩니다.
+                        </p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            사용자는 Google의 <a href="https://policies.google.com/technologies/ads" target="_blank" class="font-bold text-blue-600 hover:underline">광고 설정 페이지</a>를 통해 DART 쿠키 사용을 거부하거나 개인화 광고 설정을 변경할 수 있습니다. Google AdSense의 개인정보 처리방침은 <a href="https://policies.google.com/privacy" target="_blank" class="font-bold text-blue-600 hover:underline">Google 개인정보 보호정책</a>을 참조하시기 바랍니다.
+                        </p>
+                    </div>
+
+                    <h3>2.1 Google Analytics</h3>
+                    <p>
+                        Google Analytics는 서비스 이용 패턴(페이지 조회수, 접속 경로, 체류 시간 등)을 분석하여 사용자 경험을 개선하는 목적으로 사용됩니다. 수집되는 데이터는 익명화 처리되며, 데이터 처리방침은 <a href="https://policies.google.com/privacy" target="_blank">Google 공식 페이지</a>에서 확인할 수 있습니다.
+                    </p>
+                </section>
+
+                <!-- Section 3 -->
+                <section>
+                    <h2>3. 개인정보 이용 목적</h2>
+                    <p>
+                        수집된 개인정보는 다음 목적으로만 이용되며, 목적 외 사용을 하지 않습니다.
+                    </p>
+                    <ul class="space-y-2">
+                        <li><span class="font-semibold text-slate-700">서비스 제공 및 운영:</span> 테스트 기능 제공, 결과 저장, 랭킹 계산</li>
+                        <li><span class="font-semibold text-slate-700">서비스 개선:</span> 이용 패턴 분석을 통한 기능 업데이트, 오류 수정</li>
+                        <li><span class="font-semibold text-slate-700">광고 제공:</span> Google AdSense를 통한 맞춤형 광고 노출</li>
+                        <li><span class="font-semibold text-slate-700">부정 사용 방지:</span> IP 주소 기반으로 비정상적인 테스트 행위 차단</li>
+                        <li><span class="font-semibold text-slate-700">법령 준수 및 사용자 권리 보호:</span> 분쟁 해결, 불법 행위 방지</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4 -->
+                <section>
+                    <h2>4. 아동 개인정보 보호 (COPPA 준수)</h2>
+                    <p>
+                        본 서비스는 13세 미만 아동을 대상으로 하지 않으며, 의도적으로 아동의 개인정보를 수집하지 않습니다. 만약 부모 또는 법정 대리인이 자신의 자녀(13세 미만)가 본 서비스를 통해 개인정보를 제공했다는 사실을 인지하시면, 즉시 본 서비스에 문의하여 해당 정보를 삭제할 수 있습니다.
+                    </p>
+                </section>
+
+                <!-- Section 5 -->
+                <section>
+                    <h2>5. 개인정보 제공 및 공유</h2>
+                    <p>
+                        본 서비스는 다음 경우를 제외하고 사용자의 개인정보를 제3자에게 제공하거나 공유하지 않습니다.
+                    </p>
+                    <ul>
+                        <li>사용자의 명시적인 동의를 받은 경우</li>
+                        <li>Google AdSense, Google Analytics 등 서비스 운영에 필요한 제3자 파트너와의 데이터 공유(단, 익명화 처리)</li>
+                        <li>법령에 의거하거나 관계 기관의 요청이 있는 경우</li>
+                        <li>서비스 이용 약관 위반, 불법 행위 등으로 인해 타인의 권리·이익을 침해하는 행위를 방지하기 위해 필요한 경우</li>
+                    </ul>
+                </section>
+
+                <!-- Section 6 -->
+                <section>
+                    <h2>6. 사용자의 권리 및 행사 방법</h2>
+                    <p>
+                        사용자는 본인의 개인정보에 대해 다음 권리를 행사할 수 있으며, 권리 행사는 [연락처 이메일]로 요청하시면 즉시 처리합니다.
+                    </p>
+                    <div class="flex flex-wrap gap-3 not-prose my-6">
+                        <span class="px-4 py-2 bg-slate-100 rounded-lg text-sm font-medium text-slate-700">열람 요청</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-lg text-sm font-medium text-slate-700">수정 요청</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-lg text-sm font-medium text-slate-700">삭제 요청</span>
+                        <span class="px-4 py-2 bg-slate-100 rounded-lg text-sm font-medium text-slate-700">처리 중단 요청</span>
+                    </div>
+                </section>
+
+                <!-- Section 7 & 8 -->
+                <section>
+                    <h2>7. 개인정보 보호 조치</h2>
+                    <p>
+                        본 서비스는 사용자의 개인정보를 안전하게 보호하기 위해 SSL 암호화, 접근 제어, 주기적 보안 점검 등 기술적, 관리적 조치를 취합니다.
+                    </p>
+
+                    <h2>8. 개인정보 처리방침 변경</h2>
+                    <p>
+                        본 개인정보 처리방침은 법령 변경 또는 서비스 운영방침 변경에 따라 수정될 수 있으며, 변경 시에는 서비스 홈페이지에 공지하고 최종 업데이트 날짜를 표시합니다.
+                    </p>
+                </section>
+
+                <!-- Section 9: Contact -->
+                <section class="mt-16 border-t border-slate-100 pt-10">
+                    <h2 class="mt-0">9. 문의</h2>
+                    <p>
+                        개인정보 처리와 관련된 질문, 불만, 권리 행사 요청 등이 있는 경우 아래 연락처로 문의하시면 신속하게 처리하겠습니다.
+                    </p>
+                    <div class="bg-slate-900 text-slate-300 p-8 rounded-2xl mt-8 not-prose">
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex gap-4">
+                                <span class="text-slate-500 w-24 font-bold uppercase tracking-wider">운영자</span>
+                                <span class="text-white font-medium">[운영자 이름/회사명]</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-slate-500 w-24 font-bold uppercase tracking-wider">이메일</span>
+                                <a href="mailto:CONTACT_EMAIL@example.com" class="text-blue-400 hover:text-blue-300 transition-colors">[CONTACT_EMAIL@example.com]</a>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-slate-500 w-24 font-bold uppercase tracking-wider">URL</span>
+                                <span class="text-white">https://반응속도테스트.kr</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== Footer Start (Reused Component) ===== -->
+    <footer class="bg-white border-t border-slate-200">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          <!-- Brand -->
+          <div class="space-y-4 col-span-2 md:col-span-1">
+            <a href="/" class="flex items-center gap-2 text-lg font-bold text-slate-900">
+                <div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-lg font-mono">
+                  <span>R</span>
+                </div>
+                반응속도 테스트
+            </a>
+            <p class="text-sm text-slate-500 leading-relaxed pr-4">
+              1ms 단위의 정확한 측정으로 당신의 순발력을 확인하고, 과학적 훈련 가이드를 통해 잠재력을 깨워보세요.
+            </p>
+          </div>
+          <!-- Link Column 1 -->
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">테스트 종류</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/" class="text-slate-500 hover:text-blue-600 transition-colors">기본 테스트</a></li>
+              <li><a href="/valorant-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">발로란트 테스트</a></li>
+              <li><a href="/sori-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">소리 반응 테스트</a></li>
+              <li><a href="/mobile-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">모바일 테스트</a></li>
+            </ul>
+          </div>
+          <!-- Link Column 2 -->
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">리소스</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/banungsokdo-hyanghang-guide.html" class="text-slate-500 hover:text-blue-600 transition-colors">향상 가이드</a></li>
+              <li><a href="/test-jeonghwakseong-data.html" class="text-slate-500 hover:text-blue-600 transition-colors">테스트 정확성</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-blue-600 transition-colors">개발자 블로그</a></li>
+            </ul>
+          </div>
+          <!-- Link Column 3 (Legal) -->
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">정책</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/pric.html" class="text-slate-500 hover:text-blue-600 transition-colors font-medium">개인정보 처리방침</a></li>
+              <li><a href="/terms.html" class="text-slate-500 hover:text-blue-600 transition-colors">서비스 이용약관</a></li>
+              <li><a href="/about.html" class="text-slate-500 hover:text-blue-600 transition-colors">회사 소개</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <div class="flex flex-col md:flex-row gap-2 md:gap-6 text-center md:text-left">
+            <p>&copy; 2024 반응속도 테스트. All rights reserved.</p>
+            <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
+          </div>
+          <div class="flex gap-4">
+             <!-- Social Icons Placeholder -->
+             <a href="#" class="hover:text-slate-600 transition-colors"><span class="sr-only">Twitter</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <script>
+      // ===== Mobile Menu Logic =====
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconClose = document.getElementById('icon-close');
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.contains('open');
+          if (isOpen) {
+            mobileMenu.classList.remove('open');
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          } else {
+            mobileMenu.classList.add('open');
+            iconMenu.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+          }
+        });
+        
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+          link.addEventListener('click', () => {
+              mobileMenu.classList.remove('open');
+              iconMenu.classList.remove('hidden');
+              iconClose.classList.add('hidden');
+          });
+        });
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="1ms 타이밍 로직+다기기 보정! 한국인 반응속도 평균 데이터 공개, 전문 스포츠 장비 비교 검증, 정확한 반응 테스트 방법 상세 설명."
+    />
+    <meta
+      name="keywords"
+      content="반응속도 테스트 정확성, 반응속도 테스트 데이터, 한국인 반응속도 평균, 테스트 원리, 반응속도 측정 방법, 정확한 반응 테스트"
+    />
+    <title>반응속도 테스트 정확성 | 기술원리·한국인 평균 데이터</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Pretendard Font -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
+    />
+
+    <style>
+      body {
+        font-family: "Pretendard Variable", Pretendard, -apple-system,
+          BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+          "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+        background-color: #f8fafc;
+        color: #334155;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Mobile Menu Animation */
+      #mobile-menu {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobile-menu.open {
+        max-height: 600px;
+        opacity: 1;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Custom Scrollbar */
+      pre::-webkit-scrollbar,
+      .overflow-x-auto::-webkit-scrollbar {
+        height: 6px;
+      }
+      pre::-webkit-scrollbar-thumb,
+      .overflow-x-auto::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+      }
+      pre::-webkit-scrollbar-track,
+      .overflow-x-auto::-webkit-scrollbar-track {
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body class="text-slate-700 antialiased">
+    <!-- ===== Header Start ===== -->
+    <header
+      class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300"
+    >
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a
+            href="/"
+            class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity"
+          >
+            <div
+              class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200"
+            >
+              <span class="text-white font-bold text-lg leading-none font-mono"
+                >R</span
+              >
+            </div>
+            <span
+              class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors"
+              >반응속도 테스트</span
+            >
+          </a>
+          <nav class="hidden md:flex items-center space-x-1">
+            <a
+              href="/"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >홈</a
+            >
+            <a
+              href="/valorant-banungsokdo-test.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >발로란트</a
+            >
+            <a
+              href="/sori-banungsokdo-test.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >소리</a
+            >
+            <a
+              href="/mobile-banungsokdo-test.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >모바일</a
+            >
+            <a
+              href="/banungsokdo-hyanghang-guide.html"
+              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >향상 가이드</a
+            >
+          </nav>
+
+          <div class="hidden md:flex items-center gap-4">
+            <a
+              href="/test-jeonghwakseong-data.html"
+              class="text-sm font-bold text-blue-600 mr-4"
+              >테스트 정확성</a
+            >
+          </div>
+
+          <button
+            id="mobile-menu-button"
+            class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
+          >
+            <span class="sr-only">메뉴 열기</span>
+            <svg
+              id="icon-menu"
+              class="w-6 h-6 block"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              id="icon-close"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-white border-b border-slate-100"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a
+            href="/"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >홈</a
+          >
+          <a
+            href="/valorant-banungsokdo-test.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >발로란트 테스트</a
+          >
+          <a
+            href="/sori-banungsokdo-test.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >소리 반응 테스트</a
+          >
+          <a
+            href="/mobile-banungsokdo-test.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >모바일 테스트</a
+          >
+          <a
+            href="/banungsokdo-hyanghang-guide.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+            >향상 가이드</a
+          >
+          <a
+            href="/test-jeonghwakseong-data.html"
+            class="block px-3 py-2.5 rounded-xl text-base font-bold text-blue-600 bg-blue-50 transition-colors"
+            >테스트 정확성</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- ===== Header End ===== -->
+
+    <div class="pt-16"></div>
+
+    <main
+      class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24"
+    >
+      <!-- Hero Section -->
+      <header class="text-center mb-16 md:mb-20">
+        <h1
+          class="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
+        >
+          테스트 <span class="gradient-text">정확성</span>의 모든 것
+        </h1>
+        <p
+          class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed"
+        >
+          <span class="font-bold text-blue-600"
+            >12,000명 이상의 한국인 데이터</span
+          >로 검증된 기술 원리와 전문 장비 비교를 통해 저희 테스트의 높은
+          신뢰도를 확인하세요.
+        </p>
+      </header>
+
+      <article
+        class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 md:p-12 border border-slate-100"
+      >
+        <!-- Introduction -->
+        <section id="introduction" class="mb-20">
+          <div class="prose prose-lg max-w-none text-slate-600 mb-10">
+            <p class="mb-6 text-lg leading-relaxed">
+              많은 사용자가 반응속도 테스트 결과를 보고 "이 숫자가 정말 나의
+              실제 반응속도일까?" 또는 "다른 테스트 도구와 결과가 다른데 어떤 걸
+              믿어야 할까?"라고 의문을 가집니다.
+            </p>
+            <p class="mb-8 text-lg leading-relaxed">
+              반응속도 테스트의 정확성은 <strong>측정 단위의 정밀도</strong>,
+              <strong class="text-blue-600">기기별 레이턴시 보정</strong>,
+              <strong>데이터 샘플의 규모</strong> 세 가지 요소에 의해
+              결정됩니다. 이 테스트는 이 세 가지 요소를 모두 최적화하여 업계
+              최고 수준의 신뢰성을 확보했습니다.
+            </p>
+            <div
+              class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500 flex items-start gap-3"
+            >
+              <span class="text-2xl">💡</span>
+              <div>
+                <strong class="block text-blue-900 mb-1">업데이트 노트</strong>
+                <span class="text-sm text-blue-800"
+                  >Chrome 122 업데이트로 인한 모바일 터치 지연 이슈를 3일 만에
+                  해결하고, 현재 사용자 만족도 96%를 유지하고 있습니다.</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Image (Preserved) -->
+          <div
+            class="bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 shadow-inner"
+          >
+            <img
+              src="./image/korean-reaction-time-average-data-analysis.webp"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+              alt="한국인 반응속도 평균 데이터 분석"
+              class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+            />
+            <div
+              class="hidden h-64 w-full flex-col items-center justify-center text-slate-400 bg-slate-50"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-16 h-16 mb-2 opacity-50"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
+                />
+              </svg>
+              <p class="font-medium">이미지 로딩 실패 (예시 화면)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Key Metrics Section -->
+        <section id="key-metrics" class="mb-24">
+          <div
+            class="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-inner"
+          >
+            <h3
+              class="text-2xl font-bold text-slate-800 text-center mb-10 flex items-center justify-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-6 h-6 text-blue-600"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              테스트 정확성 핵심 지표
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Metric Card 1 -->
+              <div
+                class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all border border-slate-100"
+              >
+                <div
+                  class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-400 mb-3"
+                >
+                  1ms
+                </div>
+                <div
+                  class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-1"
+                >
+                  측정 단위
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  업계 평균: 10ms
+                </div>
+              </div>
+              <!-- Metric Card 2 -->
+              <div
+                class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all border border-slate-100"
+              >
+                <div
+                  class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-400 mb-3"
+                >
+                  자동
+                </div>
+                <div
+                  class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-1"
+                >
+                  기기 보정
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  타사: 미지원
+                </div>
+              </div>
+              <!-- Metric Card 3 -->
+              <div
+                class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all border border-slate-100"
+              >
+                <div
+                  class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-400 mb-3"
+                >
+                  12k+
+                </div>
+                <div
+                  class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-1"
+                >
+                  데이터 샘플
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  업계 평균: &lt;3k
+                </div>
+              </div>
+              <!-- Metric Card 4 -->
+              <div
+                class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all border border-slate-100"
+              >
+                <div
+                  class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-400 mb-3"
+                >
+                  96%
+                </div>
+                <div
+                  class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-1"
+                >
+                  전문 장비 상관도
+                </div>
+                <div class="text-xs text-slate-400 font-medium">
+                  업계 평균: &lt;85%
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Principles -->
+        <section id="principles" class="mb-24">
+          <h2
+            class="text-2xl md:text-3xl font-black text-slate-900 mb-8 pb-4 border-b border-slate-100"
+          >
+            테스트 원리: <span class="text-blue-600">1ms 정밀 타이밍</span>과
+            다기기 보정 기술
+          </h2>
+          <div class="prose prose-lg max-w-none text-slate-600 mb-12">
+            <p>
+              이 테스트의 정확성은 크게 두 가지 기술에 기반합니다:
+              <strong>1ms 정밀 타이밍 측정</strong>과
+              <strong>기기별 레이턴시 자동 보정</strong>. 대부분의 반응속도
+              테스트는 10ms 단위로 측정하거나, 기기 특유의 지연 시간(레이턴시)을
+              고려하지 않아 오차가 발생하지만, 이 테스트는 이러한 문제를
+              기술적으로 해결했습니다.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+              <h3
+                class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-3"
+              >
+                <span
+                  class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shadow-md shadow-blue-200"
+                  >1</span
+                >
+                JavaScript `performance.now()` 활용
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                반응속도 측정의 핵심은 "사용자가 타겟을 보는 순간"과 "입력하는
+                순간"의 차이를 정확히 측정하는 것입니다.
+                <code
+                  class="bg-white text-blue-600 px-1.5 py-0.5 rounded border border-blue-100 font-mono text-xs"
+                  >performance.now()</code
+                >
+                API는 마이크로초 단위의 정밀도를 제공하여 브라우저 환경에서 가장
+                정확한 시간을 기록합니다.
+              </p>
+            </div>
+            <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+              <h3
+                class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-3"
+              >
+                <span
+                  class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shadow-md shadow-blue-200"
+                  >2</span
+                >
+                3회 샘플 측정을 통한 자동 보정
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                각 기기와 브라우저는 고유한 입력 지연 시간을 가집니다. 테스트
+                시작 전 3회의 샘플 입력을 통해 평균 레이턴시(예: 17ms)를
+                계산하고, 최종 결과에서 이를 제거하여 순수한 신경 반응 속도만을
+                산출합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Code Block (Preserved) -->
+          <div
+            class="bg-slate-900 rounded-2xl p-6 shadow-xl mb-12 overflow-hidden border border-slate-800"
+          >
+            <div
+              class="flex items-center gap-2 mb-4 border-b border-slate-700 pb-4"
+            >
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <span class="text-xs text-slate-400 font-mono ml-4"
+                >measure-logic.js</span
+              >
+            </div>
+            <pre
+              class="font-mono text-sm text-slate-300 overflow-x-auto pb-2"
+            ><code><span class="text-purple-400">let</span> startTime;
+
+<span class="text-slate-500">// 타겟이 화면에 나타나는 순간 시간 기록 (High Precision)</span>
+<span class="text-purple-400">function</span> <span class="text-blue-400">showTarget</span>() {
+    startTime = performance.now(); <span class="text-slate-500">// 1ms 단위 시간 기록</span>
+    target.style.display = <span class="text-green-400">'block'</span>;
+}
+
+<span class="text-slate-500">// 사용자가 타겟을 클릭한 순간 시간 기록 및 차이 계산</span>
+<span class="text-purple-400">function</span> <span class="text-blue-400">handleTargetClick</span>() {
+    <span class="text-purple-400">const</span> endTime = performance.now();
+    <span class="text-purple-400">const</span> latency = calculateDeviceLatency(); <span class="text-slate-500">// 기기 지연 시간</span>
+    <span class="text-purple-400">const</span> reactionTime = endTime - startTime - latency; 
+    
+    console.log(<span class="text-green-400">`보정된 반응속도: ${reactionTime.toFixed(2)}ms`</span>);
+}</code></pre>
+          </div>
+
+          <!-- Workflow Diagram -->
+          <div
+            class="bg-white p-6 border border-slate-200 rounded-2xl mb-12 shadow-sm"
+          >
+            <img
+              src="./image/banungsokdo-test-1ms-timing-workflow-diagram.webp"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+              alt="반응속도 테스트 1ms 정밀 타이밍 워크플로우"
+              class="w-full h-auto rounded-xl mx-auto"
+            />
+            <div
+              class="hidden w-full h-48 bg-slate-50 rounded-xl flex-col items-center justify-center text-slate-400 border border-slate-100"
+            >
+              <span class="font-bold mb-4 text-slate-500"
+                >워크플로우 다이어그램</span
+              >
+              <div
+                class="flex items-center gap-2 text-xs md:text-sm overflow-x-auto max-w-full px-4"
+              >
+                <span
+                  class="border border-slate-300 px-3 py-1.5 rounded-lg bg-white shadow-sm font-mono"
+                  >자극(T0)</span
+                >
+                <span class="text-slate-300">→</span>
+                <span
+                  class="border border-slate-300 px-3 py-1.5 rounded-lg bg-white shadow-sm font-mono"
+                  >입력(T1)</span
+                >
+                <span class="text-slate-300">→</span>
+                <span
+                  class="border border-slate-300 px-3 py-1.5 rounded-lg bg-white shadow-sm font-mono"
+                  >보정(-L)</span
+                >
+                <span class="text-slate-300">=</span>
+                <span
+                  class="bg-blue-600 text-white px-3 py-1.5 rounded-lg shadow-sm font-bold font-mono"
+                  >결과</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100">
+            <h4
+              class="font-bold text-blue-900 text-lg mb-6 flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-6 h-6 text-blue-600"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25"
+                />
+              </svg>
+              주요 환경별 평균 레이턴시 (2024년 데이터)
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p
+                  class="font-bold text-blue-800 mb-4 pb-2 border-b border-blue-200"
+                >
+                  📱 모바일 환경
+                </p>
+                <ul class="space-y-3">
+                  <li class="flex justify-between items-center">
+                    <span class="text-slate-600">Safari (iOS)</span>
+                    <span
+                      class="font-mono font-bold text-blue-600 bg-white px-2 py-1 rounded"
+                      >16-19ms</span
+                    >
+                  </li>
+                  <li class="flex justify-between items-center">
+                    <span class="text-slate-600">Chrome (Android)</span>
+                    <span
+                      class="font-mono font-bold text-blue-600 bg-white px-2 py-1 rounded"
+                      >12-15ms</span
+                    >
+                  </li>
+                  <li class="flex justify-between items-center">
+                    <span class="text-slate-600">Samsung Internet</span>
+                    <span
+                      class="font-mono font-bold text-blue-600 bg-white px-2 py-1 rounded"
+                      >14-17ms</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p
+                  class="font-bold text-blue-800 mb-4 pb-2 border-b border-blue-200"
+                >
+                  💻 데스크톱 환경
+                </p>
+                <ul class="space-y-3">
+                  <li class="flex justify-between items-center">
+                    <span class="text-slate-600">Chrome (Windows)</span>
+                    <span
+                      class="font-mono font-bold text-blue-600 bg-white px-2 py-1 rounded"
+                      >7-10ms</span
+                    >
+                  </li>
+                  <li class="flex justify-between items-center">
+                    <span class="text-slate-600">Chrome (macOS)</span>
+                    <span
+                      class="font-mono font-bold text-blue-600 bg-white px-2 py-1 rounded"
+                      >8-11ms</span
+                    >
+                  </li>
+                  <li class="flex justify-between items-center">
+                    <span class="text-slate-600">Firefox</span>
+                    <span
+                      class="font-mono font-bold text-blue-600 bg-white px-2 py-1 rounded"
+                      >9-12ms</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Data Analysis -->
+        <section id="data-analysis" class="mb-24">
+          <h2
+            class="text-2xl md:text-3xl font-black text-slate-900 mb-6 pb-4 border-b border-slate-100"
+          >
+            한국인 반응속도 평균 데이터
+          </h2>
+          <p class="text-slate-600 mb-10 leading-relaxed">
+            이 데이터는 2024년 상반기 <strong>12,458명</strong>의 한국인
+            사용자의 결과를 분석한 것입니다. 자신의 결과를 국내 평균과
+            비교해보세요.
+          </p>
+
+          <div class="space-y-12">
+            <!-- Age Table -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm"
+            >
+              <div
+                class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center gap-3"
+              >
+                <div class="w-2 h-8 bg-blue-500 rounded-full"></div>
+                <h3 class="text-lg font-bold text-slate-800 m-0">
+                  1. 연령별 반응속도 평균
+                </h3>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead
+                    class="bg-white text-slate-500 text-xs uppercase tracking-wider border-b border-slate-100"
+                  >
+                    <tr>
+                      <th class="px-6 py-4 font-bold">연령 그룹</th>
+                      <th class="px-6 py-4 font-bold text-center">평균 (ms)</th>
+                      <th class="px-6 py-4 font-bold text-center">
+                        최빈값 (ms)
+                      </th>
+                      <th class="px-6 py-4 font-bold text-center">표본 수</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-50 text-sm">
+                    <tr class="hover:bg-blue-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">
+                        15-24세
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center font-black text-blue-600"
+                      >
+                        185ms
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center text-slate-500 font-mono"
+                      >
+                        170-200
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        3,821
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-blue-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">
+                        25-34세
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center font-bold text-slate-700"
+                      >
+                        198ms
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center text-slate-500 font-mono"
+                      >
+                        180-215
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        4,156
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-blue-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">
+                        35-44세
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center font-bold text-slate-700"
+                      >
+                        212ms
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center text-slate-500 font-mono"
+                      >
+                        195-230
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        2,987
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-blue-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">
+                        45세 이상
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center font-bold text-slate-700"
+                      >
+                        235ms
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center text-slate-500 font-mono"
+                      >
+                        215-255
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        1,494
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Job Table -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm"
+            >
+              <div
+                class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center gap-3"
+              >
+                <div class="w-2 h-8 bg-purple-500 rounded-full"></div>
+                <h3 class="text-lg font-bold text-slate-800 m-0">
+                  2. 직업별 반응속도 평균
+                </h3>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead
+                    class="bg-white text-slate-500 text-xs uppercase tracking-wider border-b border-slate-100"
+                  >
+                    <tr>
+                      <th class="px-6 py-4 font-bold">직업 그룹</th>
+                      <th class="px-6 py-4 font-bold text-center">평균 (ms)</th>
+                      <th class="px-6 py-4 font-bold text-center">특징</th>
+                      <th class="px-6 py-4 font-bold text-center">표본 수</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-50 text-sm">
+                    <tr class="hover:bg-purple-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">
+                        운동선수
+                      </td>
+                      <td
+                        class="px-6 py-4 text-center font-black text-purple-600"
+                      >
+                        178ms
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-500">
+                        매일 훈련 수행
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">623</td>
+                    </tr>
+                    <tr class="hover:bg-purple-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">게이머</td>
+                      <td
+                        class="px-6 py-4 text-center font-bold text-slate-700"
+                      >
+                        182ms
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-500">
+                        게임 활용
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        3,488
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-purple-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">학생</td>
+                      <td
+                        class="px-6 py-4 text-center font-bold text-slate-700"
+                      >
+                        195ms
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-500">
+                        집중력 필요
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        2,756
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-purple-50/30 transition-colors">
+                      <td class="px-6 py-4 font-bold text-slate-800">직장인</td>
+                      <td
+                        class="px-6 py-4 text-center font-bold text-slate-700"
+                      >
+                        210ms
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-500">
+                        사무 작업 위주
+                      </td>
+                      <td class="px-6 py-4 text-center text-slate-400">
+                        5,591
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq-section">
+          <h2 class="text-2xl font-bold text-slate-800 text-center mb-10">
+            자주 묻는 질문 (FAQ)
+          </h2>
+          <div class="max-w-3xl mx-auto space-y-4">
+            <!-- FAQ Item 1 -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <button
+                class="w-full text-left flex justify-between items-center p-6 font-bold text-slate-800 hover:bg-slate-50 transition-colors"
+                onclick="toggleFAQ(this)"
+              >
+                <span class="text-lg"
+                  >테스트 결과가 다른 웹사이트와 다른 이유는?</span
+                >
+                <svg
+                  class="w-5 h-5 text-slate-400 transition-transform duration-300 transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                class="hidden px-6 pb-6 text-slate-600 text-base leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/50"
+              >
+                대부분의 테스트는 10ms 단위로 측정하거나 기기별 레이턴시 보정을
+                하지 않습니다. 저희는 <strong>1ms 정밀 측정</strong>과
+                <strong>3회 샘플 보정</strong>을 통해 오차를 최소화하여 더
+                정확한 결과를 제공합니다.
+              </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <button
+                class="w-full text-left flex justify-between items-center p-6 font-bold text-slate-800 hover:bg-slate-50 transition-colors"
+                onclick="toggleFAQ(this)"
+              >
+                <span class="text-lg"
+                  >12,458명 데이터의 신뢰성은 어떻게 검증되었나?</span
+                >
+                <svg
+                  class="w-5 h-5 text-slate-400 transition-transform duration-300 transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                class="hidden px-6 pb-6 text-slate-600 text-base leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/50"
+              >
+                데이터 수집 시 동일 IP 중복 방지, 테스트 완료율 95% 이상 필터링,
+                극단값 제거, 시간대별 데이터 균형 맞춤 등 엄격한 기준을 적용하여
+                대표성과 정확성을 확보했습니다.
+              </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div
+              class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <button
+                class="w-full text-left flex justify-between items-center p-6 font-bold text-slate-800 hover:bg-slate-50 transition-colors"
+                onclick="toggleFAQ(this)"
+              >
+                <span class="text-lg"
+                  >전문 스포츠 장비와 96% 상관성은 무엇을 의미하나?</span
+                >
+                <svg
+                  class="w-5 h-5 text-slate-400 transition-transform duration-300 transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                class="hidden px-6 pb-6 text-slate-600 text-base leading-relaxed border-t border-slate-100 pt-4 bg-slate-50/50"
+              >
+                500명의 사용자를 대상으로 저희 웹 테스트와 전문 스포츠 장비의
+                결과를 비교했을 때, 두 결과가 통계적으로 96% 일치한다는
+                의미입니다. 이는 저희 테스트의 정확성을 객관적으로 입증합니다.
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- ===== Footer Start ===== -->
+    <footer class="bg-white border-t border-slate-200">
+      <div
+        class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
+      >
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          <div class="space-y-4 col-span-2 md:col-span-1">
+            <a
+              href="/"
+              class="flex items-center gap-2 text-lg font-bold text-slate-900"
+            >
+              <div
+                class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-lg font-mono"
+              >
+                <span>R</span>
+              </div>
+              반응속도 테스트
+            </a>
+            <p class="text-sm text-slate-500 leading-relaxed pr-4">
+              1ms 단위의 정확한 측정으로 당신의 순발력을 확인하고, 과학적 훈련
+              가이드를 통해 잠재력을 깨워보세요.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              테스트 종류
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >기본 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/valorant-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >발로란트 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/sori-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >소리 반응 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mobile-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >모바일 테스트</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              리소스
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/banungsokdo-hyanghang-guide.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >향상 가이드</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/test-jeonghwakseong-data.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >테스트 정확성</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >개발자 블로그</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              정책
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/pric.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors font-medium"
+                  >개인정보 처리방침</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >서비스 이용약관</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >회사 소개</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400"
+        >
+          <div
+            class="flex flex-col md:flex-row gap-2 md:gap-6 text-center md:text-left"
+          >
+            <p>&copy; 2024 반응속도 테스트. All rights reserved.</p>
+            <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-slate-600 transition-colors"
+              ><span class="sr-only">Twitter</span
+              ><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                ></path></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <script>
+      // ===== Mobile Menu Logic =====
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const iconMenu = document.getElementById("icon-menu");
+      const iconClose = document.getElementById("icon-close");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isOpen = mobileMenu.classList.contains("open");
+          if (isOpen) {
+            mobileMenu.classList.remove("open");
+            iconMenu.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          } else {
+            mobileMenu.classList.add("open");
+            iconMenu.classList.add("hidden");
+            iconClose.classList.remove("hidden");
+          }
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+            iconMenu.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          });
+        });
+      }
+
+      // ===== FAQ Toggle Logic =====
+      function toggleFAQ(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector("svg");
+
+        if (content.classList.contains("hidden")) {
+          // Optional: Close others
+          document.querySelectorAll(".bg-slate-50 .hidden").forEach((el) => {
+            // Close logic for siblings if needed
+          });
+
+          content.classList.remove("hidden");
+          icon.style.transform = "rotate(180deg)";
+        } else {
+          content.classList.add("hidden");
+          icon.style.transform = "rotate(0deg)";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>서비스 이용약관 | 반응속도 테스트</title>
+    <meta
+      name="description"
+      content="반응속도 테스트의 서비스 이용약관입니다. 서비스 이용 조건, 사용자 권리·의무, 저작권,면책 사항 등을 명시하며 Google AdSense 정책을 준수합니다."
+    />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Pretendard Font (대형 IT 기업 스타일 폰트) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    
+    <style>
+      body {
+        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+        background-color: #f8fafc; /* Slate-50보다 조금 더 밝은 톤 */
+        color: #334155; /* Slate-700 */
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* 모바일 메뉴 애니메이션 */
+      #mobile-menu {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobile-menu.open {
+        max-height: 600px;
+        opacity: 1;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Prose custom styles for policy pages */
+      .prose-policy h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #1e293b; /* slate-800 */
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e2e8f0; /* slate-200 */
+        letter-spacing: -0.025em;
+      }
+      .prose-policy h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #334155; /* slate-700 */
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+      }
+      .prose-policy p {
+        line-height: 1.75;
+        margin-bottom: 1.25rem;
+        color: #475569; /* slate-600 */
+      }
+      .prose-policy ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #475569;
+      }
+      .prose-policy li {
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body class="text-slate-700">
+    
+    <!-- ===== Header Start (Optimized: Big Tech Style) ===== -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          
+          <!-- Logo -->
+          <a href="/" class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+            <div class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
+              <span class="text-white font-bold text-lg leading-none font-mono">R</span>
+            </div>
+            <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
+          </a>
+
+          <!-- Desktop Navigation (Center) -->
+          <nav class="hidden md:flex items-center space-x-1">
+            <a href="/" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">홈</a>
+            <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
+            <a href="/sori-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">소리</a>
+            <a href="/mobile-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">모바일</a>
+            <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
+          </nav>
+
+          <!-- Desktop Utilities (Right: Privacy/Terms) -->
+          <div class="hidden md:flex items-center gap-4">
+            <div class="flex gap-3 text-xs font-medium text-slate-400">
+                <a href="/terms.html" class="text-blue-600 font-bold cursor-default">이용약관</a>
+                <span class="text-slate-300">|</span>
+                <a href="/pric.html" class="hover:text-slate-600 transition-colors">개인정보처리방침</a>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors">
+            <span class="sr-only">메뉴 열기</span>
+            <svg id="icon-menu" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100">
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a href="/" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">홈</a>
+          <a href="/valorant-banungsokdo-test.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">발로란트 테스트</a>
+          <a href="/sori-banungsokdo-test.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">소리 반응 테스트</a>
+          <a href="/mobile-banungsokdo-test.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">모바일 테스트</a>
+          <a href="/banungsokdo-hyanghang-guide.html" class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors">향상 가이드</a>
+          
+          <!-- Mobile Legal Links -->
+          <div class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400">
+            <a href="/terms.html" class="text-blue-600 font-bold p-2">이용약관</a>
+            <a href="/pric.html" class="hover:text-slate-600 p-2">개인정보처리방침</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ===== Header End ===== -->
+
+    <div class="pt-16"></div>
+
+    <main class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 md:p-12 lg:p-16 border border-slate-100">
+            <header class="mb-12 border-b border-slate-100 pb-8">
+                <div class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wide mb-4">Terms of Service</div>
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">서비스 이용약관</h1>
+                <p class="text-sm text-slate-400 font-medium">최종 업데이트: 2025년 11월 14일</p>
+            </header>
+
+            <div class="prose prose-lg max-w-none prose-policy text-slate-600">
+                <p class="lead text-lg text-slate-700">
+                    반응속도 테스트(이하 "본 서비스")는 본 이용약관(이하 "약관")에 따라 사용자(이하 "이용자")에게 반응속도 테스트 관련 서비스를 제공합니다. 이용자는 본 서비스에 접속하거나 사용함으로써 본 약관의 모든 내용에 동의한 것으로 간주됩니다. 본 약관은 Google AdSense 광고 서비스 이용 기준을 포함한 관련 법규를 준수하며, 이용자와 본 서비스 운영자 간의 권리·의무 관계를 규정합니다. 본 약관을 주의 깊게 읽고 이해하시기 바랍니다.
+                </p>
+
+                <section>
+                    <h2>1. 서비스 내용</h2>
+                    <p>본 서비스는 다음과 같은 내용을 제공하며, 운영자는 서비스 개선을 위해 필요에 따라 내용을 변경하거나 추가할 수 있습니다.</p>
+                    <ul class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <li><strong>무료 반응속도 테스트:</strong> 1ms 정밀 타이밍 기술을 이용한 반응속도 측정 및 결과 제공</li>
+                        <li><strong>랭킹 비교:</strong> 한국인 및 전 세계 사용자와의 반응속도 순위 비교 기능</li>
+                        <li><strong>결과 공유:</strong> 카카오톡 등을 통한 테스트 결과 공유 기능</li>
+                        <li><strong>유료 추가 기능(선택):</strong> 고급 분석 보고서, 맞춤형 향상 가이드 등(별도 요금 적용)</li>
+                        <li><strong>광고 서비스:</strong> Google AdSense를 통한 광고 노출(무료 서비스 운영을 위해 필수)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>2. 이용자 권리 및 의무</h2>
+                    
+                    <h3>2.1 이용자 권리</h3>
+                    <ul>
+                        <li>본 약관에 따라 본 서비스를 안정적으로 이용할 권리</li>
+                        <li>서비스 관련 불만이나 건의를 제출하고 처리 결과를 확인할 권리</li>
+                        <li>개인정보 처리방침에 따라 본인의 개인정보를 관리할 권리</li>
+                        <li>유료 기능 이용 시 명시된 조건에 따라 서비스를 받을 권리</li>
+                    </ul>
+
+                    <h3>2.2 이용자 의무</h3>
+                    <ul>
+                        <li>본 약관 및 관련 법규를 준수하며 서비스를 이용해야 함</li>
+                        <li>다른 이용자의 권리·이익을 침해하거나 서비스 운영을 방해하는 행위 금지</li>
+                        <li>부정 사용 방지를 위해 서비스 제공되는 기능 외에 별도의 프로그램, 봇 등을 이용한 자동화 테스트, 다량 접속 등 금지</li>
+                        <li>본 서비스의 저작권 및 지적 재산권을 침해하는 행위(복제, 수정, 배포 등) 금지</li>
+                        <li>불법, 선정적, 폭력적, 혐오성 내용 등 공공 질서와 미풍양속에 어긋나는 내용을 서비스 내에 게시하거나 전파하는 행위 금지</li>
+                        <li>Google AdSense 광고에 대한 부정 행위(클릭 조작, 광고 차단 소프트웨어 사용 등) 금지</li>
+                    </ul>
+
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg my-8 not-prose">
+                        <div class="flex items-start gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                            <div>
+                                <p class="text-red-800 font-bold text-lg mb-1">주의사항</p>
+                                <p class="text-red-700 text-sm leading-relaxed">
+                                    이용자가 본 의무를 위반할 경우, 운영자는 사전 통지 없이 서비스 접속을 일시 중단하거나 영구적으로 제한할 수 있습니다. 이로 인해 발생하는 손실에 대해 운영자는 책임을 지지 않습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>3. 저작권 및 지적 재산권</h2>
+                    <p>
+                        본 서비스에 포함된 모든 콘텐츠(텍스트, 이미지, 로고, 소프트웨어, 테스트 알고리즘 등)의 저작권 및 지적 재산권은 운영자 또는 합법적인 권리자에게 있습니다. 이용자는 서비스 이용 목적 외에 어떠한 형태로도 저작물을 복제, 수정, 배포, 전송, 출판하는 행위를 할 수 없습니다.
+                    </p>
+                </section>
+
+                <section>
+                    <h2>4. 유료 서비스 및 환불 정책</h2>
+                    <p>
+                        본 서비스의 유료 추가 기능(고급 분석 보고서, 맞춤형 향상 가이드 등)은 별도의 요금을 지불한 이용자에게 제공됩니다. 유료 서비스 이용은 다음 정책을 따릅니다.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 not-prose my-6">
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-slate-800 mb-3">4.1 결제 및 이용 기간</h4>
+                            <ul class="text-sm space-y-2 text-slate-600 list-disc pl-4">
+                                <li>유료 기능 요금은 서비스 내 명시된 금액 기준</li>
+                                <li>제3자 결제 서비스를 통한 안전한 결제</li>
+                                <li>이용 기간 만료 후 자동 해지 (자동 갱신 없음)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-slate-800 mb-3">4.2 환불 정책</h4>
+                            <ul class="text-sm space-y-2 text-slate-600 list-disc pl-4">
+                                <li>기술적 오류로 이용 불가 시 환불 가능</li>
+                                <li>중복 결제 발생 시 환불 가능</li>
+                                <li>단순 변심 등 디지털 콘텐츠 특성상 제한될 수 있음</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-500">환불 요청은 [연락처 이메일]로 제출하며, 운영자는 요청 확인 후 7영업일 이내에 처리합니다.</p>
+                </section>
+
+                <section>
+                    <h2>5. 면책 사항</h2>
+                    <p>운영자는 다음 경우에 대해 본 서비스 이용으로 인해 이용자가 발생한 손실에 대해 책임을 지지 않습니다.</p>
+                    <ul>
+                        <li>이용자의 부주의나 잘못된 조작으로 인한 손실</li>
+                        <li>이용자가 본 약관을 위반하여 발생한 손실</li>
+                        <li>서비스 유지보수, 시스템 장애 등으로 인한 일시적인 서비스 중단</li>
+                        <li>이용자가 제3자 서비스(카카오톡, Google AdSense 등)를 통해 발생한 문제</li>
+                        <li>테스트 결과는 참고용으로 제공하며, 이를 기반으로 한 행동의 결과에 대한 책임</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>6. 서비스 중단 및 종료</h2>
+                    <p>
+                        운영자는 서버 유지보수, 시스템 업그레이드, 불가항력적인 사유 발생 시 서비스를 중단하거나 종료할 수 있으며, 이 경우 가능한 한 사전에 공지합니다.
+                    </p>
+
+                    <h2>7. 약관 변경 및 해석</h2>
+                    <p>
+                        운영자는 관련 법규 변경 또는 서비스 운영방침 조정에 따라 본 약관을 변경할 수 있습니다. 약관 변경 시 서비스 홈페이지에 최소 7일 전 공지하며, 이용자가 변경된 약관에 동의하지 않는 경우 서비스 이용을 중단할 수 있습니다. 본 약관은 대한민국 법률에 따라 해석되며, 관련된 분쟁은 서울중앙지법을 관할 법원으로 합니다.
+                    </p>
+                </section>
+
+                <section class="mt-16 border-t border-slate-100 pt-10">
+                    <h2 class="mt-0">8. 문의</h2>
+                    <p>
+                        본 약관에 대한 질문이나 불만은 아래 연락처로 문의하시면 신속하게 처리하겠습니다.
+                    </p>
+                    <div class="bg-slate-900 text-slate-300 p-8 rounded-2xl mt-8 not-prose">
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex gap-4">
+                                <span class="text-slate-500 w-24 font-bold uppercase tracking-wider">운영자</span>
+                                <span class="text-white font-medium">[운영자 이름/회사명]</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-slate-500 w-24 font-bold uppercase tracking-wider">이메일</span>
+                                <a href="mailto:CONTACT_EMAIL@example.com" class="text-blue-400 hover:text-blue-300 transition-colors">[CONTACT_EMAIL@example.com]</a>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="text-slate-500 w-24 font-bold uppercase tracking-wider">URL</span>
+                                <span class="text-white">https://반응속도테스트.kr</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== Footer Start (Reused Component) ===== -->
+    <footer class="bg-white border-t border-slate-200">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          <!-- Brand -->
+          <div class="space-y-4 col-span-2 md:col-span-1">
+            <a href="/" class="flex items-center gap-2 text-lg font-bold text-slate-900">
+                <div class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-lg font-mono">
+                  <span>R</span>
+                </div>
+                반응속도 테스트
+            </a>
+            <p class="text-sm text-slate-500 leading-relaxed pr-4">
+              1ms 단위의 정확한 측정으로 당신의 순발력을 확인하고, 과학적 훈련 가이드를 통해 잠재력을 깨워보세요.
+            </p>
+          </div>
+          <!-- Link Column 1 -->
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">테스트 종류</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/" class="text-slate-500 hover:text-blue-600 transition-colors">기본 테스트</a></li>
+              <li><a href="/valorant-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">발로란트 테스트</a></li>
+              <li><a href="/sori-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">소리 반응 테스트</a></li>
+              <li><a href="/mobile-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">모바일 테스트</a></li>
+            </ul>
+          </div>
+          <!-- Link Column 2 -->
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">리소스</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/banungsokdo-hyanghang-guide.html" class="text-slate-500 hover:text-blue-600 transition-colors">향상 가이드</a></li>
+              <li><a href="/test-jeonghwakseong-data.html" class="text-slate-500 hover:text-blue-600 transition-colors">테스트 정확성</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-blue-600 transition-colors">개발자 블로그</a></li>
+            </ul>
+          </div>
+          <!-- Link Column 3 (Legal) -->
+          <div class="space-y-4">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">정책</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/pric.html" class="text-slate-500 hover:text-blue-600 transition-colors font-medium">개인정보 처리방침</a></li>
+              <li><a href="/terms.html" class="text-slate-500 hover:text-blue-600 transition-colors">서비스 이용약관</a></li>
+              <li><a href="/about.html" class="text-slate-500 hover:text-blue-600 transition-colors">회사 소개</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <div class="flex flex-col md:flex-row gap-2 md:gap-6 text-center md:text-left">
+            <p>&copy; 2024 반응속도 테스트. All rights reserved.</p>
+            <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
+          </div>
+          <div class="flex gap-4">
+             <a href="#" class="hover:text-slate-600 transition-colors"><span class="sr-only">Twitter</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <script>
+      // ===== Mobile Menu Logic =====
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconClose = document.getElementById('icon-close');
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.contains('open');
+          if (isOpen) {
+            mobileMenu.classList.remove('open');
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          } else {
+            mobileMenu.classList.add('open');
+            iconMenu.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+          }
+        });
+        
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          });
+        });
+      }
+    </script>
+</body>
+</html>
