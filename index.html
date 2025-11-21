@@ -12,7 +12,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Pretendard Font (대형 IT 기업 스타일 폰트) -->
+    <!-- Pretendard Font -->
     <link
       rel="stylesheet"
       as="style"
@@ -29,8 +29,8 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         scroll-behavior: smooth;
-        background-color: #f8fafc; /* Slate-50보다 조금 더 밝고 깨끗한 톤 */
-        color: #334155; /* Slate-700 */
+        background-color: #f8fafc;
+        color: #334155;
       }
 
       .gradient-text {
@@ -51,10 +51,18 @@
         opacity: 1;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
+
+      /* 반응형 박스 텍스트 선택 방지 */
+      .no-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
     </style>
   </head>
   <body class="text-slate-700">
-    <!-- ===== Header Start (Optimized: Big Tech Style) ===== -->
+    <!-- ===== Header Start ===== -->
     <header
       class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300"
     >
@@ -78,7 +86,7 @@
             >
           </a>
 
-          <!-- Desktop Navigation (Center) -->
+          <!-- Desktop Navigation -->
           <nav class="hidden md:flex items-center space-x-1">
             <a
               href="/"
@@ -107,7 +115,7 @@
             >
           </nav>
 
-          <!-- Desktop Utilities (Right: Privacy/Terms) -->
+          <!-- Desktop Utilities -->
           <div class="hidden md:flex items-center gap-4">
             <div class="flex gap-3 text-xs font-medium text-slate-400">
               <a
@@ -117,7 +125,7 @@
               >
               <span class="text-slate-300">|</span>
               <a
-                href="/pric.html"
+                href="/privacy.html"
                 class="hover:text-slate-600 transition-colors"
                 >개인정보처리방침</a
               >
@@ -193,13 +201,11 @@
             class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
             >향상 가이드</a
           >
-
-          <!-- Mobile Legal Links -->
           <div
             class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400"
           >
             <a href="/terms.html" class="hover:text-slate-600 p-2">이용약관</a>
-            <a href="/pric.html" class="hover:text-slate-600 p-2"
+            <a href="/privacy.html" class="hover:text-slate-600 p-2"
               >개인정보처리방침</a
             >
           </div>
@@ -214,7 +220,7 @@
     <main
       class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24"
     >
-      <!-- Hero Section (Content Preserved) -->
+      <!-- Hero Section -->
       <header class="text-center mb-16 md:mb-24">
         <h1
           class="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
@@ -231,7 +237,7 @@
         </p>
       </header>
 
-      <!-- Test Tool UI (Styled Enhanced, Content Preserved) -->
+      <!-- Test Tool UI -->
       <section
         id="test-tool"
         class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-12 text-center my-16 md:my-24 border border-slate-100 relative overflow-hidden"
@@ -246,14 +252,27 @@
             순간, 즉시 클릭하세요.
           </p>
 
+          <!-- Game Box: Initial state is blue (Ready) -->
           <div
             id="reactionBox"
-            class="w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 ease-in-out flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-500 hover:scale-[1.02] active:scale-95 select-none"
+            class="no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 ease-in-out flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-slate-700 hover:scale-[1.02] active:scale-95 select-none"
           >
-            기다리세요...
+            <span class="text-3xl block mb-2">테스트 시작</span>
+            <span class="text-sm font-normal opacity-80"
+              >여기를 클릭하세요</span
+            >
           </div>
 
+          <!-- Buttons Container -->
           <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <!-- FIX: Added Missing ID startTest -->
+            <button
+              id="startTest"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 text-lg rounded-2xl transition-all duration-200 shadow-lg shadow-blue-500/30 hover:-translate-y-1 hover:shadow-xl focus:ring-4 focus:ring-blue-200"
+            >
+              테스트 시작
+            </button>
+
             <button
               id="changeMode"
               class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold py-3 px-6 md:py-4 md:px-8 text-lg rounded-2xl transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-1 focus:ring-4 focus:ring-slate-200"
@@ -284,7 +303,7 @@
                 글로벌 순위
               </p>
               <p id="globalRank" class="text-xl font-bold text-slate-800">
-                계산 중...
+                대기 중
               </p>
             </div>
           </div>
@@ -292,7 +311,7 @@
       </section>
 
       <article class="space-y-24 md:space-y-32">
-        <!-- How-to Section (Content Preserved) -->
+        <!-- How-to Section -->
         <section id="how-to-section">
           <div class="text-center mb-12 md:mb-16">
             <h2
@@ -305,7 +324,6 @@
             </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Tip 1 -->
             <div
               class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
             >
@@ -335,7 +353,6 @@
                 편안하게 쥘 수 있는 환경을 만드세요.
               </p>
             </div>
-            <!-- Tip 2 -->
             <div
               class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
             >
@@ -365,7 +382,6 @@
                 후의 **순수한 반응**만을 측정하는 것이 중요합니다.
               </p>
             </div>
-            <!-- Tip 3 -->
             <div
               class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
             >
@@ -398,7 +414,7 @@
           </div>
         </section>
 
-        <!-- Rank Section (Content Preserved) -->
+        <!-- Rank Section -->
         <section
           id="rank-section"
           class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
@@ -412,7 +428,6 @@
               위치에 속하는지 알아보세요. 아래 데이터는 5만 명 이상의 사용자
               데이터를 기반으로 합니다.
             </p>
-
             <div
               class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
             >
@@ -466,20 +481,20 @@
             </div>
           </div>
           <figure class="order-1 lg:order-2">
-            <!-- Image Placeholder: Using a neat gradient placeholder if image is missing, or your image -->
             <div
-              class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200"
+              class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100"
             >
               <img
                 src="./image/Reaction Test Results Overview.webp"
                 alt="반응속도 테스트 결과 화면과 순위 그래프"
                 class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/600x400/f1f5f9/334155?text=Graph+Preview'"
               />
             </div>
           </figure>
         </section>
 
-        <!-- Accuracy Section (Content Preserved) -->
+        <!-- Accuracy Section -->
         <section id="accuracy-section">
           <div class="text-center mb-12">
             <h2
@@ -520,10 +535,7 @@
                 <p class="text-slate-500 leading-relaxed">
                   저희의 반응속도 테스트는 JavaScript의 `Date.now()` 함수를
                   기반으로 한 고정밀 타이머를 사용하여
-                  <strong>1ms(밀리초) 단위의 정확도</strong>를 보장합니다. 전문
-                  연구 기관에서 사용하는 광학 센서 장비와 교차 검증한 결과, 평균
-                  오차율이 0.3% 미만으로 나타나 일상적인 순발력 측정 목적으로는
-                  충분히 신뢰할 수 있습니다.
+                  <strong>1ms(밀리초) 단위의 정확도</strong>를 보장합니다.
                 </p>
               </div>
               <div class="flex flex-col gap-4">
@@ -550,17 +562,14 @@
                 <p class="text-slate-500 leading-relaxed">
                   진정한 반응속도 측정의 핵심은
                   <strong>예측 불가능한 자극</strong>에 대한 순수한 반응 시간을
-                  재는 것입니다. 저희 테스트는 1~3.5초 사이의 무작위 지연 후
-                  시각적 자극을 제공함으로써, 예측이 아닌 순수한 반응 시간을
-                  정밀하게 측정합니다. 이는 신경과학에서 사용하는 측정 원리와
-                  동일합니다.
+                  재는 것입니다.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Tips Section (Content Preserved) -->
+        <!-- Tips Section -->
         <section id="tips-section">
           <div class="text-center mb-12 md:mb-16">
             <h2
@@ -574,7 +583,6 @@
             </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Tip 1 -->
             <div
               class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
             >
@@ -607,13 +615,11 @@
                   1. 시각적 집중 훈련
                 </h3>
                 <p class="text-sm text-slate-500 leading-relaxed">
-                  빠르게 움직이는 대상을 눈으로 좇는 훈련(예: 온라인 시각 추적
-                  게임)은 뇌의 시각 정보 처리 속도를 높여 반응 시간을 직접적으로
-                  단축시킵니다.
+                  빠르게 움직이는 대상을 눈으로 좇는 훈련은 뇌의 시각 정보 처리
+                  속도를 높입니다.
                 </p>
               </div>
             </div>
-            <!-- Tip 2 -->
             <div
               class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
             >
@@ -646,12 +652,10 @@
                   2. 반응 게임 플레이
                 </h3>
                 <p class="text-sm text-slate-500 leading-relaxed">
-                  리듬 게임, FPS 게임 등 순간적인 반응이 필요한 게임을 즐기는
-                  것은 신경계를 활성화시켜 반응속도 향상에 큰 도움이 됩니다.
+                  리듬 게임, FPS 게임 등 순간적인 반응이 필요한 게임을 즐기세요.
                 </p>
               </div>
             </div>
-            <!-- Tip 3 -->
             <div
               class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
             >
@@ -678,12 +682,10 @@
                   3. 운동과 신체 활동
                 </h3>
                 <p class="text-sm text-slate-500 leading-relaxed">
-                  줄넘기, 테니스, 배드민턴처럼 민첩성을 요구하는 운동은 신경과
-                  근육의 협응력을 극대화하여 반응 시간을 단축시킵니다.
+                  민첩성을 요구하는 운동은 신경과 근육의 협응력을 극대화합니다.
                 </p>
               </div>
             </div>
-            <!-- Tip 4 -->
             <div
               class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
             >
@@ -710,12 +712,10 @@
                   4. 수면과 영양 관리
                 </h3>
                 <p class="text-sm text-slate-500 leading-relaxed">
-                  매일 7-8시간의 질 좋은 수면은 필수이며, 오메가-3와 비타민
-                  B군이 풍부한 식단은 뇌 기능 유지에 큰 도움이 됩니다.
+                  매일 7-8시간의 질 좋은 수면은 필수입니다.
                 </p>
               </div>
             </div>
-            <!-- Tip 5 (Spanning 2 cols on desktop if wanted, or just flow) -->
             <div
               class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6 md:col-span-2"
             >
@@ -743,7 +743,7 @@
                 </h3>
                 <p class="text-sm text-slate-500 leading-relaxed">
                   이 페이지의 테스트를 매일 꾸준히 연습하는 것 자체가 훌륭한
-                  훈련입니다. 반복을 통해 뇌의 반응 경로를 자동화할 수 있습니다.
+                  훈련입니다.
                 </p>
               </div>
             </div>
@@ -752,13 +752,12 @@
       </article>
     </main>
 
-    <!-- ===== Footer Start (Clean & Modern) ===== -->
+    <!-- ===== Footer Start ===== -->
     <footer class="bg-white border-t border-slate-200">
       <div
         class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
       >
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          <!-- Brand -->
           <div class="space-y-4 col-span-2 md:col-span-1">
             <a
               href="/"
@@ -776,7 +775,6 @@
               가이드를 통해 잠재력을 깨워보세요.
             </p>
           </div>
-          <!-- Link Column 1 -->
           <div class="space-y-4">
             <h4
               class="text-sm font-bold text-slate-900 uppercase tracking-wider"
@@ -814,7 +812,6 @@
               </li>
             </ul>
           </div>
-          <!-- Link Column 2 -->
           <div class="space-y-4">
             <h4
               class="text-sm font-bold text-slate-900 uppercase tracking-wider"
@@ -845,7 +842,6 @@
               </li>
             </ul>
           </div>
-          <!-- Link Column 3 (Legal) -->
           <div class="space-y-4">
             <h4
               class="text-sm font-bold text-slate-900 uppercase tracking-wider"
@@ -855,7 +851,7 @@
             <ul class="space-y-2 text-sm">
               <li>
                 <a
-                  href="/pric.html"
+                  href="/privacy.html"
                   class="text-slate-500 hover:text-blue-600 transition-colors font-medium"
                   >개인정보 처리방침</a
                 >
@@ -888,7 +884,6 @@
             <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
           </div>
           <div class="flex gap-4">
-            <!-- Optional Social Icons -->
             <a href="#" class="hover:text-slate-600 transition-colors"
               ><span class="sr-only">Twitter</span
               ><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -922,20 +917,11 @@
             iconClose.classList.remove("hidden");
           }
         });
-
-        // Close menu when clicking links
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-        mobileMenuLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.remove("open");
-            iconMenu.classList.remove("hidden");
-            iconClose.classList.add("hidden");
-          });
-        });
       }
 
-      // ===== Reaction Test Logic (Preserved & Connected to New UI) =====
+      // ===== Reaction Test Logic (Fixed & Optimized) =====
       const reactionBox = document.getElementById("reactionBox");
+      // FIXED: This element now exists in HTML
       const startTestBtn = document.getElementById("startTest");
       const changeModeBtn = document.getElementById("changeMode");
       const avgTimeSpan = document.getElementById("avgTime");
@@ -944,7 +930,8 @@
       let testCount = 0;
       let totalTime = 0;
       let startTime = 0;
-      let isWaitingForClick = false;
+      let isWaitingForClick = false; // Box is Green
+      let isWaitingForGreen = false; // Box is Red
       let testModes = [5, 10, 20];
       let currentModeIndex = 0;
       let testTimeout;
@@ -954,115 +941,141 @@
         return testModes[currentModeIndex];
       }
 
+      // Change Mode Handler
       changeModeBtn.addEventListener("click", () => {
         if (testInProgress) return;
         currentModeIndex = (currentModeIndex + 1) % testModes.length;
         const newMode = getTestMode();
         changeModeBtn.textContent = `모드 (${newMode}회)`;
-        // Simple toast or visual feedback could go here
-        resetTest();
+        resetTestUI();
       });
 
+      // Start Button Handler
       startTestBtn.addEventListener("click", () => {
         if (testInProgress) return;
-        resetTest();
+        startTest();
+      });
+
+      // Also allow starting by clicking the box if not running
+      reactionBox.addEventListener("click", () => {
+        if (!testInProgress) {
+          startTest();
+        } else {
+          handleBoxClick();
+        }
+      });
+
+      function startTest() {
+        resetTestVars();
         testInProgress = true;
+
+        // UI Updates for Running State
         startTestBtn.disabled = true;
         changeModeBtn.disabled = true;
         startTestBtn.classList.add("opacity-50", "cursor-not-allowed");
         changeModeBtn.classList.add("opacity-50", "cursor-not-allowed");
-        startTestBtn.textContent = "테스트 중...";
+        startTestBtn.textContent = "테스트 진행 중...";
+
         startNextRound();
-      });
+      }
 
       function startNextRound() {
         if (testCount >= getTestMode()) {
           finishTest();
           return;
         }
-        isWaitingForClick = false;
-        // Reset visual state to Red (Waiting)
-        reactionBox.className =
-          "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-colors duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-500";
-        reactionBox.textContent = "기다리세요...";
 
-        const delay = Math.floor(Math.random() * 2500) + 1000;
+        // Red State (Wait)
+        isWaitingForClick = false;
+        isWaitingForGreen = true;
+
+        reactionBox.className =
+          "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-colors duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-red-500 hover:scale-[1.02]";
+        reactionBox.innerHTML = '<span class="text-3xl">기다리세요...</span>';
+
+        const delay = Math.floor(Math.random() * 2500) + 1500; // Random delay 1.5s - 4s
 
         clearTimeout(testTimeout);
         testTimeout = setTimeout(() => {
+          // Green State (Go!)
+          isWaitingForGreen = false;
           isWaitingForClick = true;
           startTime = Date.now();
-          // Go Green (Click!)
+
           reactionBox.className =
-            "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-transform duration-100 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-green-500 scale-105";
-          reactionBox.textContent = "클릭하세요!";
+            "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-transform duration-75 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-green-500 scale-105";
+          reactionBox.innerHTML = '<span class="text-4xl">클릭하세요!</span>';
         }, delay);
       }
 
-      reactionBox.addEventListener("click", () => {
+      function handleBoxClick() {
+        // 1. Clicked when Green (Success)
         if (isWaitingForClick) {
           const endTime = Date.now();
           const reactionTime = endTime - startTime;
           testCount++;
           totalTime += reactionTime;
-          isWaitingForClick = false;
-          reactionBox.textContent = `${reactionTime}ms`;
 
-          // Visual feedback for success click
+          isWaitingForClick = false;
+
+          // Feedback State
           reactionBox.className =
-            "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-slate-800";
+            "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-slate-800";
+          reactionBox.innerHTML = `<span class="text-4xl">${reactionTime}ms</span>`;
 
           clearTimeout(testTimeout);
-          testTimeout = setTimeout(startNextRound, 1200);
-        } else {
-          if (testInProgress) {
-            clearTimeout(testTimeout);
-            reactionBox.textContent = "너무 빨라요!";
-            reactionBox.className =
-              "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-600 animate-pulse";
-            testInProgress = false;
-            finishTest(true);
-          }
+          testTimeout = setTimeout(startNextRound, 1000); // 1s delay before next
         }
-      });
+        // 2. Clicked when Red (Fail / Too Fast)
+        else if (isWaitingForGreen) {
+          clearTimeout(testTimeout);
+          reactionBox.innerHTML =
+            '<span class="text-3xl">너무 빨라요!</span><span class="text-sm mt-2">다시 시작하려면 클릭</span>';
+          reactionBox.className =
+            "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-orange-600 animate-pulse";
 
-      function finishTest(failed = false) {
-        let average = 0;
-        if (failed) {
-          avgTimeSpan.textContent = `실패`;
-          globalRankSpan.textContent = `다시 시도하세요`;
+          testInProgress = false;
+          // Don't show failed stats, just reset enabling user to try again
+          startTestBtn.disabled = false;
+          changeModeBtn.disabled = false;
+          startTestBtn.classList.remove("opacity-50", "cursor-not-allowed");
+          changeModeBtn.classList.remove("opacity-50", "cursor-not-allowed");
+          startTestBtn.textContent = "테스트 시작";
+        }
+      }
+
+      function finishTest() {
+        const average = Math.round(totalTime / getTestMode());
+        avgTimeSpan.textContent = `${average}ms`;
+
+        let rankText;
+        let rankColor = "text-slate-800";
+
+        if (average <= 200) {
+          rankText = "Elite (상위 5%)";
+          rankColor = "text-indigo-600";
+        } else if (average <= 250) {
+          rankText = "Advanced (상위 20%)";
+          rankColor = "text-blue-600";
+        } else if (average <= 300) {
+          rankText = "Intermediate (상위 50%)";
+          rankColor = "text-sky-600";
+        } else if (average <= 350) {
+          rankText = "Beginner (평균)";
+          rankColor = "text-slate-600";
         } else {
-          average = Math.round(totalTime / getTestMode());
-          avgTimeSpan.textContent = `${average}ms`;
-
-          let rankText;
-          let rankColor = "text-slate-800";
-
-          if (average <= 200) {
-            rankText = "Elite (상위 5%)";
-            rankColor = "text-indigo-600";
-          } else if (average <= 250) {
-            rankText = "Advanced (상위 20%)";
-            rankColor = "text-blue-600";
-          } else if (average <= 300) {
-            rankText = "Intermediate (상위 50%)";
-            rankColor = "text-sky-600";
-          } else if (average <= 350) {
-            rankText = "Beginner (평균)";
-            rankColor = "text-slate-600";
-          } else {
-            rankText = "개선 필요";
-            rankColor = "text-red-600";
-          }
-
-          globalRankSpan.textContent = rankText;
-          globalRankSpan.className = `text-xl font-bold ${rankColor}`;
+          rankText = "개선 필요";
+          rankColor = "text-red-600";
         }
 
-        // Finish State Visuals
+        globalRankSpan.textContent = rankText;
+        globalRankSpan.className = `text-xl font-bold ${rankColor}`;
+
+        // Finish Visuals
         reactionBox.className =
-          "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-blue-600";
-        reactionBox.textContent = "테스트 완료!";
+          "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-blue-600 hover:scale-[1.02]";
+        reactionBox.innerHTML =
+          '<span class="text-3xl mb-2">완료!</span><span class="text-sm opacity-90">다시 하려면 클릭</span>';
 
         testInProgress = false;
         startTestBtn.disabled = false;
@@ -1072,20 +1085,27 @@
         startTestBtn.textContent = "다시 시작";
       }
 
-      function resetTest() {
+      function resetTestVars() {
         clearTimeout(testTimeout);
         testCount = 0;
         totalTime = 0;
         isWaitingForClick = false;
-        testInProgress = false;
+        isWaitingForGreen = false;
+
         avgTimeSpan.textContent = "0ms";
         globalRankSpan.textContent = "계산 중...";
         globalRankSpan.className = "text-xl font-bold text-slate-800";
+      }
 
-        // Reset Box Visuals
+      function resetTestUI() {
+        resetTestVars();
+        testInProgress = false;
+
+        // Reset to Initial Blue State
         reactionBox.className =
-          "w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex items-center justify-center text-white text-3xl font-bold shadow-2xl bg-red-500 hover:scale-[1.02]";
-        reactionBox.textContent = "기다리세요...";
+          "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-slate-700 hover:scale-[1.02]";
+        reactionBox.innerHTML =
+          '<span class="text-3xl block mb-2">테스트 시작</span><span class="text-sm font-normal opacity-80">여기를 클릭하세요</span>';
 
         startTestBtn.disabled = false;
         changeModeBtn.disabled = false;
