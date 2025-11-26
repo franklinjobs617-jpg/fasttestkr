@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="지금 반응속도 테스트로 당신의 순발력을 확인하세요! 정확한 반응 시간과 전 세계 순위를 즉시 확인할 수 있는 무료 도구입니다. 반속 테스트, 반응속도 사이트와 함께 즐겨보세요."
+      content="대한민국 1등 반응속도 테스트. Faker, 프로게이머와 반응속도를 비교하고 당신의 피지컬 티어를 확인하세요. 롤, 발로란트 유저 필수 사이트."
     />
-    <title>반응속도 테스트 | 정확한 반응 시간 측정 및 순위 확인 (무료)</title>
+    <meta property="og:title" content="반응속도 테스트 | 대한민국 e스포츠 표준 측정" />
+    <meta property="og:description" content="0.001초의 승부. 당신의 반응속도는 상위 몇 %일까요? 지금 바로 측정하세요." />
+    <title>반응속도 테스트 | 정확한 반응 시간 측정 및 순위 확인</title>
+    <link rel="canonical" href="https://reactfasttest.com/" />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-W0M9N2D341"
-    ></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Analytics & Adsense (Preserved) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0M9N2D341"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-W0M9N2D341");
     </script>
     <script type="text/javascript">
@@ -30,34 +32,60 @@
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "ubx56eiglg");
-  </script>
-
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059737187619820"
-      crossorigin="anonymous"
-    ></script>
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059737187619820" crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-4059737187619820" />
 
-    <!-- Pretendard Font -->
-    <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
-    />
+    <!-- Fonts: Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Pretendard', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                blue: '#3b82f6',
+                dark: '#0f172a',
+                bg: '#f8fafc',
+              }
+            },
+            animation: {
+              'bounce-slight': 'bounceSlight 2s infinite',
+              'pulse-glow': 'pulseGlow 2s infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              bounceSlight: {
+                '0%, 100%': { transform: 'translateY(-5%)' },
+                '50%': { transform: 'translateY(0)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { boxShadow: '0 0 15px rgba(59, 130, 246, 0.3)' },
+                '50%': { boxShadow: '0 0 25px rgba(59, 130, 246, 0.6)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
 
     <style>
       body {
-        font-family: "Pretendard Variable", Pretendard, -apple-system,
-          BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
-          "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
-          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        scroll-behavior: smooth;
+        font-family: "Pretendard", -apple-system, sans-serif;
         background-color: #f8fafc;
         color: #334155;
+        overflow-x: hidden;
       }
 
       .gradient-text {
@@ -66,713 +94,430 @@
         -webkit-text-fill-color: transparent;
       }
 
-      /* 모바일 메뉴 애니메이션 */
+      .bento-card {
+        background: white;
+        border-radius: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bento-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .no-select {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      /* Game Area Specifics */
+      .game-container {
+        cursor: pointer;
+        transition: background-color 0.1s;
+      }
+      .game-container.waiting { cursor: wait; }
+      
+      /* Mobile Menu */
       #mobile-menu {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
       }
       #mobile-menu.open {
-        max-height: 600px;
+        max-height: 500px;
         opacity: 1;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
-
-      /* 반응형 박스 텍스트 선택 방지 */
-      .no-select {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+      
+      /* Subtle Background Grid */
+      .bg-grid {
+        background-size: 40px 40px;
+        background-image: linear-gradient(to right, rgba(203, 213, 225, 0.3) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      }
+      
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
       }
     </style>
   </head>
-  <body class="text-slate-700">
-    <header
-      class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300"
-    >
+  <body class="bg-slate-50 relative">
+    
+    <!-- Background Decor -->
+    <div class="fixed inset-0 bg-grid z-[-1] pointer-events-none"></div>
+    <div class="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-200/40 rounded-full blur-[120px] -z-10 animate-float pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-indigo-200/40 rounded-full blur-[120px] -z-10 animate-float pointer-events-none" style="animation-delay: -3s;"></div>
+
+    <!-- ===== Header Start ===== -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 transition-all duration-300">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <!-- Logo -->
-          <a
-            href="/"
-            class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity"
-          >
-            <div
-              class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200"
-            >
-              <span class="text-white font-bold text-lg leading-none font-mono"
-                >R</span
-              >
+          <a href="/" class="group flex items-center gap-2.5">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+              <span class="text-white font-bold text-lg leading-none">R</span>
             </div>
-            <span
-              class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors"
-              >반응속도 테스트</span
-            >
+            <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
           </a>
 
           <!-- Desktop Navigation -->
           <nav class="hidden md:flex items-center space-x-1">
-            <a
-              href="/"
-              class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-colors"
-              >홈</a
-            >
-            <a
-              href="/valorant-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >발로란트</a
-            >
-            <a
-              href="/sori-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >소리</a
-            >
-            <a
-              href="/mobile-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >모바일</a
-            >
-            <a
-              href="/banungsokdo-hyanghang-guide.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >향상 가이드</a
-            >
+            <a href="/" class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50">홈</a>
+            <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
+            <a href="/sori-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">소리</a>
+            <a href="/mobile-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">모바일</a>
+            <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
           </nav>
 
           <!-- Desktop Utilities -->
           <div class="hidden md:flex items-center gap-4">
-            <div class="flex gap-3 text-xs font-medium text-slate-400">
-              <a
-                href="/terms.html"
-                class="hover:text-slate-600 transition-colors"
-                >이용약관</a
-              >
-              <span class="text-slate-300">|</span>
-              <a
-                href="/privacy.html"
-                class="hover:text-slate-600 transition-colors"
-                >개인정보처리방침</a
-              >
-            </div>
+             <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+               <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+               <span>1,240명 측정 중</span>
+             </div>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button
-            id="mobile-menu-button"
-            class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
-          >
-            <span class="sr-only">메뉴 열기</span>
-            <svg
-              id="icon-menu"
-              class="w-6 h-6 block"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-            <svg
-              id="icon-close"
-              class="w-6 h-6 hidden"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+            <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
       </div>
 
       <!-- Mobile Menu Dropdown -->
-      <div
-        id="mobile-menu"
-        class="md:hidden bg-white border-b border-slate-100"
-      >
+      <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 shadow-lg">
         <div class="px-4 pt-2 pb-6 space-y-1">
-          <a
-            href="/"
-            class="block px-3 py-2.5 rounded-xl text-base font-semibold text-blue-600 bg-blue-50"
-            >홈</a
-          >
-          <a
-            href="/valorant-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >발로란트 테스트</a
-          >
-          <a
-            href="/sori-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >소리 반응 테스트</a
-          >
-          <a
-            href="/mobile-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >모바일 테스트</a
-          >
-          <a
-            href="/banungsokdo-hyanghang-guide.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >향상 가이드</a
-          >
-          <div
-            class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400"
-          >
-            <a href="/terms.html" class="hover:text-slate-600 p-2">이용약관</a>
-            <a href="/privacy.html" class="hover:text-slate-600 p-2"
-              >개인정보처리방침</a
-            >
-          </div>
+          <a href="/" class="block px-3 py-3 rounded-xl text-base font-semibold text-blue-600 bg-blue-50">홈</a>
+          <a href="/valorant-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">발로란트 테스트</a>
+          <a href="/sori-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">소리 반응 테스트</a>
+          <a href="/mobile-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">모바일 테스트</a>
+          <a href="/banungsokdo-hyanghang-guide.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">향상 가이드</a>
         </div>
       </div>
     </header>
-    <div class="pt-16"></div>
+    <!-- ===== Header End ===== -->
 
-    <main
-      class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24"
-    >
-      <!-- Hero Section -->
-      <header class="text-center mb-16 md:mb-24">
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
-        >
-          당신의 <span class="gradient-text">순간 반응</span>,
-          <br class="hidden md:block" />
-          10초 안에 확인하세요
-        </h1>
-        <p
-          class="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
-        >
-          1ms 단위의 정밀 측정으로 당신의 반응속도를 분석하고, 전 세계 사용자와
-          순위를 비교하여 객관적인 실력을 확인하세요.
-        </p>
-      </header>
-
-      <!-- Test Tool UI -->
-      <section
-        id="test-tool"
-        class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-12 text-center my-16 md:my-24 border border-slate-100 relative overflow-hidden"
-      >
-        <div class="relative z-10">
-          <h3 class="text-2xl md:text-3xl font-bold text-slate-800">
-            테스트 준비 완료!
-          </h3>
-          <p class="mt-3 text-slate-500 max-w-md mx-auto">
-            아래 상자가 <span class="text-red-500 font-bold">빨간색</span>에서
-            <span class="text-green-500 font-bold">초록색</span>으로 바뀌는
-            순간, 즉시 클릭하세요.
-          </p>
-
-          <!-- Game Box: Initial state is blue (Ready) -->
-          <div
-            id="reactionBox"
-            class="no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 ease-in-out flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-slate-700 hover:scale-[1.02] active:scale-95 select-none"
-          >
-            <span class="text-3xl block mb-2">테스트 시작</span>
-            <span class="text-sm font-normal opacity-80"
-              >여기를 클릭하세요</span
-            >
-          </div>
-
-          <!-- Buttons Container -->
-          <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <!-- FIX: Added Missing ID startTest -->
-            <button
-              id="startTest"
-              class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 text-lg rounded-2xl transition-all duration-200 shadow-lg shadow-blue-500/30 hover:-translate-y-1 hover:shadow-xl focus:ring-4 focus:ring-blue-200"
-            >
-              테스트 시작
-            </button>
-
-            <button
-              id="changeMode"
-              class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold py-3 px-6 md:py-4 md:px-8 text-lg rounded-2xl transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-1 focus:ring-4 focus:ring-slate-200"
-            >
-              모드 (5회)
-            </button>
-          </div>
-
-          <div
-            class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto"
-          >
-            <div
-              class="text-center bg-slate-50 p-6 rounded-2xl border border-slate-100"
-            >
-              <p
-                class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1"
-              >
-                평균 반응 시간
-              </p>
-              <p id="avgTime" class="text-4xl font-black gradient-text">0ms</p>
+    <main class="pt-24 pb-20">
+      
+      <!-- ===== Hero & Game Section ===== -->
+      <!-- Hero 섹션과 게임 섹션을 통합하여 사용자가 즉시 접근 가능하게 함 -->
+      <section class="container mx-auto px-4 max-w-7xl mb-16">
+        <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+          
+          <!-- Left: Text & Info (Desktop) / Top: Text (Mobile) -->
+          <div class="lg:w-5/12 flex flex-col justify-center text-center lg:text-left z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mb-4 w-fit mx-auto lg:mx-0">
+              <span class="animate-pulse">●</span> LIVE SERVER
             </div>
-            <div
-              class="text-center bg-slate-50 p-6 rounded-2xl border border-slate-100"
-            >
-              <p
-                class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1"
-              >
-                글로벌 순위
-              </p>
-              <p id="globalRank" class="text-xl font-bold text-slate-800">
-                대기 중
-              </p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]">
+              당신의 <span class="gradient-text">피지컬</span>은<br />
+              몇 점인가요?
+            </h1>
+            <p class="text-lg text-slate-500 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              0.001초가 승패를 가릅니다. 지금 바로 당신의 반응속도를 측정하고
+              전 세계 게이머들과 비교해보세요.
+            </p>
+            
+            <!-- Quick Stats Row -->
+            <div class="grid grid-cols-3 gap-4 mb-8 lg:mb-0">
+              <div class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                <div class="text-xs text-slate-400 font-bold mb-1">상위 1%</div>
+                <div class="text-xl font-black text-slate-800">135ms</div>
+              </div>
+              <div class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                <div class="text-xs text-slate-400 font-bold mb-1">평균</div>
+                <div class="text-xl font-black text-blue-600">250ms</div>
+              </div>
+              <div class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                <div class="text-xs text-slate-400 font-bold mb-1">내 최고기록</div>
+                <div id="high-score" class="text-xl font-black text-purple-600">-</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Game Area (Immediate Access) -->
+          <div class="lg:w-7/12 relative group">
+            <!-- Decorative Glow -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+            
+            <!-- Main Game Container -->
+            <div class="relative bg-white rounded-[2rem] p-2 shadow-2xl h-full min-h-[400px] flex flex-col">
+              <!-- Game Screen -->
+              <div id="reaction-box" class="game-container relative flex-grow w-full rounded-[1.5rem] bg-slate-800 overflow-hidden select-none flex flex-col items-center justify-center transition-all duration-300 ring-4 ring-transparent hover:ring-slate-100">
+                
+                <!-- Dynamic Background Layer -->
+                <div id="box-bg" class="absolute inset-0 bg-slate-800 transition-colors duration-200"></div>
+                
+                <!-- Content -->
+                <div class="relative z-10 text-center transform transition-transform duration-300 group-hover:scale-105 px-4">
+                  <div id="box-icon" class="text-6xl md:text-7xl mb-6 text-blue-500 animate-bounce-slight transition-colors duration-200">
+                    <i class="fa-solid fa-bolt"></i>
+                  </div>
+                  <h2 id="box-title" class="text-4xl md:text-5xl font-black text-white mb-3 tracking-tight font-sans drop-shadow-lg">테스트 시작</h2>
+                  <p id="box-subtitle" class="text-slate-300 font-medium bg-black/30 px-6 py-2 rounded-full inline-block backdrop-blur-md border border-white/10">
+                    화면을 클릭하면 시작합니다
+                  </p>
+                </div>
+
+                <!-- Live Round Counter inside Game -->
+                <div class="absolute top-6 right-6 z-20">
+                  <span id="stat-count-badge" class="px-3 py-1 bg-black/40 text-white rounded-full text-sm font-bold backdrop-blur-md border border-white/10">
+                    Ready
+                  </span>
+                </div>
+              </div>
+
+              <!-- Live Stats Bar (Integrated below game) -->
+              <div class="mt-2 grid grid-cols-2 gap-2">
+                <div class="bg-slate-50 rounded-xl p-3 flex items-center justify-between border border-slate-100">
+                   <span class="text-xs font-bold text-slate-500 uppercase">현재 기록</span>
+                   <span id="stat-current" class="text-lg font-black text-slate-800">-</span>
+                </div>
+                <div class="bg-slate-50 rounded-xl p-3 flex items-center justify-between border border-slate-100">
+                   <span class="text-xs font-bold text-slate-500 uppercase">평균 기록</span>
+                   <span id="stat-avg" class="text-lg font-black text-blue-600">-</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Restart Button (Hidden initially) -->
+            <div id="controls-container" class="hidden absolute top-[calc(50%+4rem)] left-1/2 -translate-x-1/2 z-30">
+                 <button id="btn-restart" class="px-8 py-3 bg-white text-slate-900 rounded-xl font-bold hover:bg-slate-100 hover:scale-105 transition-all shadow-xl shadow-black/20 flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> 다시 시작
+                </button>
             </div>
           </div>
         </div>
       </section>
 
-      <article class="space-y-24 md:space-y-32">
-        <!-- How-to Section -->
-        <section id="how-to-section">
-          <div class="text-center mb-12 md:mb-16">
-            <h2
-              class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
-            >
-              정확한 결과를 위한 3가지 팁
-            </h2>
-            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              불필요한 오차를 줄여 당신의 실제 수준을 반영하는 결과를 얻으세요.
-            </p>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-              class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
-            >
-              <div
-                class="flex items-center justify-center h-14 w-14 rounded-xl bg-blue-50 text-blue-600 mb-6"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-7 w-7"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slate-800 mb-3">
-                1. 환경 준비
-              </h3>
-              <p class="text-slate-500 leading-relaxed">
-                주변 소음과 방해 요소를 최소화하고, 안정적인 자세에서 마우스를
-                편안하게 쥘 수 있는 환경을 만드세요.
-              </p>
-            </div>
-            <div
-              class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
-            >
-              <div
-                class="flex items-center justify-center h-14 w-14 rounded-xl bg-green-50 text-green-600 mb-6"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-7 w-7"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slate-800 mb-3">
-                2. 예측 금지
-              </h3>
-              <p class="text-slate-500 leading-relaxed">
-                미리 클릭하거나 타이밍을 예측하지 마세요. 화면이 변하는 것을 본
-                후의 **순수한 반응**만을 측정하는 것이 중요합니다.
-              </p>
-            </div>
-            <div
-              class="bg-white p-8 rounded-2xl shadow-lg shadow-slate-200/40 border border-slate-100 hover:-translate-y-1 transition-transform duration-300"
-            >
-              <div
-                class="flex items-center justify-center h-14 w-14 rounded-xl bg-purple-50 text-purple-600 mb-6"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-7 w-7"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 4v5h5M7 7l1.586-1.586a6 6 0 118.414 0L17 7M4 20v-5h5M7 17l1.586 1.586a6 6 0 108.414 0L17 17"
-                  />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-slate-800 mb-3">
-                3. 반복 테스트
-              </h3>
-              <p class="text-slate-500 leading-relaxed">
-                긴장감 등으로 첫 결과는 부정확할 수 있습니다. 2~3회 이상
-                반복하여 가장 일관된 평균값을 확인하세요.
-              </p>
+      <!-- ===== Features Bento Grid ===== -->
+      <section class="container mx-auto px-4 max-w-7xl mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          <!-- Section Header -->
+          <div class="md:col-span-12 mb-2 flex items-end justify-between">
+            <div>
+              <h2 class="text-2xl font-bold text-slate-900">상세 분석 리포트</h2>
+              <p class="text-slate-500 text-sm">빅데이터 기반의 내 위치 확인</p>
             </div>
           </div>
-        </section>
 
-        <!-- Rank Section -->
-        <section
-          id="rank-section"
-          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-        >
-          <div class="order-2 lg:order-1">
-            <h2 class="text-3xl font-black text-slate-900 mb-6 tracking-tight">
-              당신의 반응속도는 어디에 위치할까?
-            </h2>
-            <p class="text-lg text-slate-500 mb-8 leading-relaxed">
-              테스트 결과를 통해 당신의 반응 시간이 전 세계 사용자 중 어느
-              위치에 속하는지 알아보세요. 아래 데이터는 5만 명 이상의 사용자
-              데이터를 기반으로 합니다.
-            </p>
-            <div
-              class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
-            >
-              <h3
-                class="bg-slate-50 px-6 py-4 font-bold text-slate-700 border-b border-slate-100"
-              >
-                반응속도 등급 기준
+          <!-- 1. Chart Section (Large) -->
+          <div class="md:col-span-8 bento-card p-6 md:p-8 relative overflow-hidden group">
+            <div class="flex items-center justify-between mb-6 relative z-10">
+              <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600"><i class="fa-solid fa-chart-line"></i></span>
+                전체 유저 분포도
               </h3>
-              <ul class="divide-y divide-slate-100">
-                <li
-                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
-                >
-                  <strong class="text-indigo-600">Elite (엘리트)</strong>
-                  <span class="text-slate-500 font-mono text-sm"
-                    >200ms 이하 (Top 5%)</span
-                  >
-                </li>
-                <li
-                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
-                >
-                  <strong class="text-blue-600">Advanced (고급)</strong>
-                  <span class="text-slate-500 font-mono text-sm"
-                    >201 ~ 250ms (Top 20%)</span
-                  >
-                </li>
-                <li
-                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
-                >
-                  <strong class="text-sky-600">Intermediate (중급)</strong>
-                  <span class="text-slate-500 font-mono text-sm"
-                    >251 ~ 300ms (Top 50%)</span
-                  >
-                </li>
-                <li
-                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
-                >
-                  <strong class="text-slate-600">Beginner (초급)</strong>
-                  <span class="text-slate-500 font-mono text-sm"
-                    >301 ~ 350ms (평균)</span
-                  >
-                </li>
-                <li
-                  class="px-6 py-4 flex justify-between items-center hover:bg-slate-50 transition-colors"
-                >
-                  <strong class="text-red-600">Improvement Needed</strong>
-                  <span class="text-slate-500 font-mono text-sm"
-                    >351ms 이상</span
-                  >
-                </li>
-              </ul>
+              <select class="text-xs bg-slate-100 border-none rounded px-2 py-1 text-slate-500 cursor-pointer hover:bg-slate-200 transition">
+                <option>All Time</option>
+                <option>Today</option>
+              </select>
             </div>
+            <div class="w-full h-64 md:h-80 relative z-10">
+              <canvas id="distributionChart"></canvas>
+            </div>
+            <!-- Background Blob -->
+            <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-colors"></div>
           </div>
-          <figure class="order-1 lg:order-2">
-            <div
-              class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100"
-            >
-              <img
-                src="./image/Reaction Test Results Overview.webp"
-                alt="반응속도 테스트 결과 화면과 순위 그래프"
-                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/600x400/f1f5f9/334155?text=Graph+Preview'"
-              />
-            </div>
-          </figure>
-        </section>
 
-        <!-- Accuracy Section -->
-        <section id="accuracy-section">
-          <div class="text-center mb-12">
-            <h2
-              class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
-            >
-              테스트 정확성의 비밀
-            </h2>
-            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              저희 테스트가 단순한 게임이 아닌, 신뢰할 수 있는 측정 도구인
-              이유를 알아보세요.
-            </p>
-          </div>
-          <div
-            class="bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-slate-200/40 border border-slate-100"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-              <div class="flex flex-col gap-4">
-                <div
-                  class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-2"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
+          <!-- 2. Tier Guide (Side) -->
+          <div class="md:col-span-4 bento-card p-0 bg-slate-900 text-white overflow-hidden relative flex flex-col">
+            <div class="p-6 md:p-8 relative z-10 flex-grow">
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                 <i class="fa-solid fa-crown text-yellow-400"></i> 티어 시스템
+              </h3>
+              
+              <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors border border-white/5 cursor-default group">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)]"></div>
+                    <span class="font-bold text-yellow-100 text-sm group-hover:text-white">CHALLENGER</span>
+                  </div>
+                  <span class="font-mono text-xs opacity-70">~ 150ms</span>
                 </div>
-                <h3 class="text-2xl font-bold text-slate-800">
-                  테스트 정확성 보증
-                </h3>
-                <p class="text-slate-500 leading-relaxed">
-                  저희의 반응속도 테스트는 JavaScript의 `Date.now()` 함수를
-                  기반으로 한 고정밀 타이머를 사용하여
-                  <strong>1ms(밀리초) 단위의 정확도</strong>를 보장합니다.
-                </p>
-              </div>
-              <div class="flex flex-col gap-4">
-                <div
-                  class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 mb-2"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5 cursor-default">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                    <span class="font-bold text-red-100 text-sm">GRANDMASTER</span>
+                  </div>
+                  <span class="font-mono text-xs opacity-70">~ 180ms</span>
                 </div>
-                <h3 class="text-2xl font-bold text-slate-800">
-                  반속 테스트의 오해와 사실
-                </h3>
-                <p class="text-slate-500 leading-relaxed">
-                  진정한 반응속도 측정의 핵심은
-                  <strong>예측 불가능한 자극</strong>에 대한 순수한 반응 시간을
-                  재는 것입니다.
-                </p>
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5 cursor-default">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-purple-400"></div>
+                    <span class="font-bold text-purple-100 text-sm">DIAMOND</span>
+                  </div>
+                  <span class="font-mono text-xs opacity-70">~ 220ms</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5 cursor-default">
+                  <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                    <span class="font-bold text-green-100 text-sm">PLATINUM</span>
+                  </div>
+                  <span class="font-mono text-xs opacity-70">~ 260ms</span>
+                </div>
               </div>
             </div>
+            
+            <!-- Bottom decorative area -->
+            <div class="bg-white/5 p-4 text-center border-t border-white/5">
+                <p class="text-xs text-slate-400">전 세계 상위 0.1%에 도전하세요</p>
+            </div>
+            
+            <!-- Abstract Background -->
+            <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-[80px] opacity-30"></div>
           </div>
-        </section>
 
-        <!-- Tips Section -->
-        <section id="tips-section">
-          <div class="text-center mb-12 md:mb-16">
-            <h2
-              class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
-            >
-              반응속도를 높이는 5가지 과학적 방법
-            </h2>
-            <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              결과가 기대에 못 미쳤나요? 걱정하지 마세요! 반응속도는 과학적인
-              훈련으로 충분히 향상될 수 있습니다.
-            </p>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div
-              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
+          <!-- 3. Pro Comparsion -->
+          <div class="md:col-span-6 bento-card p-6 md:p-8">
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600"><i class="fa-solid fa-gamepad"></i></span>
+              프로게이머 비교
+            </h3>
+            <div class="space-y-6">
+              <!-- Faker -->
+              <div class="group">
+                <div class="flex justify-between text-sm font-bold mb-2">
+                  <span class="text-slate-800 flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_South_Korea.svg/255px-Flag_of_South_Korea.svg.png" class="w-4 h-3 shadow-sm rounded-sm"> Faker (T1)</span>
+                  <span class="text-blue-600 font-mono">106ms</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                  <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full w-[25%] group-hover:scale-x-105 origin-left transition-transform duration-500"></div>
+                </div>
               </div>
-              <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">
-                  1. 시각적 집중 훈련
-                </h3>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  빠르게 움직이는 대상을 눈으로 좇는 훈련은 뇌의 시각 정보 처리
-                  속도를 높입니다.
-                </p>
+              <!-- TenZ -->
+              <div class="group">
+                <div class="flex justify-between text-sm font-bold mb-2">
+                  <span class="text-slate-800 flex items-center gap-2"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png" class="w-4 h-3 shadow-sm rounded-sm"> TenZ (Valorant)</span>
+                  <span class="text-red-500 font-mono">148ms</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                  <div class="bg-gradient-to-r from-red-500 to-rose-600 h-3 rounded-full w-[35%] group-hover:scale-x-105 origin-left transition-transform duration-500"></div>
+                </div>
               </div>
-            </div>
-            <div
-              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-green-50 text-green-600 rounded-xl"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">
-                  2. 반응 게임 플레이
-                </h3>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  리듬 게임, FPS 게임 등 순간적인 반응이 필요한 게임을 즐기세요.
-                </p>
-              </div>
-            </div>
-            <div
-              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-purple-50 text-purple-600 rounded-xl"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">
-                  3. 운동과 신체 활동
-                </h3>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  민첩성을 요구하는 운동은 신경과 근육의 협응력을 극대화합니다.
-                </p>
-              </div>
-            </div>
-            <div
-              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-yellow-50 text-yellow-600 rounded-xl"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">
-                  4. 수면과 영양 관리
-                </h3>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  매일 7-8시간의 질 좋은 수면은 필수입니다.
-                </p>
-              </div>
-            </div>
-            <div
-              class="p-8 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex items-start gap-6 md:col-span-2"
-            >
-              <div
-                class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-pink-50 text-pink-600 rounded-xl"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 4v5h5M7 7l1.586-1.586a6 6 0 118.414 0L17 7M4 20v-5h5M7 17l1.586 1.586a6 6 0 108.414 0L17 17"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-2">
-                  5. 반복적 테스트 연습
-                </h3>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  이 페이지의 테스트를 매일 꾸준히 연습하는 것 자체가 훌륭한
-                  훈련입니다.
-                </p>
+              <!-- Average -->
+              <div class="group">
+                <div class="flex justify-between text-sm font-bold mb-2">
+                  <span class="text-slate-500 flex items-center gap-2"><i class="fa-solid fa-user text-xs"></i> 일반인 평균</span>
+                  <span class="text-slate-500 font-mono">250ms</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                  <div class="bg-slate-400 h-3 rounded-full w-[60%] group-hover:scale-x-105 origin-left transition-transform duration-500"></div>
+                </div>
               </div>
             </div>
           </div>
-        </section>
-      </article>
+
+          <!-- 4. Other Tests Link (Promotion) -->
+          <div class="md:col-span-6 bento-card p-6 md:p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-100">
+            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600"><i class="fa-solid fa-layer-group"></i></span>
+              다른 테스트 도전하기
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="/sori-banungsokdo-test.html" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all border border-blue-100 group">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i class="fa-solid fa-headphones text-xl text-rose-500 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-bold text-slate-800">청각 반응</span>
+                    </div>
+                    <p class="text-xs text-slate-500">시각보다 청각이 더 빠르다는 사실을 아시나요?</p>
+                </a>
+                <a href="/valorant-banungsokdo-test.html" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all border border-blue-100 group">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i class="fa-solid fa-crosshairs text-xl text-emerald-500 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-bold text-slate-800">에임 반응</span>
+                    </div>
+                    <p class="text-xs text-slate-500">발로란트/옵치 유저를 위한 정밀 에임 측정.</p>
+                </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== Info & Scientific Section ===== -->
+      <section class="bg-white border-y border-slate-200 py-16">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-slate-900 mb-4">반응속도에 대한 과학적 사실</h2>
+                <p class="text-slate-500">단순한 게임이 아닙니다. 당신의 신경계 성능을 측정합니다.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">시각 정보 처리</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        눈으로 빛을 감지하고 뇌가 명령을 내려 손가락을 움직이기까지 평균 0.25초가 걸립니다. 훈련을 통해 0.15초까지 단축 가능합니다.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-purple-600 text-2xl">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">장비의 중요성</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        144Hz 모니터는 60Hz보다 약 10~15ms의 반응 이득을 줍니다. 무선 마우스보다 유선 연결이 인풋렉 감소에 유리합니다.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-emerald-600 text-2xl">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">나이와 반응속도</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        반응속도는 24세 전후로 정점을 찍고 서서히 느려집니다. 하지만 꾸준한 FPS 게임과 훈련으로 노화를 늦출 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+      </section>
+      
+      <!-- ===== FAQ Section ===== -->
+      <section class="container mx-auto px-4 max-w-4xl py-16">
+        <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">자주 묻는 질문</h2>
+        <div class="space-y-4">
+            <details class="group bg-white rounded-xl border border-slate-200 open:border-blue-200 overflow-hidden transition-all shadow-sm">
+                <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-700 hover:text-blue-600 group-open:bg-blue-50/50">
+                    모바일과 PC 중 어디가 더 정확한가요?
+                    <i class="fa-solid fa-chevron-down text-sm text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="p-5 pt-2 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
+                    PC 환경이 더 정확합니다. 모바일 터치스크린은 하드웨어 특성상 약 20~50ms의 추가적인 입력 지연(Input Lag)이 발생할 수 있습니다. 정확한 측정을 위해서는 PC와 유선 마우스를 권장합니다.
+                </div>
+            </details>
+            <details class="group bg-white rounded-xl border border-slate-200 open:border-blue-200 overflow-hidden transition-all shadow-sm">
+                <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-700 hover:text-blue-600 group-open:bg-blue-50/50">
+                    프로게이머들의 평균 반응속도는 얼마인가요?
+                    <i class="fa-solid fa-chevron-down text-sm text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="p-5 pt-2 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
+                    FPS 프로게이머(CS:GO, 발로란트 등)의 평균 시각 반응속도는 약 150ms~180ms 사이입니다. 예측 샷이 아닌 순수 반응속도가 130ms 이하라면 상위 0.01%의 재능입니다.
+                </div>
+            </details>
+            <details class="group bg-white rounded-xl border border-slate-200 open:border-blue-200 overflow-hidden transition-all shadow-sm">
+                <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-700 hover:text-blue-600 group-open:bg-blue-50/50">
+                    반응속도를 빠르게 만드는 방법이 있나요?
+                    <i class="fa-solid fa-chevron-down text-sm text-slate-400 group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <div class="p-5 pt-2 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
+                    1. 충분한 수면과 카페인 섭취가 일시적인 도움을 줄 수 있습니다.<br>
+                    2. 고주사율 모니터와 저지연 마우스를 사용하세요.<br>
+                    3. 에임 트레이너 등을 통해 꾸준히 시각-운동 협응력을 훈련하세요.
+                </div>
+            </details>
+        </div>
+      </section>
+
     </main>
 
     <!-- ===== Footer Start ===== -->
@@ -896,7 +641,6 @@
             </ul>
           </div>
         </div>
-
         <div
           class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400"
         >
@@ -920,220 +664,241 @@
     </footer>
     <!-- ===== Footer End ===== -->
 
+    <!-- Result Modal -->
+    <div id="modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+      <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" id="modal-bg"></div>
+      <div class="bg-white rounded-[2rem] p-8 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 relative z-10 text-center border border-white/20">
+        
+        <!-- Confetti Animation Placeholder -->
+        <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full flex items-center justify-center text-4xl text-white shadow-lg ring-4 ring-white">
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+        
+        <div class="mt-8">
+            <h2 class="text-2xl font-black text-slate-900 mb-1">테스트 완료!</h2>
+            <p class="text-slate-500 text-sm mb-6">당신의 최종 결과입니다</p>
+    
+            <div class="bg-slate-50 rounded-2xl p-6 mb-6 border border-slate-100">
+              <div id="modal-result" class="text-6xl font-black text-slate-900 tracking-tight font-mono mb-2">215<span class="text-2xl text-slate-400 ml-1">ms</span></div>
+              <div id="modal-tier" class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 font-bold rounded-full text-sm">Diamond</div>
+            </div>
+            
+            <button id="modal-close" class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-rotate-right"></i> 다시 도전하기
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logic -->
     <script>
-      // ===== Mobile Menu Toggle Logic =====
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const iconMenu = document.getElementById("icon-menu");
-      const iconClose = document.getElementById("icon-close");
+      // === Load High Score ===
+      const localHighScore = localStorage.getItem('reactionHighScore');
+      const scoreDisplay = document.getElementById('high-score');
+      if(localHighScore) {
+        scoreDisplay.innerText = `${localHighScore}ms`;
+      }
 
-      if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener("click", () => {
-          const isOpen = mobileMenu.classList.contains("open");
-          if (isOpen) {
-            mobileMenu.classList.remove("open");
-            iconMenu.classList.remove("hidden");
-            iconClose.classList.add("hidden");
-          } else {
-            mobileMenu.classList.add("open");
-            iconMenu.classList.add("hidden");
-            iconClose.classList.remove("hidden");
+      // === Chart.js ===
+      const ctx = document.getElementById('distributionChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['100', '150', '200', '250', '300', '350', '400', '500+'],
+          datasets: [{
+            label: '사용자 분포 (%)',
+            data: [0.5, 5, 20, 45, 20, 7, 2, 0.5],
+            borderColor: '#3b82f6',
+            backgroundColor: (context) => {
+              const ctx = context.chart.ctx;
+              const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+              gradient.addColorStop(0, 'rgba(59, 130, 246, 0.2)');
+              gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+              return gradient;
+            },
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointRadius: 0,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: {
+              mode: 'index',
+              intersect: false,
+              backgroundColor: 'rgba(15, 23, 42, 0.9)',
+              titleFont: { family: 'Pretendard' },
+              bodyFont: { family: 'Pretendard' }
+          }},
+          scales: {
+            y: { display: false },
+            x: { 
+                grid: { display: false },
+                ticks: { font: { family: 'Pretendard' } }
+            }
+          },
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
           }
-        });
-      }
+        }
+      });
 
-      // ===== Reaction Test Logic (Fixed & Optimized) =====
-      const reactionBox = document.getElementById("reactionBox");
-      // FIXED: This element now exists in HTML
-      const startTestBtn = document.getElementById("startTest");
-      const changeModeBtn = document.getElementById("changeMode");
-      const avgTimeSpan = document.getElementById("avgTime");
-      const globalRankSpan = document.getElementById("globalRank");
+      // === Game Logic ===
+      const box = document.getElementById('reaction-box');
+      const boxBg = document.getElementById('box-bg');
+      const boxTitle = document.getElementById('box-title');
+      const boxSubtitle = document.getElementById('box-subtitle');
+      const boxIcon = document.getElementById('box-icon');
+      
+      const statCurrent = document.getElementById('stat-current');
+      const statAvg = document.getElementById('stat-avg');
+      const statCountBadge = document.getElementById('stat-count-badge');
+      const btnRestart = document.getElementById('btn-restart');
+      const controlsContainer = document.getElementById('controls-container');
 
-      let testCount = 0;
-      let totalTime = 0;
+      const modal = document.getElementById('modal');
+      const modalBg = document.getElementById('modal-bg');
+      const modalClose = document.getElementById('modal-close');
+      const modalResult = document.getElementById('modal-result');
+      const modalTier = document.getElementById('modal-tier');
+
+      let state = 'idle'; // idle, waiting, ready, result
       let startTime = 0;
-      let isWaitingForClick = false; // Box is Green
-      let isWaitingForGreen = false; // Box is Red
-      let testModes = [5, 10, 20];
-      let currentModeIndex = 0;
-      let testTimeout;
-      let testInProgress = false;
+      let timeout = null;
+      let scores = [];
+      const MAX_ROUNDS = 5;
 
-      function getTestMode() {
-        return testModes[currentModeIndex];
+      const STATES = {
+        idle: { bg: 'bg-slate-800', title: '테스트 시작', sub: '클릭하여 시작하세요', icon: 'fa-bolt', iconColor: 'text-blue-500' },
+        waiting: { bg: 'bg-rose-500', title: '기다리세요...', sub: '초록색이 되면 클릭!', icon: 'fa-hand', iconColor: 'text-white' },
+        ready: { bg: 'bg-emerald-500', title: '지금 클릭!', sub: '', icon: 'fa-pointer', iconColor: 'text-white' },
+        early: { bg: 'bg-amber-500', title: '너무 빨라요!', sub: '다시 시도하려면 클릭', icon: 'fa-triangle-exclamation', iconColor: 'text-white' }
+      };
+
+      function setUI(s) {
+        state = s;
+        const cfg = STATES[s];
+        
+        // Remove old BG classes
+        boxBg.className = `absolute inset-0 transition-colors duration-200 ${cfg.bg}`;
+        box.className = `game-container relative flex-grow w-full rounded-[1.5rem] overflow-hidden select-none flex flex-col items-center justify-center transition-all duration-300 ring-4 ring-transparent hover:ring-white/20 ${s === 'waiting' ? 'waiting' : ''}`;
+        
+        boxTitle.innerText = cfg.title;
+        boxSubtitle.innerText = cfg.sub;
+        boxIcon.innerHTML = `<i class="fa-solid ${cfg.icon}"></i>`;
+        boxIcon.className = `text-6xl md:text-7xl mb-6 transition-colors duration-200 ${cfg.iconColor} ${s === 'idle' ? 'animate-bounce-slight' : ''}`;
       }
 
-      // Change Mode Handler
-      changeModeBtn.addEventListener("click", () => {
-        if (testInProgress) return;
-        currentModeIndex = (currentModeIndex + 1) % testModes.length;
-        const newMode = getTestMode();
-        changeModeBtn.textContent = `모드 (${newMode}회)`;
-        resetTestUI();
+      function updateStats() {
+        const avg = scores.length ? Math.floor(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+        statCurrent.innerText = scores.length ? `${scores[scores.length-1]}ms` : '-';
+        statAvg.innerText = avg ? `${avg}ms` : '-';
+        statCountBadge.innerText = `${MAX_ROUNDS - scores.length}회 남음`;
+        
+        let tier = "Unranked";
+        if(avg > 0) {
+            if(avg <= 150) tier = "CHALLENGER";
+            else if(avg <= 200) tier = "GRANDMASTER";
+            else if(avg <= 250) tier = "DIAMOND";
+            else tier = "PLATINUM";
+        }
+        return { avg, tier };
+      }
+
+      function finishGame() {
+        const { avg, tier } = updateStats();
+        
+        // Save High Score logic
+        const currentHigh = localStorage.getItem('reactionHighScore');
+        if (!currentHigh || avg < parseInt(currentHigh)) {
+            localStorage.setItem('reactionHighScore', avg);
+            scoreDisplay.innerText = `${avg}ms`;
+            // Add new record badge or animation here if desired
+        }
+
+        modalResult.innerHTML = `${avg}<span class="text-2xl text-slate-400 ml-1">ms</span>`;
+        modalTier.innerText = tier;
+        
+        // Tier Color Logic for Modal
+        modalTier.className = `inline-block px-4 py-1.5 font-bold rounded-full text-sm shadow-sm ${
+            tier === 'CHALLENGER' ? 'bg-yellow-100 text-yellow-700' :
+            tier === 'GRANDMASTER' ? 'bg-red-100 text-red-700' :
+            tier === 'DIAMOND' ? 'bg-purple-100 text-purple-700' :
+            'bg-green-100 text-green-700'
+        }`;
+
+        // Modal Open
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.querySelector('div.transform').classList.remove('scale-95');
+        modal.querySelector('div.transform').classList.add('scale-100');
+        
+        controlsContainer.classList.remove('hidden');
+      }
+
+      function reset() {
+        scores = [];
+        updateStats();
+        setUI('idle');
+        statCountBadge.innerText = "Ready";
+        controlsContainer.classList.add('hidden');
+        
+        // Modal Close
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.querySelector('div.transform').classList.add('scale-95');
+        modal.querySelector('div.transform').classList.remove('scale-100');
+      }
+
+      function handleClick() {
+        if(state === 'idle' || state === 'result' || state === 'early') {
+          if(scores.length >= MAX_ROUNDS) { reset(); }
+          
+          setUI('waiting');
+          const delay = Math.random() * 2000 + 1000; // 1s to 3s delay
+          timeout = setTimeout(() => {
+            setUI('ready');
+            startTime = Date.now();
+          }, delay);
+        } else if (state === 'waiting') {
+          clearTimeout(timeout);
+          setUI('early');
+        } else if (state === 'ready') {
+          const time = Date.now() - startTime;
+          scores.push(time);
+          updateStats();
+          
+          if(scores.length >= MAX_ROUNDS) {
+            finishGame();
+            state = 'idle';
+            boxTitle.innerText = "완료!";
+            boxSubtitle.innerText = "결과 확인 중...";
+            boxIcon.innerHTML = '<i class="fa-solid fa-flag-checkered"></i>';
+          } else {
+            setUI('idle');
+            boxTitle.innerText = `${time}ms`;
+            boxSubtitle.innerText = "클릭하여 다음 라운드";
+            boxIcon.innerHTML = '<i class="fa-solid fa-clock"></i>';
+            boxIcon.className = "text-6xl md:text-7xl mb-6 text-white";
+          }
+        }
+      }
+
+      box.addEventListener('mousedown', handleClick);
+      box.addEventListener('touchstart', (e) => { e.preventDefault(); handleClick(); });
+      modalClose.addEventListener('click', reset);
+      modalBg.addEventListener('click', reset);
+      btnRestart.addEventListener('click', reset);
+
+      // Mobile Menu
+      const btnMenu = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      btnMenu.addEventListener('click', () => {
+        menu.classList.toggle('open');
       });
-
-      // Start Button Handler
-      startTestBtn.addEventListener("click", () => {
-        if (testInProgress) return;
-        startTest();
-      });
-
-      // Also allow starting by clicking the box if not running
-      reactionBox.addEventListener("click", () => {
-        if (!testInProgress) {
-          startTest();
-        } else {
-          handleBoxClick();
-        }
-      });
-
-      function startTest() {
-        resetTestVars();
-        testInProgress = true;
-
-        // UI Updates for Running State
-        startTestBtn.disabled = true;
-        changeModeBtn.disabled = true;
-        startTestBtn.classList.add("opacity-50", "cursor-not-allowed");
-        changeModeBtn.classList.add("opacity-50", "cursor-not-allowed");
-        startTestBtn.textContent = "테스트 진행 중...";
-
-        startNextRound();
-      }
-
-      function startNextRound() {
-        if (testCount >= getTestMode()) {
-          finishTest();
-          return;
-        }
-
-        // Red State (Wait)
-        isWaitingForClick = false;
-        isWaitingForGreen = true;
-
-        reactionBox.className =
-          "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-colors duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-red-500 hover:scale-[1.02]";
-        reactionBox.innerHTML = '<span class="text-3xl">기다리세요...</span>';
-
-        const delay = Math.floor(Math.random() * 2500) + 1500; // Random delay 1.5s - 4s
-
-        clearTimeout(testTimeout);
-        testTimeout = setTimeout(() => {
-          // Green State (Go!)
-          isWaitingForGreen = false;
-          isWaitingForClick = true;
-          startTime = Date.now();
-
-          reactionBox.className =
-            "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-transform duration-75 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-green-500 scale-105";
-          reactionBox.innerHTML = '<span class="text-4xl">클릭하세요!</span>';
-        }, delay);
-      }
-
-      function handleBoxClick() {
-        // 1. Clicked when Green (Success)
-        if (isWaitingForClick) {
-          const endTime = Date.now();
-          const reactionTime = endTime - startTime;
-          testCount++;
-          totalTime += reactionTime;
-
-          isWaitingForClick = false;
-
-          // Feedback State
-          reactionBox.className =
-            "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-slate-800";
-          reactionBox.innerHTML = `<span class="text-4xl">${reactionTime}ms</span>`;
-
-          clearTimeout(testTimeout);
-          testTimeout = setTimeout(startNextRound, 1000); // 1s delay before next
-        }
-        // 2. Clicked when Red (Fail / Too Fast)
-        else if (isWaitingForGreen) {
-          clearTimeout(testTimeout);
-          reactionBox.innerHTML =
-            '<span class="text-3xl">너무 빨라요!</span><span class="text-sm mt-2">다시 시작하려면 클릭</span>';
-          reactionBox.className =
-            "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-orange-600 animate-pulse";
-
-          testInProgress = false;
-          // Don't show failed stats, just reset enabling user to try again
-          startTestBtn.disabled = false;
-          changeModeBtn.disabled = false;
-          startTestBtn.classList.remove("opacity-50", "cursor-not-allowed");
-          changeModeBtn.classList.remove("opacity-50", "cursor-not-allowed");
-          startTestBtn.textContent = "테스트 시작";
-        }
-      }
-
-      function finishTest() {
-        const average = Math.round(totalTime / getTestMode());
-        avgTimeSpan.textContent = `${average}ms`;
-
-        let rankText;
-        let rankColor = "text-slate-800";
-
-        if (average <= 200) {
-          rankText = "Elite (상위 5%)";
-          rankColor = "text-indigo-600";
-        } else if (average <= 250) {
-          rankText = "Advanced (상위 20%)";
-          rankColor = "text-blue-600";
-        } else if (average <= 300) {
-          rankText = "Intermediate (상위 50%)";
-          rankColor = "text-sky-600";
-        } else if (average <= 350) {
-          rankText = "Beginner (평균)";
-          rankColor = "text-slate-600";
-        } else {
-          rankText = "개선 필요";
-          rankColor = "text-red-600";
-        }
-
-        globalRankSpan.textContent = rankText;
-        globalRankSpan.className = `text-xl font-bold ${rankColor}`;
-
-        // Finish Visuals
-        reactionBox.className =
-          "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-blue-600 hover:scale-[1.02]";
-        reactionBox.innerHTML =
-          '<span class="text-3xl mb-2">완료!</span><span class="text-sm opacity-90">다시 하려면 클릭</span>';
-
-        testInProgress = false;
-        startTestBtn.disabled = false;
-        changeModeBtn.disabled = false;
-        startTestBtn.classList.remove("opacity-50", "cursor-not-allowed");
-        changeModeBtn.classList.remove("opacity-50", "cursor-not-allowed");
-        startTestBtn.textContent = "다시 시작";
-      }
-
-      function resetTestVars() {
-        clearTimeout(testTimeout);
-        testCount = 0;
-        totalTime = 0;
-        isWaitingForClick = false;
-        isWaitingForGreen = false;
-
-        avgTimeSpan.textContent = "0ms";
-        globalRankSpan.textContent = "계산 중...";
-        globalRankSpan.className = "text-xl font-bold text-slate-800";
-      }
-
-      function resetTestUI() {
-        resetTestVars();
-        testInProgress = false;
-
-        // Reset to Initial Blue State
-        reactionBox.className =
-          "no-select w-full max-w-xs aspect-square mx-auto my-10 rounded-3xl cursor-pointer transition-all duration-200 flex flex-col items-center justify-center text-white font-bold shadow-2xl bg-slate-700 hover:scale-[1.02]";
-        reactionBox.innerHTML =
-          '<span class="text-3xl block mb-2">테스트 시작</span><span class="text-sm font-normal opacity-80">여기를 클릭하세요</span>';
-
-        startTestBtn.disabled = false;
-        changeModeBtn.disabled = false;
-        startTestBtn.textContent = "테스트 시작";
-      }
     </script>
   </body>
 </html>
