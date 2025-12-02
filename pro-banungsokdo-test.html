@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="발로란트 프로 반응 속도 측정! Faker, DRX, T1 등 탑 프로게이머와 나의 반속을 정확하게 비교하세요. 2025년 최신 훈련 팁과 데이터 무료 제공."
+    />
+    <meta
+      property="og:title"
+      content="프로게이머 반응속도 테스트 2025 | T1 vs Gen.G 데이터 비교"
+    />
+    <meta
+      property="og:description"
+      content="0.001초의 승부. 당신의 피지컬은 상위 몇 %일까요? 지금 바로 측정하세요."
+    />
+    <title>
+      프로게이머 반응속도 테스트 2025: 탑 프로 데이터 비교 및 측정 도구
+    </title>
+    <link
+      rel="canonical"
+      href="https://reactfasttest.com/pro-comparison.html"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Analytics & Adsense (Preserved) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-W0M9N2D341"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-W0M9N2D341");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4059737187619820"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Fonts: Pretendard -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Pretendard", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                blue: "#3b82f6",
+                dark: "#0f172a",
+                bg: "#f8fafc",
+              },
+              // Team Colors for Styling
+              t1: { red: "#E4002B", dark: "#111" },
+              geng: { gold: "#AA8A00", black: "#000" },
+            },
+            animation: {
+              "bounce-slight": "bounceSlight 2s infinite",
+              "pop-in":
+                "popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards",
+            },
+            keyframes: {
+              bounceSlight: {
+                "0%, 100%": { transform: "translateY(-5%)" },
+                "50%": { transform: "translateY(0)" },
+              },
+              popIn: {
+                "0%": {
+                  opacity: "0",
+                  transform: "scale(0.9) translateY(20px)",
+                },
+                "100%": { opacity: "1", transform: "scale(1) translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "Pretendard", -apple-system, sans-serif;
+        background-color: #f8fafc;
+        color: #334155;
+        overflow-x: hidden;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .bento-card {
+        background: white;
+        border-radius: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+          0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .bento-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .game-container {
+        cursor: pointer;
+        transition: background-color 0.1s;
+      }
+      .game-container.waiting {
+        cursor: wait;
+      }
+
+      /* Mobile Menu */
+      #mobile-menu {
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+      #mobile-menu.open {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      .bg-grid {
+        background-size: 40px 40px;
+        background-image: linear-gradient(
+            to right,
+            rgba(203, 213, 225, 0.3) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(203, 213, 225, 0.3) 1px,
+            transparent 1px
+          );
+        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      }
+
+      .card-t1 {
+        background: linear-gradient(135deg, #111 0%, #e4002b 150%);
+        color: white;
+      }
+      .card-geng {
+        background: linear-gradient(135deg, #000 0%, #aa8a00 150%);
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 relative">
+    <div class="fixed inset-0 bg-grid z-[-1] pointer-events-none"></div>
+
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 transition-all duration-300">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <a href="/" class="group flex items-center gap-2.5">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+              <span class="text-white font-bold text-lg leading-none">R</span>
+            </div>
+            <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-1">
+            <a href="/" class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50">홈</a>
+            <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
+            <a href="/sori-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">소리</a>
+            <a href="/mobile-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">모바일</a>
+            <a href="/pro-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">프로게이머 반응속도 테스트</a>
+            <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
+          </nav>
+
+          <!-- Desktop Utilities -->
+          <div class="hidden md:flex items-center gap-4">
+             <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+               <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+               <span>1,240명 측정 중</span>
+             </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 shadow-lg">
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a href="/" class="block px-3 py-3 rounded-xl text-base font-semibold text-blue-600 bg-blue-50">홈</a>
+          <a href="/valorant-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">발로란트 테스트</a>
+          <a href="/sori-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">소리 반응 테스트</a>
+          <a href="/mobile-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">모바일 테스트</a>
+          <a href="/pro-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">프로게이머 반응속도 테스트</a>
+          <a href="/banungsokdo-hyanghang-guide.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">향상 가이드</a>
+        </div>
+      </div>
+    </header>
+    <!-- ===== Header End ===== -->
+
+    <main class="pt-24 pb-20">
+      <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- ===== Left: Side Navigation ===== -->
+          <aside class="hidden lg:block lg:col-span-3 sticky top-24">
+            <nav
+              class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-6"
+            >
+              <h3
+                class="font-bold text-slate-900 mb-4 flex items-center gap-2 uppercase text-xs tracking-wider"
+              >
+                <i class="fa-solid fa-list-ul text-blue-500"></i> Contents
+              </h3>
+              <ul class="space-y-1 text-sm">
+                <li>
+                  <a
+                    href="#tool-module"
+                    class="block px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors font-medium"
+                    >⚡️ 측정 도구</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#pro-define"
+                    class="block px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                    >프로 반응속도 정의</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#pro-guide"
+                    class="block px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                    >측정 가이드</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#pro-chart"
+                    class="block px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                    >LCK/Valorant 비교</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#training-tips"
+                    class="block px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                    >훈련 팁</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </aside>
+
+          <article class="lg:col-span-9 space-y-10">
+            <section
+              class="text-center lg:text-left border-b border-slate-200 pb-8"
+            >
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs font-bold mb-4 shadow-lg shadow-slate-200"
+              >
+                <span class="text-yellow-400"
+                  ><i class="fa-solid fa-star"></i
+                ></span>
+                2025 PRO DATA UPDATED
+              </div>
+              <h1
+                class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight leading-[1.2]"
+              >
+                프로게이머
+                <span class="gradient-text">반응속도 테스트</span> 2025
+              </h1>
+              <p class="text-lg text-slate-500 leading-relaxed max-w-3xl">
+                <strong class="text-slate-800"
+                  >"당신의 피지컬은 몇 티어입니까?"</strong
+                ><br />
+                Faker, Chovy 등 월드 클래스 선수들의 데이터와 당신의 기록을
+                비교하고, 정확한 피지컬 등급을 확인하세요.
+              </p>
+            </section>
+
+            <!-- 2. Measurement Tool (Embedded) -->
+            <section id="tool-module" class="scroll-mt-28">
+              <div
+                class="bento-card p-2 md:p-3 relative overflow-hidden group shadow-xl shadow-blue-500/5 ring-1 ring-blue-100"
+              >
+                <div
+                  class="bg-slate-900 text-white rounded-t-2xl p-4 flex justify-between items-center mb-2 mx-[-8px] mt-[-8px]"
+                >
+                  <h2 class="font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i> LIVE TEST LAB
+                  </h2>
+                  <span
+                    class="text-xs bg-white/10 px-2 py-1 rounded text-white/80"
+                    >Ver 2.5</span
+                  >
+                </div>
+
+                <div
+                  class="relative bg-white rounded-2xl h-[350px] md:h-[400px] flex flex-col mb-4 border border-slate-100"
+                >
+                  <div
+                    id="reaction-box"
+                    class="game-container relative flex-grow w-full rounded-[1rem] bg-slate-800 overflow-hidden select-none flex flex-col items-center justify-center transition-all duration-300 ring-4 ring-transparent hover:ring-slate-100 mx-auto max-w-full"
+                  >
+                    <div
+                      id="box-bg"
+                      class="absolute inset-0 bg-slate-800 transition-colors duration-200"
+                    ></div>
+                    <div
+                      class="relative z-10 text-center transform transition-transform duration-300 px-4"
+                    >
+                      <div
+                        id="box-icon"
+                        class="text-5xl md:text-6xl mb-4 text-blue-500 animate-bounce-slight transition-colors duration-200"
+                      >
+                        <i class="fa-solid fa-play"></i>
+                      </div>
+                      <h2
+                        id="box-title"
+                        class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight font-sans"
+                      >
+                        측정 시작
+                      </h2>
+                      <p
+                        id="box-subtitle"
+                        class="text-slate-300 text-sm md:text-base font-medium bg-black/30 px-4 py-1.5 rounded-full inline-block backdrop-blur-md border border-white/10"
+                      >
+                        화면을 클릭하여 테스트를 시작하세요
+                      </p>
+                    </div>
+                    <div class="absolute top-4 right-4 z-20">
+                      <span
+                        id="stat-count-badge"
+                        class="px-2 py-1 bg-black/40 text-white rounded-md text-xs font-bold backdrop-blur-md border border-white/10"
+                        >READY</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 px-2 pb-2">
+                  <div
+                    class="bg-slate-50 rounded-xl p-4 border border-slate-100 text-center"
+                  >
+                    <span
+                      class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1"
+                      >Current</span
+                    >
+                    <span
+                      id="stat-current"
+                      class="text-2xl font-black text-slate-800"
+                      >-</span
+                    >
+                  </div>
+                  <div
+                    class="bg-slate-50 rounded-xl p-4 border border-slate-100 text-center"
+                  >
+                    <span
+                      class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1"
+                      >Average</span
+                    >
+                    <span
+                      id="stat-avg"
+                      class="text-2xl font-black text-blue-600"
+                      >-</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="pro-define" class="scroll-mt-28">
+              <h2
+                class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-quote-left text-blue-500"></i> 프로게이머
+                반응속도란?
+              </h2>
+              <div
+                class="bento-card p-6 md:p-8 bg-gradient-to-br from-white to-slate-50 border-l-4 border-l-blue-600"
+              >
+                <blockquote class="mb-6">
+                  <p
+                    class="text-lg font-medium text-slate-800 italic leading-relaxed mb-4"
+                  >
+                    "프로의 반응 속도는 단순한 클릭 속도가 아닌,
+                    <span class="bg-yellow-100 px-1 text-yellow-800 font-bold"
+                      >상황 인지(Cognition)와 예측(Prediction)의 결합</span
+                    >입니다."
+                  </p>
+                  <footer class="flex items-center gap-3">
+                    <div
+                      class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500"
+                    >
+                      <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                      <div class="font-bold text-slate-900">
+                        전 T1 코치 / FPS 분석가
+                      </div>
+                      <div class="text-xs text-slate-500">
+                        LCK & VCT Analysis Report
+                      </div>
+                    </div>
+                  </footer>
+                </blockquote>
+                <p
+                  class="text-slate-600 leading-relaxed border-t border-slate-100 pt-4"
+                >
+                  일반인의 시각 정보 처리는 약 0.25초가 소요되지만, 탑
+                  프로게이머들은 반복적인 훈련을 통해 이를 0.15초 대까지
+                  단축시킵니다. 특히 '한타' 상황에서의 반응은 본능적인 영역에
+                  가깝습니다.
+                </p>
+              </div>
+            </section>
+
+            <!-- 4. Tool Guide -->
+            <section id="pro-guide" class="scroll-mt-28">
+              <h2 class="text-2xl font-bold text-slate-900 mb-6">
+                측정 및 훈련 가이드
+              </h2>
+              <div class="bento-card p-0 overflow-hidden mb-6">
+                <figure class="relative group cursor-pointer bg-slate-100">
+                  <div
+                    class="w-full aspect-video flex items-center justify-center relative overflow-hidden bg-slate-200"
+                  >
+                    <img
+                      src="./image/Valorant_Victory.webp"
+                      alt="A split image showing a gamer wearing special glasses to reduce eye strain and improve cognitive processing speed on the left, with an overlay indicating '150ms Cognitive Processing Speed' and 'Eye Training Regimen'. On the right, a Valorant game screen shows a 'Victory' banner, implying success achieved through training, with a hand on a gaming mouse."
+                      class="w-full h-full object-cover"
+                    />
+                    <div
+                      class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 pointer-events-none"
+                    >
+                      <i class="fa-solid fa-image text-4xl mb-2"></i>
+                      <span class="text-sm font-medium"
+                        >이미지: 에임랩 훈련 화면</span
+                      >
+                    </div>
+                  </div>
+                  <figcaption
+                    class="p-4 bg-slate-50 text-center text-sm text-slate-500 border-t border-slate-200"
+                  >
+                    그림 1: 정확한 측정을 위한 훈련 환경 예시
+                  </figcaption>
+                </figure>
+                <div class="p-6 md:p-8">
+                  <h3 class="font-bold text-lg mb-3">올바른 측정 3단계</h3>
+                  <ul class="space-y-4">
+                    <li class="flex gap-4">
+                      <span
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center"
+                        >1</span
+                      >
+                      <div>
+                        <strong class="block text-slate-900 mb-1"
+                          >환경 설정 (Setup)</strong
+                        >
+                        <p class="text-sm text-slate-600">
+                          모니터 주사율을 최대로(144Hz+), 수직 동기화(V-Sync)를
+                          해제하여 인풋렉을 최소화하세요.
+                        </p>
+                      </div>
+                    </li>
+                    <li class="flex gap-4">
+                      <span
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center"
+                        >2</span
+                      >
+                      <div>
+                        <strong class="block text-slate-900 mb-1"
+                          >자세 유지 (Posture)</strong
+                        >
+                        <p class="text-sm text-slate-600">
+                          실제 게임과 동일한 파지법을 유지하고 긴장을 푸세요.
+                          팔의 각도가 일정해야 합니다.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- 5. Pro Comparison Chart -->
+            <section id="pro-chart" class="scroll-mt-28">
+              <h2
+                class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"
+              >
+                <span class="text-t1-red"
+                  ><i class="fa-solid fa-chart-simple"></i
+                ></span>
+                프로게이머 비교 차트 2025
+              </h2>
+
+              <!-- Cards -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div
+                  class="card-t1 rounded-2xl p-6 relative overflow-hidden shadow-lg group"
+                >
+                  <div
+                    class="absolute right-[-20px] top-[-20px] text-[150px] opacity-10 font-black italic"
+                  >
+                    T1
+                  </div>
+                  <div class="relative z-10">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <span
+                          class="bg-black/30 px-2 py-1 rounded text-xs font-bold border border-white/20"
+                          >LCK GOAT</span
+                        >
+                        <h3 class="text-3xl font-black italic mt-2">Faker</h3>
+                        <p class="opacity-80 text-sm">Lee Sang-hyeok</p>
+                      </div>
+                      <div class="text-right">
+                        <div class="text-4xl font-black">
+                          106<span class="text-lg">ms</span>
+                        </div>
+                        <div class="text-xs opacity-75">Peak Record</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="card-geng rounded-2xl p-6 relative overflow-hidden shadow-lg group"
+                >
+                  <div
+                    class="absolute right-[-20px] top-[-20px] text-[150px] opacity-10 font-black italic"
+                  >
+                    GG
+                  </div>
+                  <div class="relative z-10">
+                    <div class="flex justify-between items-start">
+                      <div>
+                        <span
+                          class="bg-black/30 px-2 py-1 rounded text-xs font-bold border border-white/20"
+                          >LCK MID</span
+                        >
+                        <h3 class="text-3xl font-black italic mt-2">Chovy</h3>
+                        <p class="opacity-80 text-sm">Jeong Ji-hoon</p>
+                      </div>
+                      <div class="text-right">
+                        <div class="text-4xl font-black">
+                          138<span class="text-lg">ms</span>
+                        </div>
+                        <div class="text-xs opacity-75">Average</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <div class="bento-card overflow-hidden">
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead class="bg-slate-50 border-b border-slate-200">
+                      <tr>
+                        <th
+                          class="p-4 text-xs font-bold text-slate-500 uppercase"
+                        >
+                          구분 (Tier)
+                        </th>
+                        <th
+                          class="p-4 text-xs font-bold text-slate-500 uppercase"
+                        >
+                          평균 반응 (Avg)
+                        </th>
+                        <th
+                          class="p-4 text-xs font-bold text-slate-500 uppercase"
+                        >
+                          최고 기록 (Best)
+                        </th>
+                        <th
+                          class="p-4 text-xs font-bold text-slate-500 uppercase"
+                        >
+                          Role
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="divide-y divide-slate-100 text-sm text-slate-700"
+                    >
+                      <tr class="hover:bg-slate-50/50">
+                        <td class="p-4 font-bold text-slate-900">
+                          일반 사용자
+                        </td>
+                        <td class="p-4 text-slate-500">250ms</td>
+                        <td class="p-4 text-slate-500">200ms</td>
+                        <td class="p-4">-</td>
+                      </tr>
+                      <tr class="hover:bg-slate-50/50 bg-red-50/30">
+                        <td class="p-4 font-bold text-red-700">
+                          발로란트 프로
+                        </td>
+                        <td class="p-4 font-bold text-slate-900">160ms</td>
+                        <td class="p-4 text-red-600 font-bold">130ms</td>
+                        <td class="p-4">Duelist</td>
+                      </tr>
+                      <tr class="hover:bg-slate-50/50 bg-blue-50/30">
+                        <td class="p-4 font-bold text-blue-700">LCK 프로</td>
+                        <td class="p-4 font-bold text-slate-900">180ms</td>
+                        <td class="p-4 text-blue-600 font-bold">150ms</td>
+                        <td class="p-4">Mid/AD</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            <!-- 6. Tips Section -->
+            <section id="training-tips" class="scroll-mt-28">
+              <h2 class="text-2xl font-bold text-slate-900 mb-6">
+                훈련 팁 및 가이드
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Image 2 -->
+                <div class="bento-card p-0 overflow-hidden md:col-span-2">
+                  <figure class="relative group">
+                    <div
+                      class="w-full  bg-slate-200 flex items-center justify-center"
+                    >
+                      <img
+                        src="./image/esports_gamer_phone_reaction_game.webp"
+                        alt="A cinematic close-up of a professional esports gamer's hands holding a modern smartphone, intensely playing a high-speed reaction training game. The phone screen displays a glowing green target button against a dark user interface, with motion blur indicating rapid thumb movements. In the blurred background, there's a high-tech gaming room illuminated by neon blue and red ambient lighting."
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                  </figure>
+                </div>
+                <div class="bento-card p-6 border-l-4 border-l-t1-red">
+                  <h3 class="font-bold text-slate-900 mb-2">
+                    예측 샷 (Pre-fire)
+                  </h3>
+                  <p class="text-sm text-slate-600">
+                    순수 반응보다 예측이 중요합니다. 상대가 나올 곳에 에임을
+                    미리 두는 '크로스헤어 배치'를 연습하세요.
+                  </p>
+                </div>
+                <div class="bento-card p-6 border-l-4 border-l-geng-gold">
+                  <h3 class="font-bold text-slate-900 mb-2">사운드 플레이</h3>
+                  <p class="text-sm text-slate-600">
+                    청각 반응(0.17s)은 시각(0.25s)보다 빠릅니다. 소리를 듣고
+                    먼저 반응하는 훈련이 필수입니다.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 7. Reviews & Q/A -->
+            <section class="scroll-mt-28">
+              <h2 class="text-2xl font-bold text-slate-900 mb-6">
+                사용자 후기 및 Q&A
+              </h2>
+
+              <div class="bento-card p-6 mb-6 bg-blue-50/50 border-blue-100">
+                <div class="flex items-start gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-blue-600 font-bold"
+                  >
+                    K
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <strong class="text-slate-900"
+                        >Kim_Valo (레디언트)</strong
+                      >
+                      <div class="flex text-yellow-400 text-xs">
+                        <i class="fa-solid fa-star"></i
+                        ><i class="fa-solid fa-star"></i
+                        ><i class="fa-solid fa-star"></i
+                        ><i class="fa-solid fa-star"></i
+                        ><i class="fa-solid fa-star"></i>
+                      </div>
+                    </div>
+                    <p class="text-sm text-slate-600 italic">
+                      "매일 랭크 돌리기 전에 여기서 손풀고 갑니다. 확실히 200ms
+                      이하로 나올 때 게임이 잘 풀리네요. 추천합니다."
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <details
+                  class="group bg-white rounded-xl border border-slate-200 open:border-blue-200 overflow-hidden transition-all shadow-sm"
+                >
+                  <summary
+                    class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-700 hover:text-blue-600 group-open:bg-blue-50/50 select-none"
+                  >
+                    반응 속도 테스트를 매일 해야 하나요?
+                    <i
+                      class="fa-solid fa-chevron-down text-sm text-slate-400 group-open:rotate-180 transition-transform"
+                    ></i>
+                  </summary>
+                  <div
+                    class="p-5 pt-2 text-sm text-slate-600 leading-relaxed bg-slate-50/50"
+                  >
+                    네, 꾸준한 측정은 자신의 컨디션을 체크하는 가장 좋은
+                    지표입니다. 피로도가 높을 때는 반응속도가 느려지므로, 이럴
+                    땐 경쟁전을 피하는 것이 점수 관리에 도움이 됩니다.
+                  </div>
+                </details>
+                <details
+                  class="group bg-white rounded-xl border border-slate-200 open:border-blue-200 overflow-hidden transition-all shadow-sm"
+                >
+                  <summary
+                    class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-700 hover:text-blue-600 group-open:bg-blue-50/50 select-none"
+                  >
+                    프로게이머와 차이가 너무 커요. 극복 가능한가요?
+                    <i
+                      class="fa-solid fa-chevron-down text-sm text-slate-400 group-open:rotate-180 transition-transform"
+                    ></i>
+                  </summary>
+                  <div
+                    class="p-5 pt-2 text-sm text-slate-600 leading-relaxed bg-slate-50/50"
+                  >
+                    순수 하드웨어(신경계)의 차이는 존재하지만,
+                    '예측(Prediction)'과 '크로스헤어 배치'로 극복 가능합니다.
+                    페이커 선수도 단순 반응보다는 예측 샷의 비율이 높습니다.
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <!-- 8. CTA -->
+            <section class="py-8 text-center">
+              <div
+                class="bento-card p-8 bg-slate-900 text-white relative overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"
+                ></div>
+                <div class="relative z-10">
+                  <h2 class="text-2xl font-bold mb-4">
+                    내 피지컬의 한계에 도전하세요
+                  </h2>
+                  <p class="text-slate-300 mb-8 max-w-xl mx-auto">
+                    시각 반응뿐만 아니라 청각, 에임 정확도 등 다양한 능력을
+                    종합적으로 측정해보세요.
+                  </p>
+                  <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                      href="/sori-banungsokdo-test.html"
+                      class="px-6 py-3 bg-white text-slate-900 rounded-xl font-bold hover:bg-slate-100 transition-colors"
+                    >
+                      <i class="fa-solid fa-headphones mr-2"></i> 소리 반응
+                      테스트
+                    </a>
+                    <a
+                      href="/valorant-banungsokdo-test.html"
+                      class="px-6 py-3 bg-red-500 text-white rounded-xl font-bold hover:bg-red-600 transition-colors shadow-lg shadow-red-500/30"
+                    >
+                      <i class="fa-solid fa-crosshairs mr-2"></i> 발로란트 에임
+                      테스트
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== Footer Start ===== -->
+    <footer class="bg-white border-t border-slate-200">
+      <div
+        class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
+      >
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          <div class="space-y-4 col-span-2 md:col-span-1">
+            <a
+              href="/"
+              class="flex items-center gap-2 text-lg font-bold text-slate-900"
+            >
+              <div
+                class="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white font-black text-lg font-mono"
+              >
+                <span>R</span>
+              </div>
+              반응속도 테스트
+            </a>
+            <p class="text-sm text-slate-500 leading-relaxed pr-4">
+              1ms 단위의 정확한 측정으로 당신의 순발력을 확인하고, 과학적 훈련
+              가이드를 통해 잠재력을 깨워보세요.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              테스트 종류
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >기본 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/valorant-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >발로란트 테스트</a
+                >
+              </li>
+              <li>
+                <a href="/pro-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">
+                  프로게이머 반응속도 테스트
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/sori-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >소리 반응 테스트</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/mobile-banungsokdo-test.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >모바일 테스트</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              리소스
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/banungsokdo-hyanghang-guide.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >향상 가이드</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/test-jeonghwakseong-data.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >테스트 정확성</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >개발자 블로그</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <h4
+              class="text-sm font-bold text-slate-900 uppercase tracking-wider"
+            >
+              정책
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="/privacy.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors font-medium"
+                  >개인정보 처리방침</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/terms.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >서비스 이용약관</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about.html"
+                  class="text-slate-500 hover:text-blue-600 transition-colors"
+                  >회사 소개</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400"
+        >
+          <div
+            class="flex flex-col md:flex-row gap-2 md:gap-6 text-center md:text-left"
+          >
+            <p>&copy; 2024 반응속도 테스트. All rights reserved.</p>
+            <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-slate-600 transition-colors"
+              ><span class="sr-only">Twitter</span
+              ><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                ></path></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <!-- Result Modal (New User Feedback Feature) -->
+    <div
+      id="modal"
+      class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm"
+        id="modal-bg"
+      ></div>
+      <div
+        class="bg-white rounded-[2rem] p-8 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 relative z-10 text-center border border-white/20 animate-pop-in"
+      >
+        <!-- Rank Icon -->
+        <div
+          class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center text-5xl text-white shadow-[0_0_20px_rgba(252,211,77,0.6)] ring-4 ring-white"
+        >
+          <i class="fa-solid fa-trophy"></i>
+        </div>
+
+        <div class="mt-10">
+          <h2 class="text-2xl font-black text-slate-900 mb-1">측정 완료!</h2>
+          <p class="text-slate-500 text-sm mb-6">
+            당신의 최종 결과 및 티어 분석
+          </p>
+
+          <div
+            class="bg-slate-50 rounded-2xl p-6 mb-4 border border-slate-100 relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-500"
+            ></div>
+            <div
+              id="modal-result"
+              class="text-5xl font-black text-slate-900 tracking-tight font-mono mb-2"
+            >
+              215<span class="text-xl text-slate-400 ml-1">ms</span>
+            </div>
+            <div
+              id="modal-tier-badge"
+              class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 font-bold rounded-full text-sm uppercase tracking-wide"
+            >
+              Diamond
+            </div>
+          </div>
+
+          <!-- Feedback Text -->
+          <p
+            id="modal-feedback"
+            class="text-slate-700 font-medium text-sm mb-6 leading-relaxed bg-blue-50/50 p-3 rounded-xl"
+          >
+            "상위 1% 피지컬입니다. 프로게이머에 도전해보세요!"
+          </p>
+
+          <button
+            id="modal-restart"
+            class="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-rotate-right"></i> 다시 도전하기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Logic Script -->
+    <script>
+      const box = document.getElementById("reaction-box");
+      const boxBg = document.getElementById("box-bg");
+      const boxTitle = document.getElementById("box-title");
+      const boxSubtitle = document.getElementById("box-subtitle");
+      const boxIcon = document.getElementById("box-icon");
+
+      const statCurrent = document.getElementById("stat-current");
+      const statAvg = document.getElementById("stat-avg");
+      const statCountBadge = document.getElementById("stat-count-badge");
+
+      // Modal Elements
+      const modal = document.getElementById("modal");
+      const modalBg = document.getElementById("modal-bg");
+      const modalResult = document.getElementById("modal-result");
+      const modalTierBadge = document.getElementById("modal-tier-badge");
+      const modalFeedback = document.getElementById("modal-feedback");
+      const modalRestart = document.getElementById("modal-restart");
+
+      let state = "idle";
+      let startTime = 0;
+      let timeout = null;
+      let scores = [];
+      const MAX_ROUNDS = 5;
+
+      const STATES = {
+        idle: {
+          bg: "bg-slate-800",
+          title: "측정 시작",
+          sub: "클릭하여 시작하세요",
+          icon: "fa-play",
+          iconColor: "text-blue-500",
+        },
+        waiting: {
+          bg: "bg-rose-500",
+          title: "대기...",
+          sub: "신호가 오면 클릭!",
+          icon: "fa-hand",
+          iconColor: "text-white",
+        },
+        ready: {
+          bg: "bg-emerald-500",
+          title: "클릭!",
+          sub: "",
+          icon: "fa-bolt",
+          iconColor: "text-white",
+        },
+        early: {
+          bg: "bg-amber-500",
+          title: "너무 빨라요!",
+          sub: "다시 시도하려면 클릭",
+          icon: "fa-triangle-exclamation",
+          iconColor: "text-white",
+        },
+      };
+
+      function setUI(s) {
+        state = s;
+        const cfg = STATES[s];
+        boxBg.className = `absolute inset-0 transition-colors duration-200 ${cfg.bg}`;
+        box.className = `game-container relative flex-grow w-full rounded-[1rem] overflow-hidden select-none flex flex-col items-center justify-center transition-all duration-300 ring-4 ring-transparent hover:ring-white/20 mx-auto max-w-full ${
+          s === "waiting" ? "waiting" : ""
+        }`;
+        boxTitle.innerText = cfg.title;
+        boxSubtitle.innerText = cfg.sub;
+        boxIcon.innerHTML = `<i class="fa-solid ${cfg.icon}"></i>`;
+        boxIcon.className = `text-5xl md:text-6xl mb-4 transition-colors duration-200 ${
+          cfg.iconColor
+        } ${s === "idle" ? "animate-bounce-slight" : ""}`;
+      }
+
+      function updateStats() {
+        const avg = scores.length
+          ? Math.floor(scores.reduce((a, b) => a + b, 0) / scores.length)
+          : 0;
+        statCurrent.innerText = scores.length
+          ? `${scores[scores.length - 1]}ms`
+          : "-";
+        statAvg.innerText = avg ? `${avg}ms` : "-";
+        statCountBadge.innerText = `${MAX_ROUNDS - scores.length} LEFT`;
+        return avg;
+      }
+
+      function analyzeTier(avg) {
+        if (avg <= 150)
+          return {
+            tier: "Challenger",
+            color: "bg-yellow-100 text-yellow-700",
+            msg: "신(God)의 영역입니다. Faker 선수와 대등합니다!",
+          };
+        if (avg <= 180)
+          return {
+            tier: "Grandmaster",
+            color: "bg-red-100 text-red-700",
+            msg: "프로게이머 입단 테스트를 보셔도 되겠습니다.",
+          };
+        if (avg <= 210)
+          return {
+            tier: "Diamond",
+            color: "bg-purple-100 text-purple-700",
+            msg: "상위 1% 피지컬! 발로란트 불멸 티어급입니다.",
+          };
+        if (avg <= 240)
+          return {
+            tier: "Platinum",
+            color: "bg-blue-100 text-blue-700",
+            msg: "상당히 빠릅니다. 게이머 평균 이상입니다.",
+          };
+        if (avg <= 280)
+          return {
+            tier: "Gold",
+            color: "bg-green-100 text-green-700",
+            msg: "평균적인 반응속도입니다. 훈련하면 더 빨라질 수 있어요.",
+          };
+        return {
+          tier: "Silver",
+          color: "bg-slate-100 text-slate-700",
+          msg: "조금 느립니다. 장비(144Hz)를 점검하거나 집중해보세요.",
+        };
+      }
+
+      function showModal(avg) {
+        const result = analyzeTier(avg);
+        modalResult.innerHTML = `${avg}<span class="text-xl text-slate-400 ml-1">ms</span>`;
+        modalTierBadge.className = `inline-block px-4 py-1.5 font-bold rounded-full text-sm uppercase tracking-wide ${result.color}`;
+        modalTierBadge.innerText = result.tier;
+        modalFeedback.innerText = result.msg;
+
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        modal.querySelector("div.transform").classList.remove("scale-95");
+        modal.querySelector("div.transform").classList.add("scale-100");
+      }
+
+      function reset() {
+        scores = [];
+        updateStats();
+        setUI("idle");
+        statCountBadge.innerText = "READY";
+
+        // Hide Modal
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modal.querySelector("div.transform").classList.add("scale-95");
+        modal.querySelector("div.transform").classList.remove("scale-100");
+      }
+
+      function handleClick() {
+        if (state === "idle" || state === "result" || state === "early") {
+          if (scores.length >= MAX_ROUNDS) {
+            reset();
+          }
+          setUI("waiting");
+          const delay = Math.random() * 2000 + 1000;
+          timeout = setTimeout(() => {
+            setUI("ready");
+            startTime = Date.now();
+          }, delay);
+        } else if (state === "waiting") {
+          clearTimeout(timeout);
+          setUI("early");
+        } else if (state === "ready") {
+          const time = Date.now() - startTime;
+          scores.push(time);
+          const avg = updateStats();
+          if (scores.length >= MAX_ROUNDS) {
+            state = "idle";
+            showModal(avg); // Show result immediately
+            boxTitle.innerText = "측정 완료";
+            boxSubtitle.innerText = "결과를 확인하세요";
+            boxIcon.innerHTML = '<i class="fa-solid fa-flag-checkered"></i>';
+          } else {
+            setUI("idle");
+            boxTitle.innerText = `${time}ms`;
+            boxSubtitle.innerText = "클릭하여 다음 라운드";
+          }
+        }
+      }
+
+      box.addEventListener("mousedown", handleClick);
+      box.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        handleClick();
+      });
+      modalRestart.addEventListener("click", reset);
+      modalBg.addEventListener("click", reset);
+
+      // Mobile Menu
+      const btnMenu = document.getElementById("mobile-menu-button");
+      const menu = document.getElementById("mobile-menu");
+      btnMenu.addEventListener("click", () => {
+        menu.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

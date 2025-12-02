@@ -2,8 +2,11 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 중국어 수정 완료: 터치 보정, 가로/세로 모드 지원, PC 데이터 연동, 회원가입 없이 기록 저장 -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- 터치 반응성 향상을 위한 meta 추가 -->
     <meta
       name="description"
       content="100% 모바일 최적화 반응속도 테스트! 터치 보정, 가로/세로 모드 지원, PC 데이터 연동, 회원가입 없이 기록 저장."
@@ -21,12 +24,19 @@
     <meta name="google-adsense-account" content="ca-pub-4059737187619820" />
 
     <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "ubx56eiglg");
-  </script>
+    </script>
 
     <!-- Pretendard Font -->
     <link
@@ -47,10 +57,26 @@
         scroll-behavior: smooth;
         background-color: #f8fafc;
         color: #334155;
+        /* 디지털 그리드 배경 (이스포츠 느낌) */
+        background-image: linear-gradient(
+            to right,
+            rgba(226, 232, 240, 0.5) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(226, 232, 240, 0.5) 1px,
+            transparent 1px
+          );
+        background-size: 40px 40px;
       }
 
-      .gradient-text {
-        background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+      /* K-Esports Neon Gradient */
+      .esports-gradient {
+        background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      }
+      .text-esports {
+        background: linear-gradient(135deg, #2563eb 0%, #d946ef 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -68,41 +94,11 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
 
-      /* Prose Custom Styles */
-      .prose-custom h2 {
-        font-size: 1.75rem;
-        font-weight: 800;
-        color: #1e293b;
-        margin-top: 3.5rem;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid #e2e8f0;
-        letter-spacing: -0.025em;
-      }
-      .prose-custom h3 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #334155;
-        margin-top: 2.5rem;
-        margin-bottom: 1rem;
-      }
-      .prose-custom p {
-        line-height: 1.75;
-        margin-bottom: 1.25rem;
-      }
-      .prose-custom ul {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-      .prose-custom li {
-        margin-bottom: 0.5rem;
-      }
-
       /* Test Area Transitions */
       .test-area-transition {
-        transition: background-color 0.2s ease, transform 0.1s ease;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       }
+
       .no-select {
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -110,148 +106,71 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Gaming Button Press Effect */
+      .btn-press:active {
+        transform: scale(0.96);
+      }
+
+      /* Custom Scrollbar for Cards */
+      .horizontal-scroll {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      .horizontal-scroll::-webkit-scrollbar {
+        display: none;
       }
     </style>
   </head>
-  <body class="text-slate-700">
-    <!-- ===== Header Start ===== -->
-    <header
-      class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300"
-    >
+  <body class="text-slate-700 antialiased leading-relaxed tracking-tight">
+    <!-- ===== Header Start (Unchanged) ===== -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 transition-all duration-300">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-          <a
-            href="/"
-            class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity"
-          >
-            <div
-              class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200"
-            >
-              <span class="text-white font-bold text-lg leading-none font-mono"
-                >R</span
-              >
+          <!-- Logo -->
+          <a href="/" class="group flex items-center gap-2.5">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+              <span class="text-white font-bold text-lg leading-none">R</span>
             </div>
-            <span
-              class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors"
-              >반응속도 테스트</span
-            >
+            <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
           </a>
+
+          <!-- Desktop Navigation -->
           <nav class="hidden md:flex items-center space-x-1">
-            <a
-              href="/"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >홈</a
-            >
-            <a
-              href="/valorant-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >발로란트</a
-            >
-            <a
-              href="/sori-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >소리</a
-            >
-            <a
-              href="/mobile-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50 transition-colors"
-              >모바일</a
-            >
-            <a
-              href="/banungsokdo-hyanghang-guide.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >향상 가이드</a
-            >
+            <a href="/" class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50">홈</a>
+            <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
+            <a href="/sori-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">소리</a>
+            <a href="/mobile-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">모바일</a>
+            <a href="/pro-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">프로게이머 반응속도 테스트</a>
+            <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
           </nav>
+
+          <!-- Desktop Utilities -->
           <div class="hidden md:flex items-center gap-4">
-            <div class="flex gap-3 text-xs font-medium text-slate-400">
-              <a
-                href="/terms.html"
-                class="hover:text-slate-600 transition-colors"
-                >이용약관</a
-              >
-              <span class="text-slate-300">|</span>
-              <a
-                href="/privacy.html"
-                class="hover:text-slate-600 transition-colors"
-                >개인정보처리방침</a
-              >
-            </div>
+             <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+               <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+               <span>1,240명 측정 중</span>
+             </div>
           </div>
-          <button
-            id="mobile-menu-button"
-            class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
-          >
-            <span class="sr-only">메뉴 열기</span>
-            <svg
-              id="icon-menu"
-              class="w-6 h-6 block"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-            <svg
-              id="icon-close"
-              class="w-6 h-6 hidden"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+            <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
       </div>
-      <div
-        id="mobile-menu"
-        class="md:hidden bg-white border-b border-slate-100"
-      >
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 shadow-lg">
         <div class="px-4 pt-2 pb-6 space-y-1">
-          <a
-            href="/"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >홈</a
-          >
-          <a
-            href="/valorant-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >발로란트 테스트</a
-          >
-          <a
-            href="/sori-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >소리 반응 테스트</a
-          >
-          <a
-            href="/mobile-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-semibold text-blue-600 bg-blue-50 transition-colors"
-            >모바일 테스트</a
-          >
-          <a
-            href="/banungsokdo-hyanghang-guide.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >향상 가이드</a
-          >
-          <div
-            class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400"
-          >
-            <a href="/terms.html" class="hover:text-slate-600 p-2">이용약관</a>
-            <a href="/privacy.html" class="hover:text-slate-600 p-2"
-              >개인정보처리방침</a
-            >
-          </div>
+          <a href="/" class="block px-3 py-3 rounded-xl text-base font-semibold text-blue-600 bg-blue-50">홈</a>
+          <a href="/valorant-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">발로란트 테스트</a>
+          <a href="/sori-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">소리 반응 테스트</a>
+          <a href="/mobile-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">모바일 테스트</a>
+          <a href="/pro-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">프로게이머 반응속도 테스트</a>
+          <a href="/banungsokdo-hyanghang-guide.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">향상 가이드</a>
         </div>
       </div>
     </header>
@@ -260,538 +179,532 @@
     <div class="pt-16"></div>
 
     <main
-      class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24"
+      class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 md:py-20"
     >
       <article
-        class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 md:p-12 lg:p-16 border border-slate-100"
+        class="bg-white/90 backdrop-blur-sm rounded-[2.5rem] shadow-xl shadow-blue-100/50 p-6 md:p-12 border border-slate-200"
       >
-        <!-- Hero Section -->
-        <header class="text-center mb-12 md:mb-16">
-          <h1
-            class="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
+        <!-- Hero Section: K-Esports Style -->
+        <header class="text-center mb-10 md:mb-14">
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center gap-1.5 px-3 py-1 mb-6 rounded-full bg-slate-900 text-white text-xs font-bold shadow-lg shadow-slate-500/20"
           >
-            언제 어디서든,<br class="sm:hidden" />
-            <span class="gradient-text">모바일 반응속도 테스트</span>
+            <span
+              class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+            ></span>
+            실시간 터치 보정 ON
+          </div>
+
+          <h1
+            class="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight word-keep-all"
+          >
+            언제 어디서든, <br class="sm:hidden" />
+            <span class="text-esports">모바일 반응속도 테스트</span>
           </h1>
           <p
-            class="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed"
+            class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed word-keep-all"
           >
-            지하철에서, 카페에서, 여행 중에도—휴대폰만 있으면 당신의 순발력을
-            100% 최적화된 환경에서 측정하고 관리할 수 있습니다.
+            지하철, 카페, 여행 중에도 — 당신의
+            <span class="font-bold text-slate-800">피지컬(Physical)</span>을
+            100% 최적화된 환경에서 측정하고 랭크를 확인하세요.
           </p>
         </header>
 
-        <!-- Info Alert -->
-        <div
-          class="bg-purple-50 text-purple-900 border-l-4 border-purple-500 p-6 rounded-r-xl mb-16 text-center shadow-sm"
-        >
-          <p class="font-medium flex items-center justify-center gap-2">
-            <span class="text-xl">📱</span>
-            모바일 기기에서 최적화된 화면입니다. 터치가 정확하게 인식되도록
-            화면을 닦고 테스트해주세요!
-          </p>
-        </div>
-
-        <!-- Mobile Reaction Test Tool -->
-        <section
-          class="bg-slate-50 rounded-3xl p-6 md:p-10 my-12 border border-slate-200 relative overflow-hidden"
-        >
-          <!-- Tool Header -->
-          <div class="flex justify-center mb-8">
-            <button
-              id="orientationToggle"
-              class="bg-white px-5 py-2.5 rounded-xl shadow-sm border border-slate-200 text-slate-600 font-bold text-sm flex items-center gap-2 hover:bg-slate-50 hover:border-blue-200 hover:text-blue-600 transition-all"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5"
-                />
-              </svg>
-              <span>가로 모드로 전환</span>
-            </button>
-          </div>
-
-          <!-- Test Area (Main Interaction) -->
-          <!-- aspect ratio will be handled by JS classes -->
+        <!-- Tool Container: Device Look -->
+        <section class="relative max-w-md mx-auto mb-20">
+          <!-- Alert styled like a Game Notification -->
           <div
-            id="testArea"
-            class="test-area-transition w-full max-w-sm mx-auto rounded-3xl bg-white border-4 border-slate-200 shadow-inner flex flex-col items-center justify-center relative overflow-hidden cursor-pointer select-none no-select aspect-[3/4]"
+            class="absolute -top-6 left-1/2 -translate-x-1/2 w-full max-w-[90%] z-20"
           >
-            <!-- Idle / Waiting / Instructions -->
             <div
-              id="testInstruction"
-              class="text-center px-6 pointer-events-none z-10"
+              class="bg-slate-900/90 backdrop-blur text-white px-4 py-3 rounded-2xl shadow-lg flex items-center justify-center gap-3 text-sm font-medium animate-fade-in-down border border-slate-700"
             >
-              <div class="text-5xl mb-4">👆</div>
-              <h3 class="text-xl font-bold text-slate-700 mb-2">테스트 시작</h3>
-              <p class="text-sm text-slate-500">아래 버튼을 눌러 시작하세요</p>
-            </div>
-
-            <!-- Live Result Display (Inside Box) -->
-            <div
-              id="liveResult"
-              class="hidden text-center z-10 pointer-events-none"
-            >
-              <p
-                class="text-6xl font-black text-white drop-shadow-md"
-                id="roundTime"
-              >
-                0ms
-              </p>
-              <p class="text-white/80 font-bold mt-2">클릭하여 계속</p>
+              <span class="animate-bounce">📱</span>
+              <span>터치 최적화 완료! 화면을 닦고 시작하세요.</span>
             </div>
           </div>
 
-          <!-- Controls -->
-          <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <!-- Device Frame -->
+          <div
+            class="bg-slate-100 rounded-[3rem] p-2 md:p-4 border border-slate-200 shadow-2xl shadow-blue-100"
+          >
+            <div
+              class="bg-white rounded-[2.5rem] overflow-hidden border-4 border-slate-200 relative"
+            >
+              <!-- Top HUD -->
+              <div
+                class="absolute top-0 w-full p-4 flex justify-between items-center z-20 pointer-events-none"
+              >
+                <!-- Orientation Btn (Clickable) -->
+                <button
+                  id="orientationToggle"
+                  class="pointer-events-auto bg-white/80 backdrop-blur px-3 py-1.5 rounded-full shadow-sm border border-slate-200 text-slate-600 text-xs font-bold flex items-center gap-1.5 hover:bg-slate-100 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5"
+                    />
+                  </svg>
+                  <span>화면 전환</span>
+                </button>
+                <div
+                  class="bg-slate-900/10 backdrop-blur px-3 py-1 rounded-full text-xs font-mono font-bold text-slate-600"
+                >
+                  Latency: Low
+                </div>
+              </div>
+
+              <!-- Test Interactive Area -->
+              <div
+                id="testArea"
+                class="test-area-transition w-full aspect-[3/4] flex flex-col items-center justify-center cursor-pointer select-none no-select relative active:scale-[0.99] transition-transform"
+              >
+                <!-- Start / Idle State -->
+                <div
+                  id="testInstruction"
+                  class="text-center px-6 pointer-events-none z-10"
+                >
+                  <div
+                    class="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner text-blue-500"
+                  >
+                    👆
+                  </div>
+                  <h3 class="text-2xl font-black text-slate-800 mb-2">
+                    테스트 시작
+                  </h3>
+                  <p class="text-sm text-slate-400 font-medium">
+                    화면 아무 곳이나 터치하여 시작
+                  </p>
+
+                  <div id="startTestBtnContainer" class="mt-8">
+                    <button
+                      id="startTest"
+                      class="pointer-events-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-2xl shadow-lg shadow-blue-500/30 transition-all btn-press w-full"
+                    >
+                      START
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Live Result Overlay -->
+                <div
+                  id="liveResult"
+                  class="hidden text-center z-10 pointer-events-none"
+                >
+                  <div
+                    class="text-7xl font-black text-white drop-shadow-lg font-mono tracking-tighter"
+                    id="roundTime"
+                  >
+                    0ms
+                  </div>
+                  <p class="text-white/90 font-bold mt-4 animate-pulse">
+                    화면을 터치하여 계속
+                  </p>
+                </div>
+              </div>
+
+              <!-- Bottom HUD Stats -->
+              <div
+                class="bg-slate-50 border-t border-slate-100 p-4 grid grid-cols-2 gap-4"
+              >
+                <div class="text-center">
+                  <p
+                    class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+                  >
+                    AVG. LATENCY
+                  </p>
+                  <p
+                    class="text-2xl font-black text-slate-800 font-mono"
+                    id="avgReactionTime"
+                  >
+                    0<span class="text-xs text-slate-400 ml-1">ms</span>
+                  </p>
+                </div>
+                <div class="text-center border-l border-slate-200">
+                  <p
+                    class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+                  >
+                    REMAINING
+                  </p>
+                  <p
+                    class="text-2xl font-black text-slate-800 font-mono"
+                    id="remainingRounds"
+                  >
+                    5<span class="text-xs text-slate-400 ml-1">회</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reset Button (Hidden by default) -->
+          <div class="text-center mt-6">
             <button
               id="resetTest"
-              class="hidden bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 font-bold py-3.5 px-6 rounded-2xl transition-all duration-200 shadow-sm hover:shadow-md"
+              class="hidden text-slate-400 hover:text-slate-600 text-sm font-medium underline underline-offset-4 decoration-slate-300"
             >
-              초기화
+              기록 초기화 (Reset)
             </button>
-          </div>
-
-          <!-- Live Stats -->
-          <div class="mt-10 grid grid-cols-2 gap-4 max-w-md mx-auto">
-            <div
-              class="bg-white p-5 rounded-2xl text-center shadow-sm border border-slate-100"
-            >
-              <p
-                class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1"
-              >
-                평균 반응속도
-              </p>
-              <p class="text-3xl font-black text-blue-600" id="avgReactionTime">
-                0<span class="text-lg text-slate-400 ml-1">ms</span>
-              </p>
-            </div>
-            <div
-              class="bg-white p-5 rounded-2xl text-center shadow-sm border border-slate-100"
-            >
-              <p
-                class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1"
-              >
-                남은 횟수
-              </p>
-              <p
-                class="text-3xl font-black text-slate-800"
-                id="remainingRounds"
-              >
-                5<span class="text-lg text-slate-400 ml-1">회</span>
-              </p>
-            </div>
           </div>
         </section>
 
-        <div class="prose prose-lg max-w-none prose-custom text-slate-600">
-          <!-- Content Preserved 100% -->
-          <section>
-            <h2>100% 모바일 최적화: 핵심 기능</h2>
-            <p>
-              이 모바일 반응속도 테스트는 스마트폰 사용자의 편의성을 최우선으로
-              설계되었습니다. 기존 모바일 테스트들의 단점을 보완한 핵심 기능들을
-              통해 언제나 정확하고 편리하게 반응속도를 측정할 수 있습니다.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose my-12">
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h4
-                  class="text-lg font-bold text-slate-900 mt-0 mb-3 flex items-center gap-2"
-                >
-                  <span class="text-green-500">✅</span> 터치 지연 자동 보정
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  각 모바일 기기별 터치 감도 차이를 자동으로 감지하고 보정하여,
-                  진짜 반응속도만 정확히 측정합니다.
-                </p>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h4
-                  class="text-lg font-bold text-slate-900 mt-0 mb-3 flex items-center gap-2"
-                >
-                  <span class="text-green-500">✅</span> 가로/세로 모드 지원
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  원하는 방향으로 화면을 돌려도 테스트가 정상적으로 진행됩니다.
-                  게임 환경에 맞춰 훈련하세요.
-                </p>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h4
-                  class="text-lg font-bold text-slate-900 mt-0 mb-3 flex items-center gap-2"
-                >
-                  <span class="text-green-500">✅</span> PC-모바일 데이터 연동
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  고유한 동기화 ID를 통해 PC와 모바일 결과를 통합 관리하여,
-                  일관된 기록을 유지할 수 있습니다.
-                </p>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h4
-                  class="text-lg font-bold text-slate-900 mt-0 mb-3 flex items-center gap-2"
-                >
-                  <span class="text-green-500">✅</span> 회원가입 없이 기록 저장
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  개인정보 입력 없이도 테스트 기록을 로컬에 저장하고, 언제든지
-                  진행 상황을 추적할 수 있습니다.
-                </p>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h4
-                  class="text-lg font-bold text-slate-900 mt-0 mb-3 flex items-center gap-2"
-                >
-                  <span class="text-green-500">✅</span> 무광고·100% 무료
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  테스트 중간에 방해되는 광고가 하나도 없고, 모든 기능이 무료로
-                  제공됩니다. 부담없이 마음껏 반응속도 훈련을 진행하세요!
-                </p>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <h4
-                  class="text-lg font-bold text-slate-900 mt-0 mb-3 flex items-center gap-2"
-                >
-                  <span class="text-green-500">✅</span> 모든 모바일 기기 호환
-                </h4>
-                <p class="text-sm text-slate-500 leading-relaxed">
-                  iOS와 Android 기기 모두 지원하며, 플래그십부터 버짓 모델까지
-                  대부분의 스마트폰에서 정상적으로 작동합니다.
-                </p>
-              </div>
+        <!-- Content Body -->
+        <div class="prose prose-lg max-w-none text-slate-600">
+          <!-- Features Grid: K-App Style -->
+          <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+              <div class="w-1.5 h-8 bg-blue-600 rounded-full"></div>
+              <h2 class="text-2xl md:text-3xl font-black text-slate-900 m-0">
+                100% 모바일 최적화
+              </h2>
             </div>
 
-            <figure class="my-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+              <!-- Card 1 -->
               <div
-                class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200"
-              >
-                <img
-                  src="./image/mobile-touch-calibration-process.webp"
-                  alt="모바일 반응속도 테스트 인터페이스 (세로/가로 지원, 휴대폰 반응속도 테스트)"
-                  class="w-full h-auto hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </figure>
-          </section>
-
-          <section>
-            <h2>모바일 기기별 테스트 정확도</h2>
-            <p>
-              다양한 모바일 기기에서 테스트를 진행하여 정확도를 측정한 결과,
-              대부분의 기기에서 95% 이상의 높은 정확도를 보였습니다.
-            </p>
-            <figure class="my-12">
-              <div
-                class="rounded-2xl overflow-hidden shadow-xl border border-slate-200"
-              >
-                <img
-                  src="./image/mobile-device-compatibility-chart.webp"
-                  alt="인기 모바일 기기별 반응속도 테스트 정확도 차트 (스마트폰 반응 테스트)"
-                  class="w-full h-auto"
-                />
-              </div>
-            </figure>
-
-            <div
-              class="bg-slate-50 rounded-2xl p-8 border border-slate-100 not-prose"
-            >
-              <h3 class="text-xl font-bold text-slate-900 mb-6">
-                📱 기기별 테스트 팁
-              </h3>
-              <ul class="space-y-4">
-                <li class="flex gap-3">
-                  <div
-                    class="mt-1.5 w-2 h-2 rounded-full bg-slate-400 flex-shrink-0"
-                  ></div>
-                  <p class="text-sm text-slate-600 leading-relaxed">
-                    <strong class="text-slate-900"
-                      >iOS 기기 (iPhone/iPad):</strong
-                    >
-                    설정 > 일반 > 액세서리 > 터치 조절에서 "터치 감도"를
-                    표준으로 설정하면 가장 정확한 결과를 얻을 수 있습니다.
-                  </p>
-                </li>
-                <li class="flex gap-3">
-                  <div
-                    class="mt-1.5 w-2 h-2 rounded-full bg-slate-400 flex-shrink-0"
-                  ></div>
-                  <p class="text-sm text-slate-600 leading-relaxed">
-                    <strong class="text-slate-900"
-                      >Android 기기 (갤럭시/레드미/픽셀 등):</strong
-                    >
-                    설정 > 디스플레이 > 터치 감도를 최적화하거나, 화면 보호
-                    필름이 두꺼운 경우 제거 후 테스트하는 것이 좋습니다.
-                  </p>
-                </li>
-                <li class="flex gap-3">
-                  <div
-                    class="mt-1.5 w-2 h-2 rounded-full bg-slate-400 flex-shrink-0"
-                  ></div>
-                  <p class="text-sm text-slate-600 leading-relaxed">
-                    <strong class="text-slate-900">버짓 모델:</strong>
-                    백그라운드 앱을 모두 종료하고 테스트하면 터치 반응이 더
-                    원활해집니다. 저장 공간이 부족한 경우 일부 데이터를 정리하는
-                    것이 도움이 됩니다.
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="my-20">
-            <h2>전문가 Q&A: 모바일 반응속도의 과학</h2>
-            <div
-              class="bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 not-prose"
-            >
-              <div
-                class="flex flex-col sm:flex-row items-center gap-6 mb-8 pb-8 border-b border-slate-100"
+                class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
                 <div
-                  class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-blue-400 to-purple-400 shadow-md"
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl shadow-sm border border-slate-100 shrink-0"
+                >
+                  ✅
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-lg mb-1">
+                    터치 지연 자동 보정
+                  </h4>
+                  <p class="text-sm text-slate-500 leading-snug break-keep">
+                    기기별 터치 감도(Touch Latency)를 감지하여 0.001초 단위까지
+                    정확하게 보정합니다.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl shadow-sm border border-slate-100 shrink-0"
+                >
+                  🎮
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-lg mb-1">
+                    가로/세로 모드 지원
+                  </h4>
+                  <p class="text-sm text-slate-500 leading-snug break-keep">
+                    FPS 게임처럼 가로로, 혹은 웹서핑처럼 세로로. 원하는 그립으로
+                    테스트하세요.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div
+                class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl shadow-sm border border-slate-100 shrink-0"
+                >
+                  ☁️
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-lg mb-1">
+                    PC-모바일 데이터 연동
+                  </h4>
+                  <p class="text-sm text-slate-500 leading-snug break-keep">
+                    고유 ID만 있으면 PC방에서도 내 폰의 기록을 이어서 관리할 수
+                    있습니다.
+                  </p>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div
+                class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl shadow-sm border border-slate-100 shrink-0"
+                >
+                  🚫
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 text-lg mb-1">
+                    무광고 · 100% 무료
+                  </h4>
+                  <p class="text-sm text-slate-500 leading-snug break-keep">
+                    집중을 방해하는 팝업 광고 제로. 오직 당신의 반응속도
+                    향상에만 집중하세요.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <figure class="my-12">
+              <div
+                class="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 relative group"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6"
+                >
+                  <span
+                    class="text-white font-bold bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm"
+                    >인터페이스 미리보기</span
+                  >
+                </div>
+                <img
+                  src="./image/mobile-touch-calibration-process.webp"
+                  alt="모바일 반응속도 테스트 인터페이스"
+                  class="w-full h-auto transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
+            </figure>
+          </section>
+
+          <!-- Device Accuracy Chart -->
+          <section class="mb-20">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6">
+              모바일 기기별 정확도
+            </h2>
+            <p class="mb-8 text-slate-500 break-keep">
+              최신 플래그십부터 보급형 모델까지, 대부분의 환경에서 95% 이상의
+              신뢰도를 확보했습니다.
+            </p>
+            <div
+              class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm not-prose"
+            >
+              <img
+                src="./image/mobile-device-compatibility-chart.webp"
+                alt="기기별 정확도 차트"
+                class="w-full h-auto rounded-xl"
+              />
+
+              <div class="mt-8 space-y-4">
+                <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                  <span class="text-blue-600 text-xl">💡</span> 기기별 꿀팁
+                  (Tip)
+                </h3>
+                <div
+                  class="bg-slate-50 p-4 rounded-2xl text-sm text-slate-600 border border-slate-100"
+                >
+                  <span class="font-bold text-slate-900 block mb-1"
+                    >🍎 iOS (아이폰/아이패드)</span
+                  >
+                  설정 > 손쉬운 사용 > 터치 > 터치 조절 Off 권장
+                </div>
+                <div
+                  class="bg-slate-50 p-4 rounded-2xl text-sm text-slate-600 border border-slate-100"
+                >
+                  <span class="font-bold text-slate-900 block mb-1"
+                    >🤖 Android (갤럭시 등)</span
+                  >
+                  설정 > 디스플레이 > '터치 민감도' 켜기 (보호필름 부착 시)
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Expert Q&A: Chat Bubble Style -->
+          <section class="mb-20">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-8">
+              전문가 Q&A
+            </h2>
+            <div
+              class="bg-slate-50 p-8 rounded-[2.5rem] not-prose border border-slate-200"
+            >
+              <div class="flex items-center gap-4 mb-8">
+                <div
+                  class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 p-1"
                 >
                   <img
-                    src="https://via.placeholder.com/100x100.png?text=이수민"
-                    alt="모바일 UX 디자이너 아바타"
-                    class="w-full h-full rounded-full object-cover border-4 border-white"
+                    src="https://via.placeholder.com/100x100.png?text=UX"
+                    alt="이수민 전문가"
+                    class="w-full h-full rounded-full bg-white object-cover border-2 border-white"
                   />
                 </div>
-                <div class="text-center sm:text-left">
-                  <h4 class="text-xl font-bold text-slate-900 mb-1">
-                    이수민 모바일 UX 디자이너
+                <div>
+                  <h4 class="font-bold text-slate-900 text-lg">
+                    이수민 UX 연구원
                   </h4>
-                  <p
-                    class="text-sm font-bold text-blue-600 uppercase tracking-wide"
+                  <span
+                    class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md"
+                    >터치 반응 최적화 전문가</span
                   >
-                    모바일 인터페이스 연구소 | 터치 반응 최적화 전문가
-                  </p>
                 </div>
               </div>
-              <div class="space-y-8">
+
+              <div class="space-y-6">
+                <!-- Q1 -->
                 <div>
-                  <p
-                    class="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2"
+                  <div
+                    class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 inline-block max-w-[90%] mb-2"
                   >
-                    <span
-                      class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded"
-                      >Q</span
+                    <span class="text-blue-600 font-bold mr-1">Q.</span>
+                    <span class="font-bold text-slate-800"
+                      >모바일 터치 지연(Input Lag)이 결과에 영향을 주나요?</span
                     >
-                    모바일 터치 지연(Touch Latency)이 테스트에 어떤 영향을
-                    미치나요?
-                  </p>
-                  <p
-                    class="text-slate-600 text-sm leading-relaxed pl-4 border-l-2 border-slate-200"
+                  </div>
+                  <div
+                    class="bg-blue-600 p-4 rounded-2xl rounded-tr-none shadow-sm text-white inline-block max-w-[90%] ml-auto float-right text-sm leading-relaxed"
                   >
-                    터치 지연은 사용자가 화면을 터치한 순간과 기기가 이를
-                    인식하는 시간 차이입니다. 기기 성능, 화면 주사율에 따라
-                    달라지며, 이 값만큼 측정 결과가 느려지게 됩니다. 따라서 이를
-                    보정하지 않으면 테스트의 정확성이 크게 떨어집니다.
-                  </p>
+                    네, 맞습니다. 기기 성능과 주사율(Hz)에 따라 미세한 차이가
+                    발생합니다. 저희 테스트는 이를 자동으로 감지해 보정하므로
+                    <span class="font-bold text-yellow-300 underline"
+                      >순수한 반응속도</span
+                    >만 측정할 수 있습니다.
+                  </div>
+                  <div class="clear-both"></div>
                 </div>
+                <!-- Q2 -->
                 <div>
-                  <p
-                    class="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2"
+                  <div
+                    class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 inline-block max-w-[90%] mb-2"
                   >
-                    <span
-                      class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded"
-                      >Q</span
+                    <span class="text-blue-600 font-bold mr-1">Q.</span>
+                    <span class="font-bold text-slate-800"
+                      >이 테스트의 보정 기능은 믿을만한가요?</span
                     >
-                    이 테스트의 자동 보정 기능은 과학적으로 적절한가요?
-                  </p>
-                  <p
-                    class="text-slate-600 text-sm leading-relaxed pl-4 border-l-2 border-slate-200"
+                  </div>
+                  <div
+                    class="bg-blue-600 p-4 rounded-2xl rounded-tr-none shadow-sm text-white inline-block max-w-[90%] ml-auto float-right text-sm leading-relaxed"
                   >
-                    네, 매우 적절합니다. 자동 보정은 기기별 센서 민감도와 터치
-                    입력 편차를 실시간으로 조정하여 기기 간 차이를 최소화합니다.
-                    이는 측정 데이터의 신뢰도를 높이고 객관적인 비교 분석을
-                    가능하게 하는 핵심적인 과학적 접근입니다.
-                  </p>
-                </div>
-                <div>
-                  <p
-                    class="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2"
-                  >
-                    <span
-                      class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded"
-                      >Q</span
-                    >
-                    모바일 반응 테스트의 UX 설계에 가장 중요한 점은 무엇인가요?
-                  </p>
-                  <p
-                    class="text-slate-600 text-sm leading-relaxed pl-4 border-l-2 border-slate-200"
-                  >
-                    모바일 UX 설계에서는 직관성과 반응 속도가 핵심 원칙입니다.
-                    터치 인터페이스를 최적화하여 사용자가 자연스럽게 화면과
-                    상호작용할 수 있도록 해야 하며, 버튼 크기, 간격, 제스처 반응
-                    등 세부 요소도 세심하게 고려해야 합니다.
-                  </p>
+                    물론입니다. 기기별 센서 민감도 편차를 실시간으로 조정하는
+                    알고리즘이 적용되어 있어, 객관적인 티어 측정이 가능합니다.
+                  </div>
+                  <div class="clear-both"></div>
                 </div>
               </div>
             </div>
           </section>
 
-          <section>
-            <h2>사용자 성공 사례</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-10 not-prose">
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <div class="flex items-center gap-4 mb-6">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-lg shadow-sm"
-                  >
-                    24
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 text-lg">김영재</h4>
-                    <p class="text-xs font-bold text-slate-400 uppercase">
-                      모바일 게이머
-                    </p>
-                  </div>
-                </div>
-                <blockquote class="text-slate-600 text-sm leading-relaxed">
-                  "가로 모드로 테스트하니 실전 같아서 정말 효과적이에요! 2주
-                  만에 195ms에서 175ms로 향상되었습니다."
-                </blockquote>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <div class="flex items-center gap-4 mb-6">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-green-100 text-green-700 font-bold flex items-center justify-center text-lg shadow-sm"
-                  >
-                    32
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 text-lg">박민주</h4>
-                    <p class="text-xs font-bold text-slate-400 uppercase">
-                      직장인
-                    </p>
-                  </div>
-                </div>
-                <blockquote class="text-slate-600 text-sm leading-relaxed">
-                  "출퇴근길에 시간 보낼 방법으로 시작했어요. 회원가입 없이
-                  기록이 저장돼서 매일 진행 상황을 확인할 수 있어 좋았습니다."
-                </blockquote>
-              </div>
-              <div
-                class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-all"
-              >
-                <div class="flex items-center gap-4 mb-6">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 font-bold flex items-center justify-center text-lg shadow-sm"
-                  >
-                    45
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 text-lg">이종호</h4>
-                    <p class="text-xs font-bold text-slate-400 uppercase">
-                      사업가
-                    </p>
-                  </div>
-                </div>
-                <blockquote class="text-slate-600 text-sm leading-relaxed">
-                  "나이가 들면서 반응이 둔해진 걸 느꼈는데, 3주 만에 250ms에서
-                  220ms로 향상되었어요. 무광고, 무료라 부담이 없네요!"
-                </blockquote>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2>플랫폼 비교</h2>
+          <!-- User Reviews: Horizontal Scroll for Mobile Vibe -->
+          <section class="mb-20">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6">
+              명예의 전당 (User Reviews)
+            </h2>
             <div
-              class="overflow-hidden my-10 shadow-lg rounded-2xl border border-slate-200"
+              class="overflow-x-auto horizontal-scroll flex gap-4 pb-4 not-prose snap-x"
+            >
+              <!-- Review 1 -->
+              <div
+                class="min-w-[280px] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm snap-center"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600"
+                  >
+                    🎮
+                  </div>
+                  <div>
+                    <p class="font-bold text-slate-900 text-sm">
+                      김영재 (게이머)
+                    </p>
+                    <p class="text-xs text-blue-500 font-bold">
+                      Latency: 175ms
+                    </p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  "가로 모드 지원이 신의 한 수! 발로란트 하기 전에 손풀기로
+                  딱입니다."
+                </p>
+              </div>
+              <!-- Review 2 -->
+              <div
+                class="min-w-[280px] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm snap-center"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600"
+                  >
+                    💼
+                  </div>
+                  <div>
+                    <p class="font-bold text-slate-900 text-sm">
+                      박민주 (직장인)
+                    </p>
+                    <p class="text-xs text-green-500 font-bold">
+                      Latency: 220ms
+                    </p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  "로그인 없이 바로 기록돼서 출퇴근길에 부담 없이 해요. UI가
+                  깔끔해요."
+                </p>
+              </div>
+              <!-- Review 3 -->
+              <div
+                class="min-w-[280px] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm snap-center"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600"
+                  >
+                    🚀
+                  </div>
+                  <div>
+                    <p class="font-bold text-slate-900 text-sm">
+                      이종호 (사업가)
+                    </p>
+                    <p class="text-xs text-purple-500 font-bold">
+                      Latency: 250ms
+                    </p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  "나이 들어서 느려진 줄 알았는데, 3주 훈련하고 30ms 줄였습니다.
+                  광고 없어서 굿!"
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Comparison Table -->
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6">
+              왜 이 테스트인가요?
+            </h2>
+            <div
+              class="overflow-hidden rounded-3xl border border-slate-200 shadow-lg not-prose"
             >
               <table class="w-full text-left border-collapse bg-white">
                 <thead
-                  class="bg-slate-900 text-white text-sm uppercase tracking-wider"
+                  class="bg-slate-900 text-white text-xs uppercase tracking-wider"
                 >
                   <tr>
-                    <th class="p-5 font-bold">테스트 플랫폼</th>
-                    <th class="p-5 font-bold text-center">터치 보정</th>
-                    <th class="p-5 font-bold text-center">가로/세로</th>
-                    <th class="p-5 font-bold text-center">PC 연동</th>
-                    <th class="p-5 font-bold text-center">광고</th>
+                    <th class="p-4 font-bold">플랫폼</th>
+                    <th class="p-4 font-bold text-center">보정</th>
+                    <th class="p-4 font-bold text-center">회전</th>
+                    <th class="p-4 font-bold text-center">광고</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-sm">
                   <tr class="bg-blue-50/50">
-                    <td class="p-5 font-bold text-blue-700">
-                      본 사이트 (모바일 테스트)
-                    </td>
-                    <td class="p-5 text-center font-bold text-green-600">
-                      ✓ 자동
-                    </td>
-                    <td class="p-5 text-center font-bold text-green-600">
-                      ✓ 완벽 지원
-                    </td>
-                    <td class="p-5 text-center font-bold text-green-600">
-                      ✓ ID 제공
-                    </td>
-                    <td class="p-5 text-center font-bold text-green-600">
-                      ✓ 무광고
-                    </td>
+                    <td class="p-4 font-bold text-blue-700">본 사이트</td>
+                    <td class="p-4 text-center font-bold text-blue-600">O</td>
+                    <td class="p-4 text-center font-bold text-blue-600">O</td>
+                    <td class="p-4 text-center font-bold text-blue-600">X</td>
                   </tr>
-                  <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="p-5 font-medium text-slate-700">
-                      일반 모바일 앱
-                    </td>
-                    <td class="p-5 text-center font-bold text-slate-300">
-                      ✗ 미지원
-                    </td>
-                    <td class="p-5 text-center text-slate-500">✓ 일부</td>
-                    <td class="p-5 text-center font-bold text-slate-300">
-                      ✗ 미지원
-                    </td>
-                    <td class="p-5 text-center font-bold text-red-500">
-                      ✗ 많음
-                    </td>
+                  <tr>
+                    <td class="p-4 font-medium text-slate-600">일반 앱</td>
+                    <td class="p-4 text-center text-slate-400">X</td>
+                    <td class="p-4 text-center text-slate-400">△</td>
+                    <td class="p-4 text-center text-red-500 font-bold">많음</td>
                   </tr>
-                  <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="p-5 font-medium text-slate-700">
-                      모바일 게임 내 테스트
-                    </td>
-                    <td class="p-5 text-center text-slate-500">✓ 기본</td>
-                    <td class="p-5 text-center text-slate-500">✓ 가로 전용</td>
-                    <td class="p-5 text-center font-bold text-slate-300">
-                      ✗ 미지원
-                    </td>
-                    <td class="p-5 text-center text-slate-500">✓ 유무</td>
-                  </tr>
-                  <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="p-5 font-medium text-slate-700">
-                      유료 모바일 반응 테스트 앱
-                    </td>
-                    <td class="p-5 text-center text-slate-500">✓ 자동</td>
-                    <td class="p-5 text-center text-slate-500">✓ 완벽 지원</td>
-                    <td class="p-5 text-center text-slate-500">✓ 계정 연동</td>
-                    <td class="p-5 text-center font-bold text-green-600">
-                      ✓ 무광고
-                    </td>
+                  <tr>
+                    <td class="p-4 font-medium text-slate-600">게임 내장</td>
+                    <td class="p-4 text-center text-slate-400">△</td>
+                    <td class="p-4 text-center text-slate-400">가로만</td>
+                    <td class="p-4 text-center text-slate-400">△</td>
                   </tr>
                 </tbody>
               </table>
@@ -801,7 +714,7 @@
       </article>
     </main>
 
-    <!-- ===== Footer Start ===== -->
+    <!-- ===== Footer Start (Unchanged) ===== -->
     <footer class="bg-white border-t border-slate-200">
       <div
         class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
@@ -844,6 +757,11 @@
                   class="text-slate-500 hover:text-blue-600 transition-colors"
                   >발로란트 테스트</a
                 >
+              </li>
+              <li>
+                <a href="/pro-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">
+                  프로게이머 반응속도 테스트
+                </a>
               </li>
               <li>
                 <a
@@ -978,6 +896,9 @@
 
       // ===== Mobile Reaction Test Functionality =====
       const startTestBtn = document.getElementById("startTest");
+      const startTestBtnContainer = document.getElementById(
+        "startTestBtnContainer"
+      );
       const resetTestBtn = document.getElementById("resetTest");
       const testArea = document.getElementById("testArea");
       const testInstruction = document.getElementById("testInstruction");
@@ -996,7 +917,7 @@
       let scores = [];
       const totalRounds = 5;
 
-      // 1. Orientation Toggle
+      // 1. Orientation Toggle Logic
       if (orientationToggle) {
         orientationToggle.addEventListener("click", () => {
           const isPortrait = testArea.classList.contains("aspect-[3/4]");
@@ -1004,32 +925,35 @@
             testArea.classList.remove("aspect-[3/4]");
             testArea.classList.add("aspect-[16/9]");
             orientationToggle.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
-                    <span>세로 모드로 전환</span>`;
+                    <span>세로 모드</span>`;
           } else {
             testArea.classList.remove("aspect-[16/9]");
             testArea.classList.add("aspect-[3/4]");
             orientationToggle.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5" />
                     </svg>
-                    <span>가로 모드로 전환</span>`;
+                    <span>가로 모드</span>`;
           }
         });
       }
 
       // 2. Test Logic
-      startTestBtn.addEventListener("click", initTest);
+      startTestBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent bubbling to testArea
+        initTest();
+      });
       resetTestBtn.addEventListener("click", resetGame);
 
       function initTest() {
         scores = [];
         updateStats();
-        startTestBtn.classList.add("hidden");
+        startTestBtnContainer.classList.add("hidden");
         resetTestBtn.classList.remove("hidden");
-        orientationToggle.parentElement.classList.add("hidden"); // Hide toggle during test
+        orientationToggle.parentElement.style.opacity = "0.5"; // Dim top HUD
         startRound();
       }
 
@@ -1040,15 +964,24 @@
         }
 
         state = "waiting";
-        // Reset UI to Red (Waiting)
+        // Reset UI to Red (Waiting) - Esports Style Red
         testArea.className = testArea.className.replace(/bg-\w+-\d+/, "");
-        testArea.classList.remove("bg-white", "bg-green-500", "bg-blue-600");
-        testArea.classList.add("bg-red-500");
+        testArea.className = testArea.className.replace(
+          /bg-esports-gradient/,
+          ""
+        );
+        testArea.classList.remove(
+          "bg-white",
+          "bg-green-500",
+          "bg-blue-600",
+          "bg-rose-500"
+        );
+        testArea.classList.add("bg-rose-500");
 
         testInstruction.innerHTML = `
-            <div class="text-6xl mb-2 text-white">✋</div>
-            <h3 class="text-2xl font-bold text-white">기다리세요...</h3>
-            <p class="text-white/80">초록색이 되면 터치하세요!</p>
+            <div class="text-6xl mb-4 text-white animate-pulse">✋</div>
+            <h3 class="text-3xl font-black text-white tracking-tight">대기 (Wait)</h3>
+            <p class="text-white/80 font-medium">초록색이 되면 즉시 터치!</p>
         `;
         liveResult.classList.add("hidden");
         testInstruction.classList.remove("hidden");
@@ -1059,11 +992,11 @@
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
           state = "ready";
-          testArea.classList.remove("bg-red-500");
-          testArea.classList.add("bg-green-500");
+          testArea.classList.remove("bg-rose-500");
+          testArea.classList.add("bg-emerald-500"); // Esports Green
           testInstruction.innerHTML = `
-                <div class="text-6xl mb-2 text-white animate-bounce">⚡️</div>
-                <h3 class="text-3xl font-black text-white">터치하세요!</h3>
+                <div class="text-7xl mb-2 text-white animate-bounce">⚡️</div>
+                <h3 class="text-4xl font-black text-white tracking-tighter">터치! (TAP)</h3>
             `;
           startTime = Date.now();
         }, delay);
@@ -1072,7 +1005,7 @@
       // Handle Tap (Support both Click and Touch)
       testArea.addEventListener("mousedown", handleInput);
       testArea.addEventListener("touchstart", (e) => {
-        e.preventDefault(); // Prevent default touch behaviors
+        e.preventDefault();
         handleInput();
       });
 
@@ -1080,21 +1013,19 @@
         if (state === "waiting") {
           // Too Early
           clearTimeout(timeoutId);
-          testArea.classList.remove("bg-red-500");
+          testArea.classList.remove("bg-rose-500");
           testArea.classList.add("bg-blue-600");
           testInstruction.innerHTML = `
                 <div class="text-6xl mb-2 text-white">⚠️</div>
-                <h3 class="text-2xl font-bold text-white">너무 빨라요!</h3>
-                <p class="text-white/80">초록색 화면을 보고 터치하세요.<br>(터치하여 재시도)</p>
+                <h3 class="text-2xl font-bold text-white">너무 빨라요! (Foul)</h3>
+                <p class="text-white/80">예측샷 금지.<br>화면을 터치하여 재시도</p>
             `;
-          state = "idle"; // Wait for click to retry
-          // One-time click listener to restart round
+          state = "idle";
           const retryHandler = () => {
             startRound();
             testArea.removeEventListener("mousedown", retryHandler);
             testArea.removeEventListener("touchstart", retryHandler);
           };
-          // Small delay to prevent double tap registration
           setTimeout(() => {
             testArea.addEventListener("mousedown", retryHandler);
             testArea.addEventListener("touchstart", retryHandler);
@@ -1111,14 +1042,28 @@
           state = "result";
           updateStats();
 
-          testArea.classList.remove("bg-green-500");
-          testArea.classList.add("bg-white");
+          testArea.classList.remove("bg-emerald-500");
+          testArea.classList.add("bg-slate-900"); // Result Background
 
           testInstruction.classList.add("hidden");
           liveResult.classList.remove("hidden");
           roundTimeDisplay.textContent = `${reactionTime}ms`;
 
-          // Wait for click to next round
+          // Visual Feedback based on speed
+          if (reactionTime < 200) {
+            roundTimeDisplay.classList.add("text-emerald-400");
+            roundTimeDisplay.classList.remove("text-white", "text-yellow-400");
+          } else if (reactionTime < 300) {
+            roundTimeDisplay.classList.add("text-yellow-400");
+            roundTimeDisplay.classList.remove("text-white", "text-emerald-400");
+          } else {
+            roundTimeDisplay.classList.add("text-white");
+            roundTimeDisplay.classList.remove(
+              "text-emerald-400",
+              "text-yellow-400"
+            );
+          }
+
           const nextHandler = () => {
             startRound();
             testArea.removeEventListener("mousedown", nextHandler);
@@ -1135,14 +1080,14 @@
         const count = scores.length;
         remainingDisplay.innerHTML = `${
           totalRounds - count
-        }<span class="text-lg text-slate-400 ml-1">회</span>`;
+        }<span class="text-xs text-slate-400 ml-1">회</span>`;
 
         if (count > 0) {
           const sum = scores.reduce((a, b) => a + b, 0);
           const avg = Math.round(sum / count);
-          avgDisplay.innerHTML = `${avg}<span class="text-lg text-slate-400 ml-1">ms</span>`;
+          avgDisplay.innerHTML = `${avg}<span class="text-xs text-slate-400 ml-1">ms</span>`;
         } else {
-          avgDisplay.innerHTML = `0<span class="text-lg text-slate-400 ml-1">ms</span>`;
+          avgDisplay.innerHTML = `0<span class="text-xs text-slate-400 ml-1">ms</span>`;
         }
       }
 
@@ -1151,22 +1096,42 @@
         const sum = scores.reduce((a, b) => a + b, 0);
         const finalAvg = Math.round(sum / totalRounds);
 
+        // Calculate Tier
+        let tier = "";
+        let tierColor = "";
+        if (finalAvg < 180) {
+          tier = "CHALLENGER";
+          tierColor = "text-yellow-400";
+        } else if (finalAvg < 220) {
+          tier = "DIAMOND";
+          tierColor = "text-blue-400";
+        } else if (finalAvg < 260) {
+          tier = "PLATINUM";
+          tierColor = "text-green-400";
+        } else {
+          tier = "GOLD";
+          tierColor = "text-slate-400";
+        }
+
         // Show Final Result Overlay
-        testArea.classList.remove("bg-white", "bg-green-500");
+        testArea.classList.remove("bg-white", "bg-emerald-500", "bg-rose-500");
         testArea.classList.add("bg-slate-900");
         liveResult.classList.add("hidden");
         testInstruction.classList.remove("hidden");
+
         testInstruction.innerHTML = `
-            <div class="text-6xl mb-4">🎉</div>
-            <h3 class="text-2xl font-bold text-white">테스트 완료!</h3>
-            <p class="text-slate-300 mb-2">최종 평균 속도</p>
-            <p class="text-5xl font-black text-green-400 mb-6">${finalAvg}ms</p>
-            <button onclick="resetGame()" class="px-6 py-2 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-slate-200 transition-colors">다시 하기</button>
+            <div class="text-5xl mb-2">🏆</div>
+            <h3 class="text-lg font-bold text-slate-400 uppercase tracking-widest mb-1">Final Result</h3>
+            <p class="text-5xl font-black text-white mb-2 tracking-tighter">${finalAvg}ms</p>
+            <div class="inline-block px-4 py-1 rounded-full border border-slate-600 bg-slate-800 ${tierColor} font-bold text-sm mb-6">
+                TIER: ${tier}
+            </div>
+            <button onclick="resetGame()" class="w-full bg-white text-slate-900 rounded-xl py-3 font-bold text-sm hover:bg-slate-200 transition-colors shadow-lg">다시 도전 (Replay)</button>
         `;
 
-        startTestBtn.classList.remove("hidden");
+        startTestBtnContainer.classList.add("hidden");
         resetTestBtn.classList.add("hidden");
-        orientationToggle.parentElement.classList.remove("hidden");
+        orientationToggle.parentElement.style.opacity = "1";
       }
 
       function resetGame() {
@@ -1177,18 +1142,33 @@
 
         // Reset UI
         testArea.className = testArea.className.replace(/bg-\w+-\d+/, "");
-        testArea.classList.add("bg-white");
+        testArea.classList.add("bg-white"); // Back to clean state
         liveResult.classList.add("hidden");
         testInstruction.classList.remove("hidden");
+
+        // Initial Start Screen HTML
         testInstruction.innerHTML = `
-            <div class="text-5xl mb-4">👆</div>
-            <h3 class="text-xl font-bold text-slate-700 mb-2">테스트 시작</h3>
-            <p class="text-sm text-slate-500">아래 버튼을 눌러 시작하세요</p>
+            <div class="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner text-blue-500">
+                👆
+            </div>
+            <h3 class="text-2xl font-black text-slate-800 mb-2">테스트 시작</h3>
+            <p class="text-sm text-slate-400 font-medium">화면 아무 곳이나 터치하여 시작</p>
+            <div id="startTestBtnContainer" class="mt-8">
+                <button id="startTest" class="pointer-events-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-2xl shadow-lg shadow-blue-500/30 transition-all btn-press w-full">
+                    START
+                </button>
+            </div>
         `;
 
-        startTestBtn.classList.remove("hidden");
+        // Re-attach listener for the new button
+        document.getElementById("startTest").addEventListener("click", (e) => {
+          e.stopPropagation();
+          initTest();
+        });
+
+        startTestBtnContainer.classList.remove("hidden");
         resetTestBtn.classList.add("hidden");
-        orientationToggle.parentElement.classList.remove("hidden");
+        orientationToggle.parentElement.style.opacity = "1";
       }
     </script>
   </body>

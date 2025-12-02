@@ -134,154 +134,51 @@
   </head>
   <body class="text-slate-700">
     <!-- ===== Header Start (Optimized: Big Tech Style) ===== -->
-    <header
-      class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 supports-[backdrop-filter]:bg-white/60 transition-all duration-300"
-    >
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 transition-all duration-300">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <!-- Logo -->
-          <a
-            href="/"
-            class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity"
-          >
-            <div
-              class="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200"
-            >
-              <span class="text-white font-bold text-lg leading-none font-mono"
-                >R</span
-              >
+          <a href="/" class="group flex items-center gap-2.5">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+              <span class="text-white font-bold text-lg leading-none">R</span>
             </div>
-            <span
-              class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors"
-              >반응속도 테스트</span
-            >
+            <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
           </a>
 
-          <!-- Desktop Navigation (Center) -->
+          <!-- Desktop Navigation -->
           <nav class="hidden md:flex items-center space-x-1">
-            <a
-              href="/"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >홈</a
-            >
-            <a
-              href="/valorant-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >발로란트</a
-            >
-            <a
-              href="/sori-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >소리</a
-            >
-            <a
-              href="/mobile-banungsokdo-test.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >모바일</a
-            >
-            <a
-              href="/banungsokdo-hyanghang-guide.html"
-              class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >향상 가이드</a
-            >
+            <a href="/" class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50">홈</a>
+            <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
+            <a href="/sori-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">소리</a>
+            <a href="/mobile-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">모바일</a>
+            <a href="/pro-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">프로게이머 반응속도 테스트</a>
+            <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
           </nav>
 
-          <!-- Desktop Utilities (Right: Privacy/Terms) -->
+          <!-- Desktop Utilities -->
           <div class="hidden md:flex items-center gap-4">
-            <div class="flex gap-3 text-xs font-medium text-slate-400">
-              <a
-                href="/terms.html"
-                class="hover:text-slate-600 transition-colors"
-                >이용약관</a
-              >
-              <span class="text-slate-300">|</span>
-              <a
-                href="/privacy.html"
-                class="text-blue-600 font-bold cursor-default"
-                >개인정보처리방침</a
-              >
-            </div>
+             <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+               <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+               <span>1,240명 측정 중</span>
+             </div>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button
-            id="mobile-menu-button"
-            class="md:hidden p-2 -mr-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none transition-colors"
-          >
-            <span class="sr-only">메뉴 열기</span>
-            <svg
-              id="icon-menu"
-              class="w-6 h-6 block"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-            <svg
-              id="icon-close"
-              class="w-6 h-6 hidden"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
+          <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+            <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
       </div>
 
       <!-- Mobile Menu Dropdown -->
-      <div
-        id="mobile-menu"
-        class="md:hidden bg-white border-b border-slate-100"
-      >
+      <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 shadow-lg">
         <div class="px-4 pt-2 pb-6 space-y-1">
-          <a
-            href="/"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >홈</a
-          >
-          <a
-            href="/valorant-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >발로란트 테스트</a
-          >
-          <a
-            href="/sori-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >소리 반응 테스트</a
-          >
-          <a
-            href="/mobile-banungsokdo-test.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >모바일 테스트</a
-          >
-          <a
-            href="/banungsokdo-hyanghang-guide.html"
-            class="block px-3 py-2.5 rounded-xl text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-            >향상 가이드</a
-          >
-
-          <!-- Mobile Legal Links -->
-          <div
-            class="mt-4 pt-4 border-t border-slate-100 flex justify-around text-xs font-medium text-slate-400"
-          >
-            <a href="/terms.html" class="hover:text-slate-600 p-2">이용약관</a>
-            <a href="/privacy.html" class="text-blue-600 font-bold p-2"
-              >개인정보처리방침</a
-            >
-          </div>
+          <a href="/" class="block px-3 py-3 rounded-xl text-base font-semibold text-blue-600 bg-blue-50">홈</a>
+          <a href="/valorant-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">발로란트 테스트</a>
+          <a href="/sori-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">소리 반응 테스트</a>
+          <a href="/mobile-banungsokdo-test.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">모바일 테스트</a>
+          <a href="/pro-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">프로게이머 반응속도 테스트</a>
+          <a href="/banungsokdo-hyanghang-guide.html" class="block px-3 py-3 rounded-xl text-base font-medium text-slate-600 hover:bg-slate-50">향상 가이드</a>
         </div>
       </div>
     </header>
@@ -592,7 +489,6 @@
         class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
       >
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-          <!-- Brand -->
           <div class="space-y-4 col-span-2 md:col-span-1">
             <a
               href="/"
@@ -610,7 +506,6 @@
               가이드를 통해 잠재력을 깨워보세요.
             </p>
           </div>
-          <!-- Link Column 1 -->
           <div class="space-y-4">
             <h4
               class="text-sm font-bold text-slate-900 uppercase tracking-wider"
@@ -633,6 +528,11 @@
                 >
               </li>
               <li>
+                <a href="/pro-banungsokdo-test.html" class="text-slate-500 hover:text-blue-600 transition-colors">
+                  프로게이머 반응속도 테스트
+                </a>
+              </li>
+              <li>
                 <a
                   href="/sori-banungsokdo-test.html"
                   class="text-slate-500 hover:text-blue-600 transition-colors"
@@ -648,7 +548,6 @@
               </li>
             </ul>
           </div>
-          <!-- Link Column 2 -->
           <div class="space-y-4">
             <h4
               class="text-sm font-bold text-slate-900 uppercase tracking-wider"
@@ -679,7 +578,6 @@
               </li>
             </ul>
           </div>
-          <!-- Link Column 3 (Legal) -->
           <div class="space-y-4">
             <h4
               class="text-sm font-bold text-slate-900 uppercase tracking-wider"
@@ -711,7 +609,6 @@
             </ul>
           </div>
         </div>
-
         <div
           class="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400"
         >
@@ -722,7 +619,6 @@
             <p>테스트 데이터는 로컬 저장되며, 개인 정보는 수집하지 않습니다.</p>
           </div>
           <div class="flex gap-4">
-            <!-- Social Icons Placeholder -->
             <a href="#" class="hover:text-slate-600 transition-colors"
               ><span class="sr-only">Twitter</span
               ><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
