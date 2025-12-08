@@ -6,14 +6,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <!-- 터치 반응성 향상을 위한 meta 추가 -->
     <meta
       name="description"
       content="100% 모바일 최적화 반응속도 테스트! 터치 보정, 가로/세로 모드 지원, PC 데이터 연동, 회원가입 없이 기록 저장."
     />
     <title>모바일 반응속도 테스트 | 휴대폰으로 언제나 순발력 측정</title>
     <link rel="canonical" href="mobile-banungsokdo-test.html" />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script
@@ -38,7 +36,6 @@
       })(window, document, "clarity", "script", "ubx56eiglg");
     </script>
 
-    <!-- Pretendard Font -->
     <link
       rel="stylesheet"
       as="style"
@@ -125,11 +122,9 @@
     </style>
   </head>
   <body class="text-slate-700 antialiased leading-relaxed tracking-tight">
-    <!-- ===== Header Start (Unchanged) ===== -->
     <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/80 transition-all duration-300">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-          <!-- Logo -->
           <a href="/" class="group flex items-center gap-2.5">
             <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
               <span class="text-white font-bold text-lg leading-none">R</span>
@@ -137,7 +132,6 @@
             <span class="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">반응속도 테스트</span>
           </a>
 
-          <!-- Desktop Navigation -->
           <nav class="hidden md:flex items-center space-x-1">
             <a href="/" class="px-3 py-2 rounded-full text-sm font-bold text-blue-600 bg-blue-50">홈</a>
             <a href="/valorant-banungsokdo-test.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">발로란트</a>
@@ -147,7 +141,6 @@
             <a href="/banungsokdo-hyanghang-guide.html" class="px-3 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">향상 가이드</a>
           </nav>
 
-          <!-- Desktop Utilities -->
           <div class="hidden md:flex items-center gap-4">
              <div class="flex items-center gap-2 text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -155,14 +148,12 @@
              </div>
           </div>
 
-          <!-- Mobile Menu Button -->
           <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
             <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
       </div>
 
-      <!-- Mobile Menu Dropdown -->
       <div id="mobile-menu" class="md:hidden bg-white border-b border-slate-100 shadow-lg">
         <div class="px-4 pt-2 pb-6 space-y-1">
           <a href="/" class="block px-3 py-3 rounded-xl text-base font-semibold text-blue-600 bg-blue-50">홈</a>
@@ -174,8 +165,6 @@
         </div>
       </div>
     </header>
-    <!-- ===== Header End ===== -->
-
     <div class="pt-16"></div>
 
     <main
@@ -184,9 +173,7 @@
       <article
         class="bg-white/90 backdrop-blur-sm rounded-[2.5rem] shadow-xl shadow-blue-100/50 p-6 md:p-12 border border-slate-200"
       >
-        <!-- Hero Section: K-Esports Style -->
         <header class="text-center mb-10 md:mb-14">
-          <!-- Badge -->
           <div
             class="inline-flex items-center gap-1.5 px-3 py-1 mb-6 rounded-full bg-slate-900 text-white text-xs font-bold shadow-lg shadow-slate-500/20"
           >
@@ -211,9 +198,7 @@
           </p>
         </header>
 
-        <!-- Tool Container: Device Look -->
         <section class="relative max-w-md mx-auto mb-20">
-          <!-- Alert styled like a Game Notification -->
           <div
             class="absolute -top-6 left-1/2 -translate-x-1/2 w-full max-w-[90%] z-20"
           >
@@ -225,18 +210,15 @@
             </div>
           </div>
 
-          <!-- Device Frame -->
           <div
             class="bg-slate-100 rounded-[3rem] p-2 md:p-4 border border-slate-200 shadow-2xl shadow-blue-100"
           >
             <div
               class="bg-white rounded-[2.5rem] overflow-hidden border-4 border-slate-200 relative"
             >
-              <!-- Top HUD -->
               <div
                 class="absolute top-0 w-full p-4 flex justify-between items-center z-20 pointer-events-none"
               >
-                <!-- Orientation Btn (Clickable) -->
                 <button
                   id="orientationToggle"
                   class="pointer-events-auto bg-white/80 backdrop-blur px-3 py-1.5 rounded-full shadow-sm border border-slate-200 text-slate-600 text-xs font-bold flex items-center gap-1.5 hover:bg-slate-100 transition-colors"
@@ -264,12 +246,10 @@
                 </div>
               </div>
 
-              <!-- Test Interactive Area -->
               <div
                 id="testArea"
                 class="test-area-transition w-full aspect-[3/4] flex flex-col items-center justify-center cursor-pointer select-none no-select relative active:scale-[0.99] transition-transform"
               >
-                <!-- Start / Idle State -->
                 <div
                   id="testInstruction"
                   class="text-center px-6 pointer-events-none z-10"
@@ -296,7 +276,6 @@
                   </div>
                 </div>
 
-                <!-- Live Result Overlay -->
                 <div
                   id="liveResult"
                   class="hidden text-center z-10 pointer-events-none"
@@ -313,7 +292,6 @@
                 </div>
               </div>
 
-              <!-- Bottom HUD Stats -->
               <div
                 class="bg-slate-50 border-t border-slate-100 p-4 grid grid-cols-2 gap-4"
               >
@@ -347,7 +325,6 @@
             </div>
           </div>
 
-          <!-- Reset Button (Hidden by default) -->
           <div class="text-center mt-6">
             <button
               id="resetTest"
@@ -358,9 +335,7 @@
           </div>
         </section>
 
-        <!-- Content Body -->
         <div class="prose prose-lg max-w-none text-slate-600">
-          <!-- Features Grid: K-App Style -->
           <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
               <div class="w-1.5 h-8 bg-blue-600 rounded-full"></div>
@@ -370,7 +345,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
-              <!-- Card 1 -->
               <div
                 class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
@@ -389,7 +363,6 @@
                   </p>
                 </div>
               </div>
-              <!-- Card 2 -->
               <div
                 class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
@@ -408,7 +381,6 @@
                   </p>
                 </div>
               </div>
-              <!-- Card 3 -->
               <div
                 class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
@@ -427,7 +399,6 @@
                   </p>
                 </div>
               </div>
-              <!-- Card 4 -->
               <div
                 class="bg-slate-50 p-6 rounded-3xl border border-slate-100 flex items-start gap-4 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
@@ -469,7 +440,6 @@
             </figure>
           </section>
 
-          <!-- Device Accuracy Chart -->
           <section class="mb-20">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6">
               모바일 기기별 정확도
@@ -512,7 +482,6 @@
             </div>
           </section>
 
-          <!-- Expert Q&A: Chat Bubble Style -->
           <section class="mb-20">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-8">
               전문가 Q&A
@@ -542,7 +511,6 @@
               </div>
 
               <div class="space-y-6">
-                <!-- Q1 -->
                 <div>
                   <div
                     class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 inline-block max-w-[90%] mb-2"
@@ -563,7 +531,6 @@
                   </div>
                   <div class="clear-both"></div>
                 </div>
-                <!-- Q2 -->
                 <div>
                   <div
                     class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 inline-block max-w-[90%] mb-2"
@@ -585,7 +552,6 @@
             </div>
           </section>
 
-          <!-- User Reviews: Horizontal Scroll for Mobile Vibe -->
           <section class="mb-20">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6">
               명예의 전당 (User Reviews)
@@ -593,7 +559,6 @@
             <div
               class="overflow-x-auto horizontal-scroll flex gap-4 pb-4 not-prose snap-x"
             >
-              <!-- Review 1 -->
               <div
                 class="min-w-[280px] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm snap-center"
               >
@@ -617,7 +582,6 @@
                   딱입니다."
                 </p>
               </div>
-              <!-- Review 2 -->
               <div
                 class="min-w-[280px] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm snap-center"
               >
@@ -641,7 +605,6 @@
                   깔끔해요."
                 </p>
               </div>
-              <!-- Review 3 -->
               <div
                 class="min-w-[280px] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm snap-center"
               >
@@ -668,7 +631,6 @@
             </div>
           </section>
 
-          <!-- Comparison Table -->
           <section>
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6">
               왜 이 테스트인가요?
@@ -714,7 +676,6 @@
       </article>
     </main>
 
-    <!-- ===== Footer Start (Unchanged) ===== -->
     <footer class="bg-white border-t border-slate-200">
       <div
         class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16"
@@ -861,8 +822,6 @@
         </div>
       </div>
     </footer>
-    <!-- ===== Footer End ===== -->
-
     <script>
       // ===== Mobile Menu Logic =====
       const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -1134,42 +1093,46 @@
         orientationToggle.parentElement.style.opacity = "1";
       }
 
-      function resetGame() {
-        clearTimeout(timeoutId);
-        state = "idle";
-        scores = [];
-        updateStats();
 
-        // Reset UI
-        testArea.className = testArea.className.replace(/bg-\w+-\d+/, "");
-        testArea.classList.add("bg-white"); // Back to clean state
-        liveResult.classList.add("hidden");
-        testInstruction.classList.remove("hidden");
+        function resetGame() {
+          clearTimeout(timeoutId);
+          state = "idle";
+          scores = [];
+          updateStats();
+  
+          // Reset UI
+          testArea.className = testArea.className.replace(/bg-\w+-\d+/, "");
+          testArea.classList.add("bg-white"); // Back to clean state
+          liveResult.classList.add("hidden");
+          testInstruction.classList.remove("hidden");
+  
+          // Initial Start Screen HTML
+          testInstruction.innerHTML = `
+              <div class="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner text-blue-500">
+                  👆
+              </div>
+              <h3 class="text-2xl font-black text-slate-800 mb-2">테스트 시작</h3>
+              <p class="text-sm text-slate-400 font-medium">화면 아무 곳이나 터치하여 시작</p>
+              <div id="startTestBtnContainer" class="mt-8">
+                  <button id="startTest" class="pointer-events-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-2xl shadow-lg shadow-blue-500/30 transition-all btn-press w-full">
+                      START
+                  </button>
+              </div>
+          `;
+          
+    
+          const newStartTestBtn = document.getElementById("startTest");
+          if (newStartTestBtn) {
+              newStartTestBtn.addEventListener("click", (e) => {
+                  e.stopPropagation();
+                  initTest();
+              });
+          }
 
-        // Initial Start Screen HTML
-        testInstruction.innerHTML = `
-            <div class="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner text-blue-500">
-                👆
-            </div>
-            <h3 class="text-2xl font-black text-slate-800 mb-2">테스트 시작</h3>
-            <p class="text-sm text-slate-400 font-medium">화면 아무 곳이나 터치하여 시작</p>
-            <div id="startTestBtnContainer" class="mt-8">
-                <button id="startTest" class="pointer-events-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-2xl shadow-lg shadow-blue-500/30 transition-all btn-press w-full">
-                    START
-                </button>
-            </div>
-        `;
-
-        // Re-attach listener for the new button
-        document.getElementById("startTest").addEventListener("click", (e) => {
-          e.stopPropagation();
-          initTest();
-        });
-
-        startTestBtnContainer.classList.remove("hidden");
-        resetTestBtn.classList.add("hidden");
-        orientationToggle.parentElement.style.opacity = "1";
-      }
+          startTestBtnContainer.classList.remove("hidden"); 
+          resetTestBtn.classList.add("hidden");
+          orientationToggle.parentElement.style.opacity = "1";
+        }
     </script>
   </body>
 </html>

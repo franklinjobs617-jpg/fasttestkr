@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewer - YT Finder</title>
+    <meta name="description" content="Read and filter YouTube comments in a clean, distraction-free interface.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        // 定义语义化颜色变量，方便黑白切换
+                        page: 'var(--bg-page)',
+                        surface: 'var(--bg-surface)',
+                        surface_hover: 'var(--bg-surface-hover)',
+                        border: 'var(--border-color)',
+                        text_main: 'var(--text-main)',
+                        text_muted: 'var(--text-muted)',
+                        primary: '#3b82f6', 
+                    },
+                    boxShadow: {
+                        'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* CSS 变量定义：核心配色方案 */
+        :root {
+            /* 默认 Light Mode (类似飞书/Notion) */
+            --bg-page: #F9FAFB;
+            --bg-surface: #FFFFFF;
+            --bg-surface-hover: #F3F4F6;
+            --border-color: #E5E7EB;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+        }
+
+        /* Dark Mode (保留你喜欢的 Obsidian 风格) */
+        .dark {
+            --bg-page: #030303;
+            --bg-surface: #0a0a0a;
+            --bg-surface-hover: #121212;
+            --border-color: #222222; /* 极细的深色边框 */
+            --text-main: #E5E7EB;
+            --text-muted: #888888;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* 噪点纹理 (仅在 Dark Mode 下明显，增加质感) */
+        .bg-noise {
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 50;
+            mix-blend-mode: overlay;
+        }
+
+        /* 隐藏滚动条但保留功能 */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden antialiased selection:bg-primary/20 selection:text-primary">
+
+    <div class="bg-noise"></div>
+
+    <!-- 1. Top Navigation (工具栏风格) -->
+    <nav class="h-14 border-b border-border bg-surface flex items-center justify-between px-4 z-20 shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="/" class="flex items-center gap-2 group">
+                <div class="bg-primary/10 text-primary p-1 rounded-md border border-primary/20">
+                    <i data-lucide="search-code" class="w-4 h-4"></i>
+                </div>
+                <span class="font-bold text-sm tracking-tight">YT Finder <span class="font-normal text-text-muted text-xs ml-1">/ Viewer</span></span>
+            </a>
+            
+            <div class="h-4 w-px bg-border"></div>
+
+            <!-- Video Info (Breadcrumb style) -->
+            <div class="flex items-center gap-2 text-sm max-w-md overflow-hidden">
+                <i data-lucide="youtube" class="w-4 h-4 text-red-500 shrink-0"></i>
+                <span class="truncate font-medium">MKBHD: iPhone 15 Review - The Truth</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button class="text-xs font-medium bg-surface_hover border border-border px-3 py-1.5 rounded-md hover:border-primary/50 transition-colors flex items-center gap-2">
+                <i data-lucide="download" class="w-3 h-3"></i> Export CSV
+            </button>
+            
+            <!-- Dark Mode Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-md hover:bg-surface_hover text-text-muted hover:text-text-main transition-colors">
+                <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 2. Main Layout (Sidebar + Feed) -->
+    <main class="flex-1 flex overflow-hidden">
+        
+        <!-- Left Sidebar: Filters & Controls (Linear style) -->
+        <aside class="w-64 border-r border-border bg-surface flex flex-col z-10 hidden md:flex">
+            <div class="p-4 border-b border-border">
+                <label class="text-[10px] uppercase font-bold text-text-muted tracking-wider mb-2 block">Search</label>
+                <div class="relative">
+                    <i data-lucide="search" class="w-3 h-3 absolute left-3 top-2.5 text-text-muted"></i>
+                    <input type="text" placeholder="Filter comments..." class="w-full bg-surface_hover border border-border rounded-md pl-8 pr-3 py-1.5 text-xs text-text-main focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
+                </div>
+            </div>
+
+            <div class="p-4 space-y-6 flex-1 overflow-y-auto hide-scroll">
+                <!-- Filter Group -->
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-text-muted tracking-wider mb-3 block">Sort By</label>
+                    <div class="space-y-1">
+                        <button class="w-full text-left px-3 py-1.5 rounded text-xs font-medium bg-primary/10 text-primary flex justify-between items-center">
+                            Newest First <i data-lucide="check" class="w-3 h-3"></i>
+                        </button>
+                        <button class="w-full text-left px-3 py-1.5 rounded text-xs text-text-muted hover:bg-surface_hover hover:text-text-main transition-colors">
+                            Oldest First
+                        </button>
+                        <button class="w-full text-left px-3 py-1.5 rounded text-xs text-text-muted hover:bg-surface_hover hover:text-text-main transition-colors">
+                            Most Liked
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter Group -->
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-text-muted tracking-wider mb-3 block">Filters</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input type="checkbox" class="rounded border-border bg-surface_hover text-primary focus:ring-0 w-3 h-3">
+                            <span class="text-xs text-text-muted group-hover:text-text-main">Contains Timestamp</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input type="checkbox" class="rounded border-border bg-surface_hover text-primary focus:ring-0 w-3 h-3">
+                            <span class="text-xs text-text-muted group-hover:text-text-main">Contains Link</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input type="checkbox" class="rounded border-border bg-surface_hover text-primary focus:ring-0 w-3 h-3">
+                            <span class="text-xs text-text-muted group-hover:text-text-main">From Author</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Footer -->
+            <div class="p-4 border-t border-border bg-surface_hover/50">
+                <div class="grid grid-cols-2 gap-2 text-center">
+                    <div class="bg-surface border border-border rounded p-2">
+                        <div class="text-[10px] text-text-muted uppercase">Total</div>
+                        <div class="text-sm font-bold font-mono">14.2k</div>
+                    </div>
+                    <div class="bg-surface border border-border rounded p-2">
+                        <div class="text-[10px] text-text-muted uppercase">Replies</div>
+                        <div class="text-sm font-bold font-mono">3.8k</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center: Content Feed -->
+        <section class="flex-1 bg-page overflow-y-auto relative p-0 md:p-6">
+            <div class="max-w-3xl mx-auto space-y-4">
+                
+                <!-- Notice Bar -->
+                <div class="flex items-center justify-between bg-primary/10 border border-primary/20 rounded-lg p-3 mb-6">
+                    <div class="flex items-center gap-2 text-xs text-primary">
+                        <i data-lucide="info" class="w-4 h-4"></i>
+                        <span>Showing 2 results for "battery"</span>
+                    </div>
+                    <button class="text-xs hover:underline text-primary">Clear Search</button>
+                </div>
+
+                <!-- Comment Card 1 (Pinned/High Value) -->
+                <div class="bg-surface border border-border rounded-xl p-5 hover:border-primary/30 transition-all shadow-sm group">
+                    <div class="flex gap-4">
+                        <!-- Avatar -->
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+                            JD
+                        </div>
+                        <div class="flex-1">
+                            <!-- Header -->
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm font-bold text-text-main">JohnDoe_Tech</span>
+                                    <span class="text-xs text-text-muted">2 hours ago</span>
+                                    <!-- Tag -->
+                                    <span class="bg-green-500/10 text-green-600 text-[10px] px-1.5 py-0.5 rounded border border-green-500/20 font-medium">Top Comment</span>
+                                </div>
+                                <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="p-1.5 hover:bg-surface_hover rounded text-text-muted hover:text-primary" title="Copy Text">
+                                        <i data-lucide="copy" class="w-3 h-3"></i>
+                                    </button>
+                                    <button class="p-1.5 hover:bg-surface_hover rounded text-text-muted hover:text-primary" title="View User History">
+                                        <i data-lucide="user-search" class="w-3 h-3"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Content -->
+                            <p class="text-sm text-text-main leading-relaxed mb-3">
+                                Honestly, the <span class="bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 px-1 rounded">battery</span> life on this new model is insane. I got 2 full days of usage without charging. Much better than the previous version.
+                            </p>
+
+                            <!-- Footer Stats -->
+                            <div class="flex items-center gap-4 text-xs text-text-muted font-mono">
+                                <span class="flex items-center gap-1"><i data-lucide="thumbs-up" class="w-3 h-3"></i> 2.4k</span>
+                                <span class="flex items-center gap-1"><i data-lucide="message-square" class="w-3 h-3"></i> 128 replies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment Card 2 -->
+                <div class="bg-surface border border-border rounded-xl p-5 hover:border-primary/30 transition-all shadow-sm group">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-surface_hover flex items-center justify-center text-text-muted text-xs font-bold shrink-0 border border-border">
+                            U
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm font-bold text-text-main">User_881</span>
+                                    <span class="text-xs text-text-muted">5 hours ago</span>
+                                </div>
+                                <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="p-1.5 hover:bg-surface_hover rounded text-text-muted hover:text-primary"><i data-lucide="copy" class="w-3 h-3"></i></button>
+                                    <button class="p-1.5 hover:bg-surface_hover rounded text-text-muted hover:text-primary"><i data-lucide="user-search" class="w-3 h-3"></i></button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-text-main leading-relaxed mb-3">
+                                Does the <span class="bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 px-1 rounded">battery</span> drain fast when gaming? Need to know before buying.
+                            </p>
+                            <div class="flex items-center gap-4 text-xs text-text-muted font-mono">
+                                <span class="flex items-center gap-1"><i data-lucide="thumbs-up" class="w-3 h-3"></i> 12</span>
+                                <span class="flex items-center gap-1"><i data-lucide="message-square" class="w-3 h-3"></i> 0 replies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading State (Infinite Scroll) -->
+                <div class="py-8 flex justify-center">
+                    <div class="animate-pulse flex flex-col items-center gap-2">
+                        <div class="w-6 h-6 border-2 border-border border-t-primary rounded-full animate-spin"></div>
+                        <span class="text-xs text-text-muted">Loading more comments...</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Theme Toggle Logic -->
+    <script>
+        lucide.createIcons();
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check local storage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+    </script>
+</body>
+</html>
